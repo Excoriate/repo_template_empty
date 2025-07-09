@@ -1,0 +1,93 @@
+# NPM Ignore - Repository Template
+# Tailored for this repository's specific content and structure
+
+# OS & Editor Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Template-specific Development Files
+.cursor/
+.claude/
+docs/ai/
+docs/specs/
+docs/user/
+repomix-output.xml
+repomix.config.json
+
+# Git & Version Control
+.git/
+.gitignore
+.gitattributes
+.pre-commit-config.yaml
+
+# Environment & Configuration
+.env*
+*.pem
+*.key
+*.p8
+*.p12
+.secrets/
+.shellcheckrc
+.editorconfig
+
+# Scripts & Automation
+scripts/
+justfile
+Makefile
+
+# Documentation & Template Files
+*.md
+!package.json
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+LICENSE
+
+# Build & Development Artifacts
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.npm
+.pnpm-debug.log*
+.yarn/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Testing
+.nyc_output/
+coverage/
+*.lcov
+
+# Logs
+logs/
+*.log
+
+# Runtime
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

@@ -1,0 +1,166 @@
+---
+name: "🐛 Bug Report"
+description: Report a bug or issue with the project
+title: "[BUG] Brief description of the issue"
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please fill out the sections below to help us understand and fix the issue.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 🐛 Bug Description
+      description: Provide a clear and concise description of what the bug is.
+      placeholder: "A clear description of what the bug is..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ Expected Behavior
+      description: What did you expect to happen?
+      placeholder: "I expected..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: ❌ Actual Behavior
+      description: What actually happened? Include error messages, stack traces, and any relevant output.
+      placeholder: "Instead, what happened was..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 🔄 Steps to Reproduce
+      description: List the steps to reproduce the behavior. Be as specific as possible.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 📋 Error Logs
+      description: Please copy and paste any relevant log output. This will be automatically formatted as code.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: minimal-reproduction
+    attributes:
+      label: 🔬 Minimal Reproduction
+      description: Provide a minimal code example that reproduces the issue, or link to a repository.
+      placeholder: |
+        ```language
+        // Minimal code to reproduce the issue
+        ```
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 🚨 Severity
+      description: How severe is this bug?
+      options:
+        - "🔴 Critical - Complete feature breakage, security issue, or data loss"
+        - "🟠 High - Major functionality broken, significant impact"
+        - "🟡 Medium - Partial functionality broken, workaround available"
+        - "🟢 Low - Minor issue, cosmetic problem, or edge case"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: 📊 Frequency
+      description: How often does this bug occur?
+      options:
+        - "🔄 Always - Every time"
+        - "🟠 Often - Most of the time"
+        - "🟡 Sometimes - Occasionally"
+        - "🟢 Rarely - Very specific conditions"
+        - "❓ Unknown - Not sure about frequency"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: 💻 Operating System
+      description: What operating system are you using?
+      placeholder: "e.g., macOS 14.0, Windows 11, Ubuntu 22.04"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: 📦 Project Version
+      description: What version of the project are you using?
+      placeholder: "e.g., 1.2.3, latest, main branch"
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: 🌐 Browser (if applicable)
+      description: If this is a web-related issue, what browser and version?
+      placeholder: "e.g., Chrome 120.0, Firefox 119.0, Safari 17.0"
+    validations:
+      required: false
+
+  - type: input
+    id: environment
+    attributes:
+      label: 🔧 Runtime Environment
+      description: What runtime/environment are you using?
+      placeholder: "e.g., Node.js 20.0, Python 3.11, Go 1.21, Deno 1.38"
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 📋 Additional Context
+      description: Add any other context about the problem here, including screenshots if helpful.
+      placeholder: "Any additional information that might help..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: ✅ Acknowledgements
+      options:
+        - label: I have searched existing issues to make sure this bug hasn't been reported before
+          required: true
+        - label: I have read the documentation and troubleshooting guides
+          required: true
+        - label: I can reliably reproduce this issue
+          required: false
+        - label: I'm willing to help test potential fixes
+          required: false
+
+  - type: checkboxes
+    id: code-of-conduct
+    attributes:
+      label: 📜 Code of Conduct
+      description: By submitting this bug report, you agree to follow our Code of Conduct
+      options:
+        - label: I agree to follow this project's [Code of Conduct](../CODE_OF_CONDUCT.md)
+          required: true

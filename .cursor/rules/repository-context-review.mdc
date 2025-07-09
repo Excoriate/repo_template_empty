@@ -1,0 +1,190 @@
+---
+description: "Always review repository context and understand the codebase structure using repomix before performing any tasks"
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Repository Context Review
+
+## Description
+
+This rule mandates that Cursor always performs a comprehensive repository context review and understanding of the codebase structure using `repomix` (available in the system) before executing any development tasks. This ensures informed decision-making based on complete project knowledge including architecture, patterns, dependencies, and configuration.
+
+## Rule
+
+When working with this repository, you **MUST** perform the following context review protocol:
+
+1. **Initial Repository Analysis**: Always execute `repomix` to generate a comprehensive, AI-friendly representation of the entire codebase before starting any task.
+
+2. **Configuration Awareness**: Reference the project-specific `repomix.config.json` file located at root of the repo which contains:
+   - Schema validation: Latest repomix schema for IDE autocomplete and validation
+   - Output format: XML style with template-specific header for AI analysis
+   - Compression: Enabled for token optimization and faster AI processing
+   - File size limits: 50MB maximum for large repository handling
+   - Git integration: Sorts files by change frequency with 100 commit analysis
+   - Security checks: Enabled for sensitive data protection
+   - Template-optimized ignore patterns: Comprehensive exclusion of build artifacts, logs, and system files
+   - Empty directories: Included to show complete repository structure
+   - Token encoding: o200k_base for optimal AI model compatibility
+
+3. **Comprehensive Analysis**: Use repomix output to understand:
+   - Project structure and organization
+   - Key dependencies and configuration files
+   - Code patterns and architectural decisions
+   - File relationships and imports
+   - Documentation and setup requirements
+
+4. **Context-Informed Actions**: Base all subsequent development decisions on this comprehensive understanding rather than making assumptions about the codebase.
+
+5. **Configuration Optimization**: Leverage the optimized repomix configuration which includes:
+   - Schema validation with official repomix schema for enhanced IDE support
+   - Compression enabled for token efficiency and faster AI processing
+   - Template-specific header text for clear context identification
+   - Comprehensive ignore patterns covering build artifacts, system files, and development byproducts
+   - Git change tracking for prioritizing recently modified files (100 commit analysis)
+   - Security scanning enabled for sensitive data protection
+   - Empty directory inclusion for complete repository structure visualization
+   - Increased top files display (10 files) for better project overview
+
+## Implementation
+
+### Technical Integration
+
+```bash
+# Always run repomix first to understand repository context
+repomix
+
+# The command will use the optimized repomix.config.json configuration:
+# - Schema validation enabled for enhanced development experience
+# - Outputs to repomix-output.xml with template-specific header
+# - Compression enabled for token optimization
+# - Comprehensive ignore patterns for template repositories
+# - Git change analysis with 100 commit history
+# - Security scanning for sensitive data protection
+# - Empty directory inclusion for complete structure view
+# - Enhanced top files display (10 files) for better overview
+# - Uses o200k_base token encoding for optimal AI compatibility
+```
+
+### Workflow Integration
+
+1. **Pre-Task Execution**: Run `repomix` before any coding, debugging, or architectural decisions
+2. **Configuration Reference**: Always check the project's `repomix.config.json` for specific settings
+3. **Output Analysis**: Review the generated `repomix-output.xml` for complete project context
+4. **Informed Decision Making**: Use the comprehensive codebase knowledge for all subsequent actions
+
+### Command Options
+
+Repomix supports extensive configuration through the existing config file and additional CLI options:
+
+- `--style xml` (configured in config): Optimized for AI processing with structured output
+- `--compress true` (configured): Enabled by default for token optimization and faster processing
+- `--include-diffs false` (configured): Disabled to focus on current state rather than changes
+- `--top-files-len 10` (configured): Show top 10 most important files for comprehensive overview
+- `--token-count-encoding o200k_base` (configured): Optimized token counting for AI models
+- `--include-empty-directories true` (configured): Show complete directory structure including empty folders
+- Schema validation: Automatic with `$schema` property for enhanced IDE support
+
+## Benefits
+
+### Enhanced Code Quality
+- **Architectural Awareness**: Understand existing patterns before implementing new features
+- **Consistency**: Maintain codebase conventions and standards
+- **Dependency Understanding**: Avoid conflicts with existing dependencies
+
+### Improved Efficiency
+- **Context-Driven Development**: Make informed decisions rather than exploratory changes
+- **Reduced Refactoring**: Understand the codebase structure to implement changes correctly the first time
+- **Pattern Recognition**: Identify reusable components and established patterns
+
+### Better Collaboration
+- **Documentation**: Understand project documentation and setup requirements
+- **Team Conventions**: Follow established coding patterns and organizational standards
+- **Knowledge Transfer**: Comprehensive understanding reduces onboarding time
+
+### Risk Mitigation
+- **Security Awareness**: Leverage built-in security scanning
+- **Change Impact**: Understand how modifications affect other parts of the system
+- **Configuration Compliance**: Respect project-specific settings and constraints
+
+## Examples
+
+### ✅ Correct Approach
+
+```bash
+# Step 1: Always start with repository context review
+repomix
+
+# Step 2: Analyze the generated repomix-output.xml to understand:
+# - Project structure in the directory structure section
+# - Key files and their purposes in the file summary
+# - Dependencies in package.json or similar config files
+# - Git activity patterns for recently changed areas
+
+# Step 3: Proceed with informed development decisions
+# Example: Implementing a new feature
+# - Check existing similar implementations
+# - Follow established patterns
+# - Understand dependency requirements
+# - Respect configuration constraints
+```
+
+**Repository Structure Understanding:**
+```
+project-root/
+├── repomix.config.json     # ← Project-specific repomix configuration
+├── repomix-output.xml      # ← Generated context file
+├── src/                    # ← Source code (understand patterns)
+├── docs/                   # ← Documentation (read setup requirements)
+├── scripts/                # ← Automation (understand workflows)
+└── justfile               # ← Build automation (understand commands)
+```
+
+### ❌ Incorrect Approach
+
+```bash
+# ❌ Starting development without context understanding
+npm install some-package
+
+# ❌ Modifying files without understanding project structure
+edit src/main.js
+
+# ❌ Making architectural decisions without codebase knowledge
+mkdir new-feature-directory
+
+# ❌ Ignoring project-specific repomix configuration
+repomix --style plain --no-security-check  # Overrides project settings
+```
+
+### Context-Aware Development Pattern
+
+```bash
+# ✅ Proper workflow for any development task
+repomix  # Uses project's repomix.config.json automatically
+
+# Analyze output for:
+# 1. Existing similar functionality
+# 2. Project conventions and patterns
+# 3. Dependencies and their usage
+# 4. Documentation and setup requirements
+# 5. Recent changes and active development areas
+
+# Then proceed with informed implementation
+```
+
+### Configuration-Aware Usage
+
+The project's `repomix.config.json` is optimized for template repositories with:
+- **Schema Validation**: Latest repomix schema (`$schema`) for enhanced IDE support and validation
+- **Compression Enabled**: Reduces token count while preserving essential structure and context
+- **Template-Specific Header**: Clear identification as "Repository Template" for AI analysis context
+- **50MB file size limit**: Handles large repositories efficiently for comprehensive analysis
+- **XML output format**: Structured data optimized for AI processing and parsing
+- **Enhanced Top Files Display**: Shows 10 most important files for better project overview
+- **Git integration**: Prioritizes recently changed files with 100 commit analysis depth
+- **Security scanning**: Prevents accidental exposure of sensitive data and credentials
+- **Comprehensive ignore patterns**: Excludes build artifacts, system files, logs, and development byproducts
+- **Empty directory inclusion**: Shows complete repository structure for template understanding
+- **Token optimization**: Uses o200k_base encoding for optimal AI model compatibility
+
+Always respect these configurations as they are specifically optimized for template repository analysis and AI-assisted development workflows.
