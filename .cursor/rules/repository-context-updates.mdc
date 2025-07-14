@@ -1,171 +1,89 @@
 ---
-description: "Automatically maintain repository configuration files (.editorconfig, .gitignore, .gitattributes, repomix.config.json) and execute repomix whenever new technologies are introduced to ensure consistent development environment and up-to-date repository analysis."
-globs: [""]
+description: "Execute repomix automatically when new technologies are detected in the repository"
+globs: ["package.json", "go.mod", "Cargo.toml", "requirements.txt", "Dockerfile"]
 alwaysApply: true
 ---
 
-# Repository Context Updates Rule
+# Auto-Repomix on Technology Changes
 
 ## Description
 
-This rule ensures automatic maintenance and synchronization of critical repository configuration files whenever new technologies, frameworks, libraries, or development tools are introduced to the project. It enforces consistent development environments across team members and maintains up-to-date repository analysis through automated repomix execution.
+Execute `repomix` command automatically when new technologies, dependencies, or significant configuration changes are detected to maintain current repository analysis for AI tools.
 
 ## Rule
 
-1. **Technology Detection**: Monitor all file additions, modifications, and new dependencies for technology introductions including:
-   - New package dependencies (package.json, requirements.txt, Gemfile, etc.)
-   - New configuration files for frameworks or tools
-   - New development tools or build systems
-   - New language additions to the codebase
+Execute `repomix` when these technology files change:
 
-2. **Configuration File Updates**: Immediately update repository configuration files when new technologies are detected:
-   - Update `.editorconfig` with appropriate settings for new file types
-   - Add relevant patterns to `.gitignore` for new technology artifacts
-   - Configure `.gitattributes` for new file type handling (line endings, diffs, linguist settings)
-   - Modify `repomix.config.json` to include/exclude new file patterns appropriately
-   - Update `.npmignore` with appropriate exclusions for NPM package distribution
-   - Update `.dockerignore` with build context exclusions for new file types
+1. **Package Dependencies**: On modification of `package.json`, `requirements.txt`, `go.mod`, `Cargo.toml`
+2. **Build Configurations**: On creation/modification of `Dockerfile`, `docker-compose.yml`
+3. **New Languages**: On first occurrence of new file extensions (`.ts`, `.go`, `.rs`, `.py`)
+4. **Major Config Changes**: On modification of build tool configs (`webpack.config.js`, `vite.config.js`)
 
-3. **Repomix Execution**: Execute `repomix` command after configuration updates to regenerate repository analysis and ensure AI tools have current codebase understanding
+### Execution Command
 
-4. **Validation**: Verify all configuration files use correct syntax and maintain consistency with project standards
-
-5. **Documentation Updates**: Update relevant documentation to reflect new technology integrations and configuration changes
+```bash
+repomix  # Uses existing repomix.config.json configuration
+```
 
 ## Implementation
 
 **Cursor IDE Integration:**
-- This rule applies globally (`alwaysApply: true`) to ensure continuous monitoring
-- Triggers on any file system changes that indicate new technology adoption
-- Integrates with Cursor's file watching capabilities to detect relevant changes
-- Provides real-time suggestions for configuration updates
-- Automatically suggests repomix execution when significant changes are detected
+- Monitors technology files for changes
+- Triggers repomix execution automatically
+- Prevents outdated repository analysis
 
 **Technical Enforcement:**
-- Scans for new package.json dependencies, requirements.txt entries, Gemfile additions
-- Monitors new configuration file patterns (e.g., .babelrc, webpack.config.js, tsconfig.json)
-- Detects new file extensions and language additions
-- Provides contextual configuration suggestions based on detected technologies
-- Validates configuration file syntax before applying changes
+- File watcher on specified glob patterns
+- Automatic command execution on change detection
+- Uses existing `repomix.config.json` settings
 
 ## Benefits
 
-1. **Consistency**: Maintains uniform development environment configuration across all team members
-2. **Automation**: Eliminates manual configuration management overhead when adopting new technologies
-3. **Currency**: Keeps repository analysis up-to-date through automatic repomix execution
-4. **Quality**: Prevents configuration drift and ensures proper file handling for all technologies
-5. **Efficiency**: Reduces setup time for new team members and development environments
-6. **Integration**: Seamlessly incorporates new tools without breaking existing workflows
+1. **Current Analysis**: Keeps repository context up-to-date for AI tools
+2. **Automatic Execution**: No manual repomix command required
+3. **Technology-Aware**: Triggers only on meaningful changes
+4. **Efficient**: Uses optimized repomix configuration
 
 ## Examples
 
-### ✅ Correct Implementation
+### ✅ Correct Trigger Events
 
-**Scenario**: Adding TypeScript to a JavaScript project
+**Adding TypeScript:**
+```bash
+# Changes detected:
+package.json (+ typescript dependency)
+tsconfig.json (new file)
 
-```
-Repository Changes:
-├── package.json (+ typescript, @types/node)
-├── tsconfig.json (new file)
-└── src/
-    └── index.ts (new file)
-
-Automated Configuration Updates:
-├── .editorconfig
-│   └── + [*.ts]
-│       └── + indent_style = space
-│       └── + indent_size = 2
-├── .gitignore
-│   └── + *.tsbuildinfo
-│   └── + dist/
-├── .gitattributes
-│   └── + *.ts linguist-language=TypeScript
-│   └── + *.ts diff=typescript
-├── .npmignore
-│   └── + *.tsbuildinfo
-│   └── + src/**/*.ts (source files)
-├── .dockerignore
-│   └── + *.tsbuildinfo
-│   └── + tsconfig.json
-└── repomix.config.json
-    └── include: ["**/*.ts", "**/*.tsx"]
-    └── Execute: repomix
+# Automatic action:
+repomix  # Regenerates analysis with TypeScript files
 ```
 
-**Directory Structure Visualization:**
-```
-project/
-├── .editorconfig          ✅ Updated with TypeScript settings
-├── .gitignore            ✅ Updated with TS build artifacts
-├── .gitattributes        ✅ Updated with TS file handling
-├── .npmignore            ✅ Updated with TS exclusions
-├── .dockerignore         ✅ Updated with TS build exclusions
-├── repomix.config.json   ✅ Updated to include TS files
-├── repomix-output.xml    ✅ Regenerated with new analysis
-└── src/
-    ├── index.js
-    └── index.ts          ✅ New TypeScript file
+**Adding Docker:**
+```bash
+# Changes detected:
+Dockerfile (new file)
+
+# Automatic action:
+repomix  # Updates analysis to include Docker configuration
 ```
 
-### ❌ Incorrect Implementation
+### ❌ Incorrect Manual Usage
 
-**Scenario**: Adding TypeScript without configuration updates
+```bash
+# ❌ Manual repomix execution without trigger
+repomix  # Run unnecessarily on documentation changes
 
-```
-Repository Changes:
-├── package.json (+ typescript)
-├── tsconfig.json (new file)
-└── src/
-    └── index.ts (new file)
-
-Missing Configuration Updates:
-├── .editorconfig         ❌ No TypeScript-specific settings
-├── .gitignore           ❌ Missing *.tsbuildinfo, dist/
-├── .gitattributes       ❌ No TypeScript file handling
-├── .npmignore           ❌ No TS build artifact exclusions
-├── .dockerignore        ❌ No TS development file exclusions
-├── repomix.config.json  ❌ TypeScript files not included
-└── repomix-output.xml   ❌ Outdated, missing new files
+# ❌ Ignoring the automation
+# Making technology changes but manually skipping repomix execution
 ```
 
-**Problems Created:**
-```
-Issues/
-├── Inconsistent indentation across editors
-├── Build artifacts committed to repository
-├── Poor diff visualization for TypeScript files
-├── Incomplete repository analysis for AI tools
-└── Team members using different configurations
-```
+### Trigger Pattern Examples
 
-### 🔧 Technology-Specific Configuration Examples
-
-**Python Addition:**
 ```
-.editorconfig: [*.py] max_line_length = 88
-.gitignore: __pycache__/, *.pyc, .pytest_cache/
-.gitattributes: *.py linguist-language=Python
-.npmignore: __pycache__/, *.pyc, .pytest_cache/
-.dockerignore: __pycache__/, *.pyc, requirements.txt
-repomix.config.json: include *.py files
-```
-
-**Docker Addition:**
-```
-.editorconfig: [Dockerfile*] indent_style = tab
-.gitignore: docker-compose.override.yml
-.gitattributes: Dockerfile* linguist-language=Dockerfile
-.npmignore: Dockerfile*, docker-compose*.yml
-.dockerignore: create/update with appropriate exclusions
-repomix.config.json: include Dockerfile patterns
-```
-
-**React Addition:**
-```
-.editorconfig: [*.jsx,*.tsx] indent_size = 2
-.gitignore: build/, .env.local, .parcel-cache/
-.gitattributes: *.jsx linguist-language=JavaScript
-.npmignore: src/**/*.jsx (source files)
-.dockerignore: .env.local, build/, node_modules/
-repomix.config.json: include React file patterns
+Technology File Changes → Auto Repomix
+├── package.json modified → repomix
+├── go.mod created → repomix
+├── requirements.txt updated → repomix
+├── Dockerfile added → repomix
+└── Documentation changes → no trigger
 ```

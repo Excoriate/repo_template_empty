@@ -43,7 +43,7 @@ One or two sentences that clearly explain the core purpose and value proposition
 > [!NOTE]
 > Customization Guide: Replace the placeholder content below with your project's specific details, target audience, and core value proposition.
 
-This project provides [describe your core functionality]. It's designed to [explain primary use case] 
+This project provides [describe your core functionality]. It's designed to [explain primary use case]
 and offers [highlight key benefits] for [define target audience].
 
 ### 💡 Why This Project?
@@ -52,17 +52,17 @@ and offers [highlight key benefits] for [define target audience].
 > Template Instructions: Explain the problem your project solves and why existing solutions aren't adequate. Make this compelling and specific to your use case.
 
 When working with [your domain/technology], it's often challenging to [describe specific pain point].
-This project solves that by providing [your solution approach], making it easier to 
+This project solves that by providing [your solution approach], making it easier to
 [describe the benefit/outcome] with [mention key differentiator].
 
-The solution is designed to be [quality 1], [quality 2], and [quality 3], 
+The solution is designed to be [quality 1], [quality 2], and [quality 3],
 ensuring it can [describe use case] while maintaining [important constraint or requirement].
 
 ### ✨ Key Features
 
 <!-- Replace these with your actual features and their descriptions -->
 - ✅ [Feature 1 Name] - Brief description of what this feature does and why it's valuable
-- ✅ [Feature 2 Name] - Brief description of what this feature does and why it's valuable  
+- ✅ [Feature 2 Name] - Brief description of what this feature does and why it's valuable
 - ✅ [Feature 3 Name] - Brief description of what this feature does and why it's valuable
 - ✅ [Feature 4 Name] - Brief description of what this feature does and why it's valuable
 

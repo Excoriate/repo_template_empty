@@ -1,193 +1,93 @@
 ---
-description: "Comprehensive dotfiles management for repository template with proper ignore patterns and file organization"
-globs: ["**/*"]
+description: "Detect repository stack and update gitignore patterns accordingly"
+globs: [".gitignore"]
 alwaysApply: true
 ---
 
-# Dotfiles Management
+# Stack-Aware Gitignore Management
 
 ## Description
 
-This rule establishes comprehensive dotfiles management for the repository template, ensuring proper ignore patterns, consistent file organization, and optimized build/deployment workflows. The dotfiles are specifically tailored to this repository's structure and content.
+Automatically update `.gitignore` patterns based on detected repository technology stack. Add stack-specific exclusions only when corresponding technology files are present.
 
 ## Rule
 
-When working with this repository, you **MUST** adhere to the following dotfiles management protocol:
+Execute stack detection and update `.gitignore` patterns:
 
-### 1. Dotfiles Structure Awareness
+1. **Detect Stack**: Scan for `package.json`, `go.mod`, `Cargo.toml`, `requirements.txt`, `Dockerfile`
+2. **Add Patterns**: Include technology-specific patterns only for detected technologies
+3. **Preserve Security**: Always include universal security exclusions (`.env*`, `*.key`, `*.pem`)
+4. **Avoid Bloat**: Do not add patterns for technologies not present in repository
 
-The repository maintains the following dotfiles configuration:
+### Stack Detection Commands
 
-- **`.gitignore`**: Comprehensive version control exclusions
-- **`.npmignore`**: NPM package exclusions tailored for template content
-- **`.dockerignore`**: Docker build context exclusions for optimal image size
-- **`.editorconfig`**: Consistent coding style across editors
-- **`.shellcheckrc`**: Shell script linting configuration
-- **`.pre-commit-config.yaml`**: Pre-commit hooks for code quality
-- **`.gitattributes`**: Git attribute configuration
-
-### 2. Template-Specific Exclusions
-
-The dotfiles are specifically configured to handle this repository's template nature:
-
-#### NPM Exclusions (`.npmignore`)
-- Template development files: `.cursor/`, `.claude/`, `docs/ai/`
-- Repository structure files: `scripts/`, `justfile`, documentation
-- Configuration files: `repomix.config.json`, environment files
-- Development artifacts: logs, caches, temporary files
-
-#### Docker Exclusions (`.dockerignore`)  
-- Source control: `.git/`, `.github/`
-- Template-specific documentation and development files
-- Build artifacts and logs
-- Environment configuration files
-- Development tools and scripts
-
-### 3. Consistency Requirements
-
-When modifying or adding dotfiles:
-
-1. **Template Context**: Ensure exclusions align with repository template purpose
-2. **Comprehensive Coverage**: Include OS-specific, editor-specific, and language-specific patterns
-3. **Performance Optimization**: Exclude unnecessary files from build contexts
-4. **Security Awareness**: Exclude sensitive files and credentials
-5. **Maintainability**: Use clear comments and logical grouping
-
-### 4. File-Specific Guidelines
-
-#### `.npmignore` Management
 ```bash
-# Structure: Group by category with clear comments
-# OS & Editor Files
-# Template-specific Development Files  
-# Git & Version Control
-# Environment & Configuration
-# Scripts & Automation
-# Documentation & Template Files
-# Build & Development Artifacts
-# Testing, Logs, Runtime, Backup, Temporary files
+# Node.js detection
+[ -f package.json ] && add_patterns="node_modules/ dist/ .npm npm-debug.log*"
+
+# Python detection
+[ -f requirements.txt ] && add_patterns="__pycache__/ *.pyc venv/ .pytest_cache/"
+
+# Go detection
+[ -f go.mod ] && add_patterns="vendor/ *.exe *.test go.work"
+
+# Rust detection
+[ -f Cargo.toml ] && add_patterns="target/ Cargo.lock"
+
+# Docker detection
+[ -f Dockerfile ] && add_patterns="docker-compose.override.yml"
 ```
-
-#### `.dockerignore` Management  
-```bash
-# Structure: Optimize for minimal Docker build context
-# Git & Version Control
-# Template-specific Development Files
-# OS & Editor Files
-# Environment & Configuration (security-focused)
-# Scripts & Automation (template-specific)
-# Documentation & Template Files
-# Language-specific exclusions
-# Build artifacts, Testing, Logs, Temporary files
-# Docker-specific, CI/CD, Development databases
-```
-
-### 5. Integration with Repository Tools
-
-The dotfiles integrate with existing repository tooling:
-
-- **Repomix Configuration**: Exclusions align with `repomix.config.json` ignore patterns
-- **Pre-commit Hooks**: Work with `.pre-commit-config.yaml` validation
-- **Editor Configuration**: Complement `.editorconfig` and `.shellcheckrc` settings
-- **GitHub Configuration**: Coordinate with `.github/` workflow files
 
 ## Implementation
 
-### Dotfiles Verification Protocol
+**Cursor IDE Integration:**
+- Triggers on technology file creation/modification
+- Suggests `.gitignore` updates based on detected stack
+- Prevents duplicate pattern addition
 
-Before making changes to dotfiles:
-
-1. **Context Analysis**: Understand the specific files and patterns in the repository
-2. **Impact Assessment**: Consider how exclusions affect build, deployment, and distribution
-3. **Template Alignment**: Ensure patterns support the repository template use case
-4. **Tool Integration**: Verify compatibility with existing development tools
-
-### Maintenance Workflow
-
-```bash
-# When adding new file types or directories:
-# 1. Update .gitignore for version control exclusions
-# 2. Update .npmignore for package distribution exclusions  
-# 3. Update .dockerignore for build optimization
-# 4. Test exclusions with actual build/package commands
-# 5. Verify no essential files are accidentally excluded
-```
-
-### Quality Assurance
-
-1. **Regular Review**: Periodically review dotfiles for new patterns or obsolete exclusions
-2. **Build Testing**: Verify Docker builds and NPM packaging work correctly
-3. **Template Testing**: Ensure template functionality is preserved
-4. **Documentation Sync**: Keep dotfiles aligned with repository documentation
+**Technical Enforcement:**
+- Pattern validation before addition
+- Duplicate pattern detection
+- Alphabetical pattern organization
 
 ## Benefits
 
-### Build Optimization
-- **Smaller Docker Images**: Exclude unnecessary development files from build context
-- **Faster NPM Installs**: Reduce package size by excluding template-specific content
-- **Reduced Transfer Times**: Optimize file transfers and distribution
-
-### Security Enhancement
-- **Credential Protection**: Prevent accidental inclusion of sensitive files
-- **Environment Isolation**: Exclude environment-specific configuration from builds
-- **Secret Management**: Ensure secrets and keys are properly excluded
-
-### Development Efficiency
-- **Clean Builds**: Consistent and predictable build artifacts
-- **Faster CI/CD**: Reduced build context improves pipeline performance
-- **Template Clarity**: Clear separation between template content and distributed code
-
-### Maintainability
-- **Pattern Consistency**: Unified approach to file exclusions across tools
-- **Documentation**: Clear comments explain the purpose of each exclusion
-- **Tool Integration**: Seamless integration with development workflow
+1. **Minimal Patterns**: Only includes patterns for technologies actually used
+2. **Automatic Updates**: Detects new technologies and suggests exclusions
+3. **Security First**: Always includes universal security patterns
+4. **No Redundancy**: Prevents duplicate or irrelevant patterns
 
 ## Examples
 
-### ✅ Correct Dotfiles Usage
+### ✅ Correct Stack Detection
 
+**Node.js Project:**
 ```bash
-# Template-aware NPM packaging
-npm pack
-# Result: Package excludes .cursor/, docs/ai/, scripts/, etc.
-
-# Optimized Docker build
-docker build .
-# Result: Build context excludes development files, documentation, VCS
-
-# Clean repository distribution  
-git archive HEAD
-# Result: Respects .gitattributes and .gitignore for clean archive
+# Detected: package.json exists
+# Add to .gitignore:
+node_modules/
+dist/
+.npm
+npm-debug.log*
 ```
 
-### ❌ Incorrect Approach
-
+**Go Project:**
 ```bash
-# ❌ Including development files in NPM package
-npm publish  # Without proper .npmignore
-
-# ❌ Large Docker build context
-docker build .  # Without .dockerignore optimization
-
-# ❌ Committing sensitive files
-git add .env  # Should be excluded by .gitignore
+# Detected: go.mod exists
+# Add to .gitignore:
+vendor/
+*.exe
+*.test
+go.work
 ```
 
-### Template-Specific Patterns
-
-The dotfiles specifically handle this repository's template nature:
+### ❌ Incorrect Pattern Addition
 
 ```bash
-# Excluded from NPM packages (template development content):
-.cursor/rules/           # Cursor IDE rules
-docs/ai/                 # AI development documentation  
-scripts/setup-template.sh # Template setup scripts
-repomix.config.json      # Repository analysis configuration
+# ❌ Adding Python patterns to Node.js-only project
+__pycache__/  # Technology not detected
 
-# Excluded from Docker builds (development/template content):
-.github/workflows/       # CI/CD configuration
-docs/user/              # User documentation
-justfile                # Development automation
+# ❌ Adding all patterns regardless of stack
+node_modules/  # In Go-only project
+target/        # In Node.js-only project
 ```
-
-This ensures that when the template is used to create actual projects, the distributed packages and Docker images contain only the necessary runtime content, not the template development infrastructure.

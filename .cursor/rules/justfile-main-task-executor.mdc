@@ -1,0 +1,150 @@
+---
+description: "Enforce using the Justfile as the primary task executor for all development operations"
+globs: ["*"]
+alwaysApply: true
+---
+
+# Justfile as Main Task Executor
+
+## Description
+
+This rule enforces the use of the Justfile as the central command runner and primary task executor for all development operations. Rather than running tools and commands directly, developers should define and execute tasks through the `just` command runner, ensuring consistency, discoverability, and maintainability across the development workflow.
+
+## Rule
+
+1. **Primary Task Execution**: Use `just [recipe]` commands instead of direct tool invocations (e.g., `just test` instead of `npm test`, `just build` instead of `make build`)
+
+2. **Recipe Discovery**: Always run `just` or `just --list` to discover available tasks before executing commands
+
+3. **New Task Definition**: When introducing new development operations, define them as recipes in the Justfile using:
+   - Clear, descriptive recipe names following kebab-case convention
+   - Proper shell configuration (`set shell := ["bash", "-uce"]` for error handling)
+   - Environment variable loading (`set dotenv-load`) when needed
+   - Appropriate dependencies between recipes
+
+4. **Task Standardization**: Ensure all common development tasks are available through just recipes:
+   - `just dev` for development server
+   - `just test` for running tests  
+   - `just build` for building the project
+   - `just clean` for cleanup operations
+   - `just lint` for code linting
+   - `just format` for code formatting
+   - `just deploy` for deployment operations
+
+5. **Documentation Integration**: Include recipe descriptions using comments above each recipe and leverage `just --list` for task discovery
+
+6. **Path References**: Use relative paths and project variables in recipes (e.g., `{{BUILD_DIR}}`, `{{PROJECT_NAME}}`)
+
+7. **Error Handling**: Implement proper error handling in recipes using shell flags and conditional logic
+
+## Implementation
+
+Cursor IDE enforces this rule by:
+
+- **Command Suggestion**: When detecting direct tool commands (npm, yarn, make, cargo, etc.), suggest the corresponding `just` recipe equivalent
+- **Recipe Validation**: Ensure new recipes follow proper Just syntax and conventions
+- **Dependency Checking**: Verify recipe dependencies are correctly defined
+- **Documentation Compliance**: Require recipe descriptions and maintain `just --list` discoverability
+- **Path Validation**: Ensure all file and directory references in recipes use relative paths and exist in the project
+
+## Benefits
+
+- **Unified Interface**: Single entry point (`just`) for all development tasks
+- **Self-Documenting**: `just --list` provides discoverable task documentation
+- **Cross-Platform Consistency**: Just handles shell differences across operating systems
+- **Dependency Management**: Recipe dependencies ensure tasks run in correct order
+- **Environment Isolation**: Proper environment variable loading and shell configuration
+- **Onboarding Efficiency**: New team members can discover all available tasks easily
+- **CI/CD Integration**: Consistent task interface between local development and CI/CD pipelines
+
+## Examples
+
+### ✅ Correct: Using Just as Main Task Executor
+
+```bash
+# Discover available tasks
+just
+just --list
+
+# Execute development tasks
+just dev
+just test
+just build
+just clean
+
+# Execute tasks with parameters
+just test unit
+just deploy production
+```
+
+### ✅ Correct: Well-Structured Justfile Recipe
+
+```just
+# 🚀 Start development server with hot reload
+dev:
+    @echo "🚀 Starting development server..."
+    @npm run dev || yarn dev || bun dev || deno task dev
+
+# 🧪 Run test suite
+test TEST="":
+    @echo "🧪 Running tests{{if TEST != "" { " for " + TEST } else { "" }}}..."
+    @if [ "{{TEST}}" != "" ]; then \
+        npm test -- {{TEST}}; \
+    else \
+        npm test; \
+    fi
+
+# 🏗️ Build project for production
+build: clean
+    @echo "🏗️ Building for production..."
+    @mkdir -p {{BUILD_DIR}}
+    @npm run build
+```
+
+### ❌ Incorrect: Direct Tool Invocation
+
+```bash
+# Don't run tools directly
+npm start
+make build
+cargo test
+python -m pytest
+
+# Don't use complex shell scripts without Just recipes
+./scripts/deploy.sh production --force
+bash -c "cd frontend && npm install && npm run build"
+```
+
+### ❌ Incorrect: Poorly Structured Justfile Recipe
+
+```just
+# Missing description and error handling
+stuff:
+    some-command
+    another-command
+
+# Hard-coded paths and no dependency management
+bad:
+    cd /absolute/path/to/project
+    rm -rf /tmp/build
+    make install
+```
+
+### Directory Structure Visualization
+
+```
+project/
+├── justfile                 # ✅ Central task definitions
+├── .env                     # ✅ Environment variables (loaded by Just)
+├── scripts/
+│   └── hooks/
+│       └── pre-commit-init.sh  # ✅ Referenced by Just recipes
+└── docs/
+    └── tasks.md            # ✅ Optional: Extended task documentation
+
+# Task Execution Flow:
+$ just                      # ✅ Lists all available tasks
+$ just dev                  # ✅ Runs development server via Just
+$ just test unit           # ✅ Runs specific tests via Just  
+$ just build && just deploy # ✅ Chains tasks via Just
+```

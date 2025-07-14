@@ -24,7 +24,9 @@
       "includeDiffs": false
     }
   },
-  "include": ["**/*"],
+  "include": [
+    "**/*"
+  ],
   "ignore": {
     "useGitignore": true,
     "useDefaultPatterns": true,

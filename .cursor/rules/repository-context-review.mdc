@@ -12,11 +12,11 @@ This rule mandates that Cursor always performs a comprehensive repository contex
 
 ## Rule
 
-When working with this repository, you **MUST** perform the following context review protocol:
+Execute this mandatory context review protocol for every repository task:
 
-1. **Initial Repository Analysis**: Always execute `repomix` to generate a comprehensive, AI-friendly representation of the entire codebase before starting any task.
+1. **Initial Repository Analysis**: Execute `repomix` to generate comprehensive, AI-friendly codebase representation before task execution.
 
-2. **Configuration Awareness**: Reference the project-specific `repomix.config.json` file located at root of the repo which contains:
+2. **Configuration Awareness**: Reference project-specific `repomix.config.json` file located at repository root containing:
    - Schema validation: Latest repomix schema for IDE autocomplete and validation
    - Output format: XML style with template-specific header for AI analysis
    - Compression: Enabled for token optimization and faster AI processing
@@ -27,14 +27,14 @@ When working with this repository, you **MUST** perform the following context re
    - Empty directories: Included to show complete repository structure
    - Token encoding: o200k_base for optimal AI model compatibility
 
-3. **Comprehensive Analysis**: Use repomix output to understand:
+3. **Comprehensive Analysis**: Analyze repomix output to understand:
    - Project structure and organization
    - Key dependencies and configuration files
    - Code patterns and architectural decisions
    - File relationships and imports
    - Documentation and setup requirements
 
-4. **Context-Informed Actions**: Base all subsequent development decisions on this comprehensive understanding rather than making assumptions about the codebase.
+4. **Context-Informed Actions**: Base all development decisions on comprehensive codebase understanding rather than assumptions.
 
 5. **Configuration Optimization**: Leverage the optimized repomix configuration which includes:
    - Schema validation with official repomix schema for enhanced IDE support
@@ -68,10 +68,10 @@ repomix
 
 ### Workflow Integration
 
-1. **Pre-Task Execution**: Run `repomix` before any coding, debugging, or architectural decisions
-2. **Configuration Reference**: Always check the project's `repomix.config.json` for specific settings
-3. **Output Analysis**: Review the generated `repomix-output.xml` for complete project context
-4. **Informed Decision Making**: Use the comprehensive codebase knowledge for all subsequent actions
+1. **Pre-Task Execution**: Execute `repomix` before coding, debugging, or architectural decisions
+2. **Configuration Reference**: Check project's `repomix.config.json` for specific settings
+3. **Output Analysis**: Review generated `repomix-output.xml` for complete project context
+4. **Informed Decision Making**: Apply comprehensive codebase knowledge to all subsequent actions
 
 ### Command Options
 

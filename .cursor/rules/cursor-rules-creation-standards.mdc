@@ -1,142 +1,70 @@
 ---
-description: "Enforce comprehensive standards for creating high-quality cursor rules in MDC format with proper YAML frontmatter, structured content sections, file organization, and production-ready implementation guidance."
+description: "Enforce comprehensive content quality standards for cursor rules including MDC format compliance, YAML frontmatter structure, and technical writing precision"
 globs: ["**/*.mdc", ".cursor/rules/**"]
 alwaysApply: true
 ---
 
-# Cursor Rule Creation Standards
+# Cursor Rule Content Standards
 
 ## Description
 
-This rule enforces comprehensive standards for creating production-ready cursor rules that follow MDC (Model-Driven Code) format specifications. It ensures consistency, completeness, and technical precision in cursor rule development, covering YAML frontmatter structure, content organization, file management, and quality validation.
+This rule enforces comprehensive content quality standards for cursor rules that follow MDC (Model-Driven Code) format specifications. It ensures consistency, completeness, and technical precision in cursor rule content, covering YAML frontmatter structure, content organization, language precision, and quality validation. For file location and organization requirements, see [cursor-rules-location.mdc](cursor-rules-location.mdc).
 
 ## Rule
 
-1. **MDC Format Compliance**: Create all cursor rules using proper MDC format structure:
-   - Valid YAML frontmatter with required fields: `description`, `globs`, `alwaysApply`
-   - Proper markdown content structure with hierarchical headers
-   - Correct syntax validation for both YAML and markdown components
+Create cursor rules with proper MDC format:
 
-2. **File Organization Standards**:
-   - Create all cursor rule files in `.cursor/rules/` directory
-   - Use kebab-case naming convention: `[rule-name].mdc`
-   - Validate file path accessibility and directory structure existence
-
-3. **YAML Frontmatter Requirements**:
-   - `description`: Concise, actionable explanation of rule purpose (1-2 sentences)
-   - `globs`: Proper glob patterns for file targeting (use `[""]` for global rules)
-   - `alwaysApply`: Boolean indicating global application scope
-   - Maintain proper YAML syntax with appropriate data types
-
-4. **Content Structure Mandates**: Include all required sections in order:
-   - **Description**: Clear purpose and scope explanation
-   - **Rule**: Numbered, specific, actionable requirements
-   - **Implementation**: Technical details about cursor IDE enforcement
-   - **Benefits**: Organizational and workflow advantages
-   - **Examples**: Correct/incorrect patterns with ASCII diagrams
-
-5. **Language Precision Standards**:
-   - Use direct, imperative commands (e.g., "Execute", "Create", "Validate")
-   - Eliminate verbose explanations and conditional language
-   - Replace vague terms with specific, measurable requirements
-   - Employ relative paths only (never absolute paths)
-
-6. **Path Validation Protocol**:
-   - Verify all referenced file/directory paths exist in codebase
-   - Mark non-existent paths as "creation requirements"
-   - Document path corrections in rule content
-   - Ensure paths are relative to project root
-
-7. **Quality Assurance Requirements**:
-   - Validate YAML frontmatter syntax before file creation
-   - Check markdown formatting compliance
-   - Ensure content completeness across all mandatory sections
-   - Verify ASCII diagrams render correctly
-
-8. **Process Integration Standards**:
-   - Use TodoWrite tool for task management and progress tracking
-   - Implement phase-by-phase execution with verification gates
-   - Create physical files using edit tools (not terminal display only)
-   - Complete all checklist items before rule finalization
+1. **YAML Frontmatter**: Include `description`, `globs`, `alwaysApply` fields with correct syntax
+2. **Required Sections**: Description → Rule → Implementation → Benefits → Examples
+3. **Direct Language**: Use imperative commands ("Execute", "Create", "Validate")
+4. **Relative Paths**: Never use absolute paths in rule content
+5. **Validate Syntax**: Check YAML and markdown formatting before saving
 
 ## Implementation
 
 **Cursor IDE Integration:**
-- Global application (`alwaysApply: true`) ensures continuous enforcement during cursor rule creation
-- File pattern matching targets `.mdc` files and `.cursor/rules/` directory
-- Real-time syntax validation for YAML frontmatter and markdown content
-- Contextual suggestions based on MDC format requirements
-
-**AI Behavior Guidance:**
-- Enforces systematic approach to rule creation with mandatory sections
-- Prevents incomplete or malformed cursor rule generation
-- Validates content quality against production standards
-- Ensures consistent file organization across projects
+- Real-time YAML/markdown syntax validation
+- Template generation for required sections
+- Content quality checks during editing
 
 **Technical Enforcement:**
-- YAML syntax validation using proper parsing libraries
-- Markdown linting for structural compliance
-- File system operations validation
-- Path existence verification before rule finalization
+- YAML syntax validation
+- Markdown linting
+- Section completeness verification
 
 ## Benefits
 
-1. **Consistency**: Maintains uniform cursor rule quality and structure across all projects
-2. **Completeness**: Prevents incomplete or malformed cursor rule creation
-3. **Professionalism**: Ensures production-ready rule quality matching senior technical writer standards
-4. **Maintainability**: Creates self-documenting rules with clear structure and examples
-5. **Efficiency**: Reduces rule creation time through systematic approach and validation
-6. **Reliability**: Validates all technical requirements before rule deployment
+1. **Consistency**: Uniform structure across all cursor rules
+2. **Quality**: Production-ready technical documentation
+3. **Completeness**: All required sections present and validated
+4. **Maintainability**: Clear structure with comprehensive examples
 
 ## Examples
 
-### ✅ Correct Implementation
+### ✅ Correct Content Implementation
 
-**Properly Structured Cursor Rule:**
-
-```markdown
+**YAML Frontmatter Example:**
+```yaml
 ---
 description: "Enforce TypeScript coding standards and best practices"
 globs: ["**/*.ts", "**/*.tsx"]
 alwaysApply: false
 ---
+```
 
-# TypeScript Standards Rule
-
+**Section Structure Example:**
+```markdown
+# Rule Title
 ## Description
-Enforce comprehensive TypeScript coding standards including type safety, 
-naming conventions, and modern ES6+ syntax usage.
-
 ## Rule
-1. Use strict TypeScript configuration with noImplicitAny enabled
-2. Employ PascalCase for interfaces and types
-3. Implement proper error handling with typed exceptions
-
 ## Implementation
-**Technical Enforcement:**
-- Integrates with TypeScript compiler for type checking
-- Validates naming conventions through AST analysis
-
 ## Benefits
-1. **Type Safety**: Prevents runtime errors through compile-time checking
-2. **Maintainability**: Consistent code structure across team
-
 ## Examples
-[Correct/Incorrect examples with ASCII diagrams]
 ```
 
-**File Structure Visualization:**
-```
-.cursor/
-└── rules/
-    ├── typescript-standards.mdc     ✅ Proper naming (kebab-case)
-    ├── api-validation.mdc           ✅ Descriptive naming
-    └── security-headers.mdc         ✅ Clear purpose naming
-```
+### ❌ Incorrect Content Implementation
 
-### ❌ Incorrect Implementation
-
-**Malformed Cursor Rule:**
+**Malformed Cursor Rule Content:**
 
 ```markdown
 description: TypeScript rule
@@ -152,18 +80,18 @@ This rule is about TypeScript...
 - Could be good to check things
 ```
 
-**Problems Identified:**
+**Content Problems Identified:**
 ```
-Issues/
+Content Issues/
 ├── Invalid YAML frontmatter syntax
 ├── Missing required fields (alwaysApply)
 ├── Incomplete content structure (missing Implementation, Benefits, Examples)
 ├── Vague language ("maybe", "could be")
 ├── No specific, actionable requirements
-└── Missing file organization in .cursor/rules/
+└── Missing technical precision and clarity
 ```
 
-### 🔧 MDC Format Reference
+### 🔧 MDC Content Format Reference
 
 **Complete YAML Frontmatter Example:**
 ```yaml
@@ -174,46 +102,23 @@ alwaysApply: true  # Boolean for global application
 ---
 ```
 
-**Content Section Template:**
-```markdown
-# Rule Name
-
-## Description
-[Clear purpose and scope explanation]
-
-## Rule
-1. [Specific, numbered requirement]
-2. [Actionable directive with measurable outcome]
-3. [Technical specification with validation criteria]
-
-## Implementation
-**Cursor IDE Integration:**
-[Technical details about enforcement]
-
-**AI Behavior Guidance:**
-[How rule affects AI decision-making]
-
-## Benefits
-1. **Advantage**: [Specific benefit explanation]
-2. **Improvement**: [Workflow enhancement description]
-
-## Examples
-### ✅ Correct Implementation
-[Proper examples with code blocks]
-
-### ❌ Incorrect Implementation
-[Anti-patterns with explanations]
-
-### 🔧 Visual Diagrams
-[ASCII directory structures or process flows]
+**Required Section Order:**
+```
+1. Description - Clear purpose and scope
+2. Rule - Numbered, specific requirements
+3. Implementation - Technical enforcement details
+4. Benefits - Organizational advantages
+5. Examples - Correct/incorrect patterns
 ```
 
-**Directory Organization Requirements:**
+**Content Quality Checklist:**
 ```
-project/
-├── .cursor/
-│   └── rules/              ✅ Required directory structure
-│       ├── rule-name.mdc   ✅ Kebab-case naming
-│       └── another-rule.mdc ✅ Descriptive naming
-└── [other project files]
+Content Validation/
+├── YAML frontmatter syntax validation ✅
+├── Required sections present ✅
+├── Language precision maintained ✅
+├── Technical terms clearly defined ✅
+├── Examples include both correct/incorrect patterns ✅
+├── ASCII diagrams render properly ✅
+└── Cross-references to related rules ✅
 ```
