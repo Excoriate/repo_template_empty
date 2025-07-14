@@ -53,36 +53,23 @@ Unlike prompt engineering's focus on individual interactions, context engineerin
     - [1.1 GitHub Repository](#11-github-repository)
       - [Output Format](#output-format)
     - [1.2 Application/Tool/Product Name](#12-applicationtoolproduct-name)
+      - [Output Format](#output-format-1)
     - [1.3 Primary Purpose (High-Level Description)](#13-primary-purpose-high-level-description)
+      - [Output Format](#output-format-2)
     - [2. Features](#2-features)
-    - [3. Architecture Overview](#3-architecture-overview)
+      - [Output Format](#output-format-3)
+    - [3. Architecture \& Design Patterns](#3-architecture--design-patterns)
+      - [Output Format](#output-format-4)
     - [4. Implementation Requirements](#4-implementation-requirements)
+      - [Output Format](#output-format-5)
     - [5. Tech Stack](#5-tech-stack)
-    - [5.1 Primary Language](#51-primary-language)
-    - [5.2 Programming Language Specific Packages, Libraries or Frameworks](#52-programming-language-specific-packages-libraries-or-frameworks)
-    - [5.3 Project Structure](#53-project-structure)
-    - [5.4 Development Tools](#54-development-tools)
-    - [5.5 Containerization (if applicable)](#55-containerization-if-applicable)
-    - [5.6 CI/CD Workflow (if applicable)](#56-cicd-workflow-if-applicable)
-    - [5.7 Cloud Platform (if applicable)](#57-cloud-platform-if-applicable)
-    - [5.8 Infrastructure \& DevOps (if applicable)](#58-infrastructure--devops-if-applicable)
-    - [5.9 Others (if applicable)](#59-others-if-applicable)
-    - [6. Architecture (optional)](#6-architecture-optional)
-      - [6.1 Software/Design Pattern(s)](#61-softwaredesign-patterns)
-      - [6.2 Software Architecture (optional)](#62-software-architecture-optional)
-    - [7. Context Required](#7-context-required)
-    - [Development Environment Setup](#development-environment-setup)
-    - [Dependencies \& Prerequisites](#dependencies--prerequisites)
-    - [Environment Variables](#environment-variables)
-    - [External Services](#external-services)
-    - [Configuration Requirements](#configuration-requirements)
-    - [8. Other Considerations](#8-other-considerations)
-    - [**OTHER CONSIDERATIONS:** Requirements \& Gotchas](#other-considerations-requirements--gotchas)
-      - [Development Constraints](#development-constraints)
-      - [Common Gotchas AI Assistants Miss](#common-gotchas-ai-assistants-miss)
-      - [Performance Considerations](#performance-considerations)
-      - [Security Requirements](#security-requirements)
-      - [Deployment Notes](#deployment-notes)
+      - [Output Format](#output-format-6)
+    - [6. Local Development Setup](#6-local-development-setup)
+      - [Output Format](#output-format-7)
+    - [7. AI Assistant Guidance](#7-ai-assistant-guidance)
+      - [Output Format](#output-format-8)
+    - [8. Reference \& Documentation](#8-reference--documentation)
+      - [Output Format](#output-format-9)
 
 ---
 
@@ -146,6 +133,7 @@ This process implements key context engineering methodologies:
 > Following [industry research findings](https://medium.com/@tam.tamanna18/understanding-context-engineering-c7bfeeb41889), this dual-input architecture ensures AI systems receive both conceptual guidance and concrete reference points, enabling **10x better accuracy** compared to traditional prompt-based approaches.
 >
 > **Visual Input Flow:**
+>
 > ```
 > ┌─────────────────────────────────────────────────────────────────┐
 > │                    CONTEXT ENGINEERING WORKFLOW                 │
@@ -195,7 +183,6 @@ This process implements key context engineering methodologies:
 
 #### Input Components
 
-
 - ✅ **Helper Prompt (Required):** User answers guided questions from [helper prompt](init-context-helper-prompt.md) to provide systematic project information
 - ✅ **Examples (Optional):** User provides example files, code samples, documentation, or links in the [examples directory](../../00_context_engineering/examples) for AI reference and pattern recognition
 
@@ -203,7 +190,6 @@ This process implements key context engineering methodologies:
 
 - 📄 **init-context.md:** Complete [initial context](../../00_context_engineering/init_context.md) document ready for PRP (Product Requirement Prompt) usage
 - 📁 **examples/ directory:** Refined [examples](../../00_context_engineering/examples/), generated reference files, and processed documentation from user inputs
-
 
 ---
 
@@ -215,46 +201,52 @@ This process implements key context engineering methodologies:
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
-> 
+>
 > **📋 Process Flow - Follow these steps in order:**
+>
 > ```
 > 1. 🔍 ANALYZE → Extract repository info from user prompt
 > 2. 📂 CATEGORIZE → Separate user-specified vs. auto-inferred settings  
-> 3. 📊 GENERATE TABLE → Create summary with source/logic column
+> 3. 📊 GENERATE TABLE → Create summary table with configurable settings
 > 4. ⚙️ CREATE YAML → Generate detailed configuration with comments
 > 5. ✅ VALIDATE → Check syntax and completeness
 > 6. 📤 PRESENT → Output in mandatory structure format
 > ```
-> 
+>
 > **🔧 Detailed Steps:**
+>
 > - 📍 Analyze the repository location from user's helper prompt (default: `github.com/Excoriate/{{repository_name}}`)
 > - 🏷️ Extract repository metadata (name, description, tech stack)
 > - 🗂️ Categorize settings as user-specified vs. auto-inferred based on analysis
-> - 📋 Generate both summary table and detailed YAML configuration
+> - 📋 Generate simplified summary table and detailed YAML configuration
 > - 📖 Reference [settings.yaml](../../../.github/settings.yml) for complete configuration structure
-> 
+>
 > **🔄 Template Variable Handling:**
+>
 > - ✏️ Replace `{{repository_name}}` with actual repository name from user input
 > - 📝 Replace `{{repository_description}}` with actual description from analysis
 > - 🏗️ Keep template variables in YAML only when showing configuration structure/examples
 > - 💯 Use actual values in the summary table output
-> 
+>
 > **✅ Validation Requirements:**
+>
 > - 🔍 Verify repository exists and is accessible (if analyzing existing repo)
 > - ⚖️ Check for obvious inconsistencies between stated purpose and detected tech stack
 > - 📋 Validate YAML syntax before presenting configuration
 > - 🔧 Ensure all required fields have values (use defaults when user input incomplete)
 > - 📚 Cross-reference against settings.yml schema for completeness
-> 
+>
 > **🚨 Error Handling & Fallback Strategies:**
+>
 > - **❌ Missing Repository:** If repository doesn't exist or isn't accessible, proceed with template structure using provided information
 > - **⚠️ Incomplete Information:** Use organization defaults (Excoriate standards) for missing user specifications
 > - **🔧 Tech Stack Detection Failure:** Request clarification or use "general" labels and minimal CI requirements
 > - **❌ Invalid Input:** Politely request correction while providing helpful examples of expected format
 > - **⚡ Conflicting Requirements:** Prioritize security and best practices, note conflicts in output
- 
+
 > [!NOTE]
 > **⬇️ Expected Outcomes:**
+>
 > - ☑️ Git Repository Location: `github.com/Excoriate/{{repository_name}}`
 > - ☑️ GitHub Repository Settings configuration matching requirements from settings.yaml
 
@@ -264,9 +256,14 @@ This process implements key context engineering methodologies:
 
 1. **Repository Summary Table:**
 
-| GitHub Repository | Description | Configurable Settings | Source/Logic |
-|------------------|-------------|----------------------|--------------|
-| `{{repository_name}}` | `{{repository_description}}` | **User-Specified:**<br>- Repository name and description<br>- Technology-specific topics<br>- Team access permissions<br>- Branch protection requirements<br><br>**Auto-Inferred:**<br>- Labels based on tech stack<br>- CI/CD status checks<br>- Security configurations<br>- Best practice defaults | **User Input:** Direct from helper prompt<br>**Analysis:** Tech stack detection from codebase<br>**Defaults:** Organization-wide best practices<br>**Security:** Industry standard configurations |
+| GitHub Repository | Description | Configurable Settings |
+|------------------|-------------|----------------------|
+| `{{repository_name}}` | `{{repository_description}}` | **User-Specified:**<br>- Repository name and description<br>- Technology-specific topics<br>- Team access permissions<br>- Branch protection requirements<br><br>**Auto-Inferred:**<br>- Labels based on tech stack<br>- CI/CD status checks<br>- Security configurations<br>- Best practice defaults |
+
+**Example:**
+| GitHub Repository | Description | Configurable Settings |
+|------------------|-------------|----------------------|
+| `cloudcost-cli` | A powerful CLI tool for AWS cost optimization and resource rightsizing | **User-Specified:**<br>- Repository name: cloudcost-cli<br>- Technology topics: ["cli", "aws", "cost-optimization"]<br>- Team access: maintainers (admin), contributors (push)<br>- Branch protection: require 1 reviewer<br><br>**Auto-Inferred:**<br>- Labels: "go", "terraform", "cli-tool"<br>- CI/CD: ["ci/test", "ci/build", "ci/lint"]<br>- Security: dependabot, code scanning<br>- Best practices: branch protection, required reviews |
 
 2. **Complete GitHub Repository Settings Configuration:**
 
@@ -310,339 +307,555 @@ branches:
         users: [{{repository_owner:-"Excoriate"}}]                # DEFAULT: "Excoriate"
 ```
 
-Entire [settings.yml](../../../.github/settings.yml) file is present on this repo, and is modified according to the user's requirements.
+Entire [settings.yml](../../../.github/settings.yml) file is present on this repo (on this path `.github/settings.yml`), and is modified according to the user's requirements.
 
+**Example Complete Configuration:**
+```yml
+# Core Repository Configuration
+repository:
+  name: cloudcost-cli
+  description: "A powerful CLI tool for AWS cost optimization and resource rightsizing"
+  topics: ["go", "cli", "aws", "cost-optimization", "devops"]
+
+# Team Access Configuration
+teams:
+  - name: maintainers
+    permission: admin
+  - name: contributors  
+    permission: push
+
+# Technology-Specific Labels
+labels:
+  - name: go
+    color: "00ADD8"
+    description: "Go language related changes"
+  - name: cli
+    color: "0366d6"
+    description: "Command-line interface functionality"
+
+# Branch Protection
+branches:
+  - name: main
+    protection:
+      required_pull_request_reviews:
+        required_approving_review_count: 1
+        require_code_owner_reviews: true
+      required_status_checks:
+        contexts: ["ci/test", "ci/build", "ci/lint"]
+      restrictions:
+        users: ["Excoriate"]
+```
 
 ### 1.2 Application/Tool/Product Name
 
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 📝 Use the exact repository name as the primary product identifier
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```text
+> 1. 🔍 ANALYZE → Extract product name from repository and user input
+> 2. ✏️ STANDARDIZE → Convert to proper product naming format (technical and display)
+> 3. 🔍 VERIFY → Ensure consistency with repository's canonical name
+> 4. 📝 DOCUMENT → Record technical name (for env vars, configs) and display name (for docs)
+> 5. ✅ VALIDATE → Check alignment with user specifications
+> 6. 📤 PRESENT → Output in standardized format
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 📝 Use the exact repository name as the **Technical Name** (for environment variable prefixes, config keys, file names)
 > - 🔍 Ensure consistency with the GitHub repository's canonical name
 > - 🏷️ Only deviate if explicitly specified by the product manager or stakeholder
-> - 📌 Example: For `ai-assistant-template`, use "AI Assistant Template" as the full product name
+> - 📌 Create **Display Name** by converting technical names to proper title case for documentation
+> - 🔄 Maintain technical accuracy while improving readability
+> - 📝 Create comprehensive product summary (2-3 paragraphs) as product manager would describe to stakeholders
+>
+> **🔄 Template Variable Handling:**
+>
+> - ✏️ Replace `{{repository_name}}` with actual repository name
+> - 📝 Replace `{{repository_description}}` with actual description from analysis
+> - 🏗️ Convert technical naming to **Display Name** for documentation (e.g., "ai-assistant-template" → "AI Assistant Template")
+>
+> **✅ Validation Requirements:**
+>
+> - 🔍 Verify Technical Name consistency across repository metadata
+> - ⚖️ Check for conflicts between technical and display names
+> - 📋 Ensure Technical Name follows organization naming conventions (for env vars, configs)
+> - 🔧 Validate that Display Name clearly represents the product for documentation
+>
+> **🚨 Error Handling & Fallback Strategies:**
+>
+> - **❌ Missing Product Name:** Use repository name as fallback with proper formatting
+> - **⚠️ Unclear Repository Purpose:** Extract intent from README, package.json, or repository description
+> - **🔧 Inconsistent Naming:** Prioritize user-specified names over auto-detected ones
+> - **❌ Invalid Characters:** Clean and standardize name while preserving meaning
+> - **⚡ Multiple Naming Conventions:** Use the most descriptive and user-friendly version
 
-> **⬇️ Outcome from this section**
-> 
-> - ☑️ Application/Tool/Product Name: `{{repository_name}}`
-> - ☑️ Application/Tool/Product Description: `{{repository_description}}`
+#### Output Format
+
+**MANDATORY STRUCTURE - Present in this exact order:**
+
+1. **Product Identification Summary:**
+
+| Product Name | Display Name | Description |
+|--------------|--------------|-------------|
+| `{{repository_name}}` | `{{display_name}}` | `{{repository_description}}` |
+
+2. **Product Summary:**
+
+(A comprehensive, complete and descriptive overview of the product, described as a product manager would describe it to a stakeholder. 2-3 paragraphs)
+Example:
+
+```text
+CloudCost CLI is a powerful command-line interface (CLI) tool designed to help cloud engineers and DevOps teams streamline their Amazon Web Services infrastructure management. By providing intelligent cost analysis, resource rightsizing recommendations, and automated optimization strategies, this tool transforms complex cloud resource management into a simple, actionable process.
+
+The CLI leverages advanced algorithmic analysis to scan existing AWS environments, identifying underutilized or overprovisioned EC2 instances, RDS databases, and EBS volumes. Engineers can quickly generate comprehensive reports that highlight potential cost savings, recommend precise resource adjustments, and provide clear migration or downsizing strategies. With built-in safety checks and preview modes, teams can confidently optimize their cloud infrastructure without risking service disruptions.
+
+By combining real-time performance metrics, historical usage patterns, and machine learning-driven insights, CloudCost CLI empowers organizations to reduce cloud spending, improve operational efficiency, and maintain optimal infrastructure performance. Whether managing small startup environments or complex enterprise deployments, this tool provides a user-friendly, data-driven approach to cloud resource management.
+```
+
+3. **Complete Product Definition:**
+
+| Field | Value |
+|-------|-------|
+| **Technical Name** | `{{repository_name}}` |
+| **Display Name** | `{{display_name}}` |
+| **Description** | `{{repository_description}}` |
+| **Other Details** | `{{other_details}}` |
 
 ### 1.3 Primary Purpose (High-Level Description)
 
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🎯 Define the fundamental purpose and core problem being solved
-> - 👥 Identify primary users and target audience clearly
-> - 💡 Articulate unique value proposition and innovative approach
-> - 🚀 Highlight key features and distinctive capabilities
-> - 📊 Ensure description enables rapid comprehension of strategic intent
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🎯 IDENTIFY → What specific problem does this solve?
+> 2. 📝 CLARIFY → Explain the problem in simple, jargon-free terms
+> 3. 💡 ARTICULATE → Define the unique value this solution provides
+> 4. ✅ VALIDATE → Ensure clarity for non-technical stakeholders
+> 5. 📤 PRESENT → Output in clear, concise format
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 🎯 Identify the core problem being solved (what pain point or challenge?)
+> - 📝 Explain this problem using everyday language, avoiding technical jargon
+> - 💡 Articulate the specific value this solution delivers (what benefit or outcome?)
+> - 🔍 Ensure the value proposition is unique and differentiated
+> - ✅ Test clarity by asking: "Would a non-technical person understand this?"
+>
+> **✅ Validation Requirements:**
+>
+> - 🔍 Problem statement is specific and concrete (not abstract or vague)
+> - 📝 Language is accessible to non-technical stakeholders
+> - 💡 Value proposition clearly connects to the identified problem
+> - 🎯 Focus remains on WHAT problem is solved and WHY it matters
 
-> **⬇️ Outcome from this section**
-> 
-> - ☑️ Primary Purpose: `{{primary_purpose}}`
-> - ☑️ Target Users: `{{target_users}}`
-> - ☑️ Core Value Proposition: `{{core_value_proposition}}`
-> - ☑️ Key Differentiators: `{{key_differentiators}}`
-> - ☑️ Problem Statement: `{{problem_statement}}`
+#### Output Format
+
+**Problem Statement:**
+(Clearly explain what specific problem or challenge this solves, using everyday language that anyone can understand)
+
+**Value Proposition:**
+(Describe the unique benefit or outcome this solution provides, focusing on why it matters to users)
+
+---
 
 ### 2. Features
 
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🎯 Define primary feature categories that represent core functionality areas, and align with the primary purpose and value proposition.
-> - 📋 List 4-6 specific capabilities per feature category with clear descriptions
-> - 💼 Focus on user-facing functionality and business value
-> - 📁 Reference concrete examples in the examples/ directory
-> - 🔗 Ensure features align with the primary purpose and value proposition
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🔍 CATEGORIZE → Group capabilities into logical feature areas
+> 2. 📝 ENUMERATE → List specific capabilities within each category
+> 3. 🎯 PRIORITIZE → Distinguish core vs. extended features
+> 4. 📁 REFERENCE → Connect to concrete examples when available
+> 5. 📤 PRESENT → Output in structured, scannable format
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 🗂️ Group related capabilities into 3-5 logical feature categories
+> - 👥 Identify target users/roles for each feature category (e.g., developers, administrators, end-users)
+> - 📋 List 3-6 specific capabilities per category with clear descriptions
+> - 📖 Define 1-2 primary use cases per category showing real-world usage scenarios
+> - 🎯 Identify which features are core (essential) vs. extended (nice-to-have)
+> - 📊 Specify measurable success indicators for each feature category
+> - 📁 Reference concrete examples from repository or examples/ directory when available
+> - 🔍 Focus on what users can accomplish, not how it's implemented
+>
+> **✅ Validation Requirements:**
+>
+> - 🗂️ Feature categories are distinct and logical
+> - 📝 Each capability is specific and actionable (not vague)
+> - 🎯 Core features are clearly distinguished from extended features
+> - 📋 Descriptions focus on user outcomes, not technical implementation
+> - 👥 Each feature category has identified target users for PRD context
+> - 📖 Use cases provide practical scenarios for user story development
+> - 📊 Success indicators are measurable and specific for acceptance criteria
 
-> **⬇️ Outcome from this section**
-> 
-> - ☑️ Primary Feature or Main Functionality: `{{primary_feature_category}}`
-> - ☑️ Core Features: `{{core_features}}`
-> - ☑️ List of (MVP) Features: `{{mvp_features}}`
-> - ☑️ Feature-to-Purpose Alignment: `{{feature_to_purpose_alignment}}`
+#### Output Format
 
-### 3. Architecture Overview
+**Core Features:**
+- **Target Users:** (Who will primarily use these features - roles/personas)
+- **Capabilities:** (List essential functionality that defines the solution)
+- **Primary Use Cases:** (1-2 key scenarios showing practical usage context)
+- **Success Indicators:** (Measurable outcomes that define feature effectiveness)
 
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🏗️ Describe the high-level system architecture and component relationships
-> - 📊 Map data flow patterns and integration points between major components
-> - 🔗 Identify external system dependencies and communication protocols
-> - 🎯 Explain architectural patterns and design principles applied
-> - 📋 Include deployment architecture and infrastructure patterns
+**Extended Features:**
+- **Target Users:** (Who will primarily use these features - roles/personas)
+- **Capabilities:** (List additional functionality for enhanced operation)
+- **Primary Use Cases:** (1-2 key scenarios showing practical usage context)
+- **Success Indicators:** (Measurable outcomes that define feature effectiveness)
 
-> **⬇️ Outcome from this section**
-> 
-> - ☑️ System Architecture Pattern: `{{architecture_pattern}}`
-> - ☑️ Core Components: `{{core_components}}`
-> - ☑️ Data Flow Architecture: `{{data_flow_pattern}}`
-> - ☑️ Integration Points: `{{integration_points}}`
-> - ☑️ Deployment Architecture: `{{deployment_architecture}}`
-> - ☑️ Scalability Strategy: `{{scalability_approach}}`
+---
+
+### 3. Architecture & Design Patterns
+
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🎨 IDENTIFY → Design patterns used (Factory, Builder, Observer, etc.)
+> 2. 🛠️ SPECIFY → Language-specific patterns (e.g., Go builder, Python decorator)
+> 3. 🏗️ MAP → Main system components and their responsibilities
+> 4. 🏛️ DEFINE → Overall software architecture style (Layered, Hexagonal, etc.)
+> 5. 📁 CREATE → Project structure organization as ASCII tree
+> 6. 🔗 EXPLAIN → How patterns and architecture solve domain problems
+> 7. 📤 PRESENT → Comprehensive architecture summary
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 🎨 Identify code-level design patterns actually implemented in the codebase
+> - 🛠️ Document language-specific patterns relevant to the tech stack
+> - 🏗️ Map main system components (services, modules, layers) and responsibilities
+> - 🏛️ Define overall software architecture style and organizational approach
+> - 📁 Create ASCII representation of recommended project structure for organizing source code
+> - 🔗 Explain rationale for architectural decisions and pattern choices
+> - 📋 Show how components interact and patterns solve specific problems
+>
+> **✅ Validation Requirements:**
+>
+> - 🎨 Only include patterns that are actually implemented
+> - 🛠️ Language-specific patterns match the technology stack
+> - 🏗️ Components have distinct, clear responsibilities
+> - 🏛️ Architecture style aligns with project complexity and requirements
+> - 📁 Project structure reflects architectural decisions and component organization
+
+#### Output Format
+
+**Design Patterns Applied:**
+(List specific design patterns used in the codebase with concrete implementation examples and location references)
+
+**Software Architecture Style:**
+(Define the overall architectural approach with clear justification: Layered, Hexagonal, Clean Architecture, Microservices, etc. Include visual representation using ASCII diagrams or mermaid for complex architectures)
+
+**Main System Components:**
+(Identify primary software modules, their specific responsibilities, and inter-component relationships. Use ASCII diagrams to show component hierarchy and interactions)
+
+**Recommended Project Structure:**
+(Present technically justified directory organization that aligns with chosen architecture patterns and reflects component separation principles)
+
+```
+(ASCII tree representation of recommended source code organization reflecting architectural decisions)
+project-name/
+├── src/
+│   ├── components/          # Core application components
+│   │   ├── core/           # Essential business logic components
+│   │   └── shared/         # Reusable utility components
+│   ├── services/           # External service integrations
+│   ├── utils/              # Helper functions and utilities
+│   ├── config/             # Configuration files and constants
+│   └── main.ext            # Application entry point
+├── tests/                  # Test files mirroring src structure
+├── docs/                   # Documentation
+├── scripts/                # Build and development scripts
+└── examples/               # Usage examples and demos
+```
+
+**Architectural Rationale:**
+(Provide technical justification for architecture and design pattern choices, explaining how they address specific project requirements and constraints)
+
+**Data Flow Diagram:**
+(Visualize how data moves through system components, including input/output flows, transformations, and storage interactions. Use ASCII or mermaid diagrams to show complete data processing pipeline)
+
+---
 
 ### 4. Implementation Requirements
 
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - ⚙️ Define functional and non-functional requirements for implementation
-> - 🔒 Specify security, compliance, and regulatory requirements
-> - 📈 Detail performance, scalability, and reliability requirements
-> - 🎯 List integration requirements and external service dependencies
-> - 📋 Include operational requirements for monitoring and maintenance
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🎯 DEFINE → Technical quality attributes and constraints
+> 2. 📈 SPECIFY → Performance benchmarks and scalability targets
+> 3. 🔒 IDENTIFY → Security constraints and compliance requirements
+> 4. 🔗 MAP → Integration specifications and protocols
+> 5. 🛠️ DOCUMENT → Development and deployment constraints
+> 6. 📤 PRESENT → Implementation-focused requirements summary
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 🎯 Define technical quality attributes (maintainability, testability, modularity)
+> - 📈 Specify measurable performance benchmarks and scalability targets
+> - 🔒 Identify security constraints, compliance needs, and regulatory requirements
+> - 🔗 Document integration protocols, API specifications, and data exchange formats
+> - 🛠️ Specify development environment constraints and deployment requirements
+> - 🚫 Avoid duplicating feature capabilities (covered in section 2)
+> - 🚫 Avoid duplicating architecture patterns (covered in section 3)
+> - 🚫 Avoid duplicating technology choices (covered in section 5)
+>
+> **✅ Validation Requirements:**
+>
+> - 🎯 Quality attributes include measurable acceptance criteria
+> - 📈 Performance requirements specify concrete metrics and benchmarks
+> - 🔒 Security requirements address specific threats and compliance standards
+> - 🔗 Integration specifications include protocols, formats, and error handling
+> - 🛠️ Implementation constraints are actionable for development teams
 
-> **⬇️ Outcome from this section**
-> 
-> - ☑️ Functional Requirements: `{{functional_requirements}}`
-> - ☑️ Non-Functional Requirements: `{{non_functional_requirements}}`
-> - ☑️ Security Requirements: `{{security_requirements}}`
-> - ☑️ Performance Requirements: `{{performance_requirements}}`
-> - ☑️ Integration Requirements: `{{integration_requirements}}`
-> - ☑️ Operational Requirements: `{{operational_requirements}}`
+#### Output Format
+
+**Quality Attributes:**
+(Define technical quality requirements: maintainability, testability, reliability, usability with measurable acceptance criteria)
+
+**Performance & Scalability:**
+(Specify concrete performance benchmarks, response times, throughput targets, and scalability requirements with measurable metrics)
+
+**Security & Compliance:**
+(Identify security constraints, threat mitigation requirements, compliance standards, and regulatory requirements that constrain implementation)
+
+**Integration Specifications:**
+(Define protocols, data formats, API standards, error handling requirements, and external system interaction constraints)
+
+**Development & Deployment Constraints:**
+(Specify development environment requirements, deployment constraints, testing requirements, and operational considerations)
+
+---
 
 ### 5. Tech Stack
 
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🔍 Identify the primary runtime environment, language, framework, and database technologies (if applicable)
-> - 📦 Include containerization, orchestration, CI/CD, and cloud platform technologies
-> - 🛠️ Specify development tools, package managers, build tools, and testing frameworks
-> - 🔗 Ensure all technologies align with the primary purpose and value proposition
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🔍 IDENTIFY → Primary programming language and version
+> 2. 📦 MAP → Core frameworks and essential libraries
+> 3. 🛠️ LIST → Development tools and build systems
+> 4. 🐳 SPECIFY → Containerization and deployment tools (if applicable)
+> 5. ☁️ DETAIL → Cloud platform and infrastructure tools (if applicable)
+> 6. 📝 JUSTIFY → Document rationale for key technology choices
+> 7. 📤 PRESENT → Organized tech stack summary
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+ > - 🔍 Identify primary programming language with version requirements
+> - 📦 List core frameworks, libraries, and essential dependencies
+> - 🛠️ Document development tools, package managers, and build tools
+> - 🐳 Include containerization, CI/CD, and deployment technologies when used
+> - ☁️ Specify cloud platform and infrastructure tools when applicable
+> - 📝 Document rationale for major technology choices (why this framework vs alternatives)
+> - 🚫 Avoid implementation details (covered in section 4)
+> - 🚫 Avoid architectural patterns (covered in section 3)
+>
+> **✅ Validation Requirements:**
+>
+ > - 🔍 Primary language includes version requirements
+> - 📦 Core technologies are essential to the project
+> - 🛠️ Development tools support the development workflow
+> - 🐳 Only include technologies actually used in the project
+> - 🔗 Tech stack aligns with project requirements from sections 1-4
+> - ⚖️ Technology choices support identified features and architecture patterns
+> - 🏷️ Tech stack topics align with GitHub repository configuration from section 1
 
-> **⬇️ Outcome from this section**
-> 
-> - ☑️ Primary Language: `{{primary_language}}`
-> - ☑️ Programming Language Specific Packages, Libraries or Frameworks: `{{language_packages_frameworks}}`
-> - ☑️ Project Structure: `{{project_structure}}`
-> - ☑️ Development Tools: `{{development_tools}}`
-> - ☑️ Containerization: `{{container_technology}}` (if applicable)
-> - ☑️ CI/CD Workflow: `{{cicd_workflow}}` (if applicable)
-> - ☑️ Cloud Platform: `{{cloud_platform}}` (if applicable)
-> - ☑️ Infrastructure & DevOps: `{{infrastructure_and_devops}}` (if applicable)
-> - ☑️ Others: `{{other_technologies}}` (if applicable)
+#### Output Format
 
-### 5.1 Primary Language
+**Primary Language & Version:**
+(Main programming language with version requirements)
 
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 📝 Specify the main programming language(s) used in the project
-> - 🔢 Include version requirements (e.g., Python 3.9+, Node.js 18+, Go 1.21+)
-> - 📋 List alternative languages if used for specific components
-> - 🎯 Justify language choice based on project requirements and constraints
+**Core Technologies:**
+(Essential frameworks, libraries, and runtime dependencies)
 
-**Primary Language:** `{{primary_language}}`
-**Version Requirement:** `{{language_version}}`
-**Rationale:** `{{language_choice_rationale}}`
+**Development Environment:**
+(Development tools, package managers, build tools, testing frameworks)
 
-### 5.2 Programming Language Specific Packages, Libraries or Frameworks
+**Deployment & Infrastructure:**
+(Containerization, CI/CD, cloud platform, infrastructure tools - if applicable)
 
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 📦 List core frameworks and libraries essential to the project
-> - 🔗 Include version constraints for critical dependencies
-> - 🎯 Focus on major frameworks that define the application architecture
-> - 📋 Group by functionality (web framework, ORM, testing, etc.)
-
-**Core Framework:** `{{core_framework}}`
-**Key Libraries:**
-- `{{library_1}}`: `{{library_1_purpose}}`
-- `{{library_2}}`: `{{library_2_purpose}}`
-- `{{library_3}}`: `{{library_3_purpose}}`
-
-### 5.3 Project Structure
-
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 📁 Describe the high-level directory organization
-> - 🗂️ Explain key directories and their purposes
-> - 📋 Mention any architectural patterns reflected in structure
-> - 🎯 Highlight conventions that developers must follow
-
-**Structure Pattern:** `{{project_structure_pattern}}`
-**Key Directories:**
-- `{{dir_1}}`: `{{dir_1_purpose}}`
-- `{{dir_2}}`: `{{dir_2_purpose}}`
-- `{{dir_3}}`: `{{dir_3_purpose}}`
-
-### 5.4 Development Tools
-
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🛠️ List essential tools for development workflow
-> - 📝 Include IDE/editor recommendations with extensions
-> - 📦 Specify package managers and build tools
-> - 🧪 List testing frameworks and quality assurance tools
-
-**IDE/Editor:** `{{preferred_ide}}`
-**Package Manager:** `{{package_manager}}`
-**Build Tools:** `{{build_tools}}`
-**Testing Framework:** `{{testing_framework}}`
-**Linting/Formatting:** `{{linting_tools}}`
-
-### 5.5 Containerization (if applicable)
-
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🐳 Specify container technology and version
-> - 📋 Describe container orchestration if used
-> - 🔧 Include base images and multi-stage build patterns
-> - 📝 Mention container registry and deployment strategy
-
-**Container Technology:** `{{container_technology}}`
-**Base Image:** `{{container_base_image}}`
-**Orchestration:** `{{container_orchestration}}`
-**Registry:** `{{container_registry}}`
-
-### 5.6 CI/CD Workflow (if applicable)
-
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🔄 Describe the continuous integration platform
-> - 📋 List key pipeline stages (build, test, deploy)
-> - 🎯 Include deployment targets and strategies
-> - 🔒 Mention security scanning and quality gates
-
-**CI/CD Platform:** `{{cicd_platform}}`
-**Pipeline Stages:** `{{pipeline_stages}}`
-**Deployment Strategy:** `{{deployment_strategy}}`
-**Quality Gates:** `{{quality_gates}}`
-
-### 5.7 Cloud Platform (if applicable)
-
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - ☁️ Specify primary cloud provider and region preferences
-> - 📋 List key cloud services used (compute, storage, database)
-> - 🔒 Include authentication and security configurations
-> - 💰 Mention cost optimization considerations
-
-**Cloud Provider:** `{{cloud_provider}}`
-**Primary Services:**
-- **Compute:** `{{cloud_compute_service}}`
-- **Storage:** `{{cloud_storage_service}}`
-- **Database:** `{{cloud_database_service}}`
-- **Networking:** `{{cloud_networking_service}}`
-
-### 5.8 Infrastructure & DevOps (if applicable)
-
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🏗️ Describe Infrastructure as Code (IaC) tools used
-> - 📊 List monitoring and observability solutions
-> - 🔒 Include security and compliance tools
-> - 📋 Mention backup and disaster recovery strategies
-
-**Infrastructure as Code:** `{{iac_tool}}`
-**Monitoring:** `{{monitoring_solution}}`
-**Logging:** `{{logging_solution}}`
-**Security Tools:** `{{security_tools}}`
-**Backup Strategy:** `{{backup_strategy}}`
-
-### 5.9 Others (if applicable)
-
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🔧 Include any additional tools or technologies not covered above
-> - 📋 Mention external services or APIs
-> - 🎯 List development productivity tools
-> - 📝 Include documentation or communication tools
-
-**Additional Tools:** `{{additional_tools}}`
-**External Services:** `{{external_services}}`
-**Documentation:** `{{documentation_tools}}`
-**Communication:** `{{communication_tools}}`
+**Technology Decision Rationale:**
+(Explain key technology choices: why this language/framework was selected, what alternatives were considered, and how choices support project requirements)
 
 ---
 
-### 6. Architecture (optional)
+### 6. Local Development Setup
 
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🏗️ This section is optional but highly recommended for complex systems
-> - 📐 Focus on software design patterns and architectural decisions that shape the codebase
-> - 🎯 Distinguish between design patterns (code-level) and software architecture (system-level)
-> - 📋 Include rationale for architectural choices and trade-offs considered
-> - 🔗 Reference how architecture aligns with the primary purpose and requirements
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🔧 SETUP → Local environment setup procedures
+> 2. ✅ VALIDATE → Environment validation commands
+> 3. 🔧 CONFIGURE → Project-specific configuration
+> 4. 🌐 CONNECT → External service setup
+> 5. 📤 PRESENT → Complete setup guide
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+ > - 🔧 Provide step-by-step local environment setup procedures and installation commands
+> - ✅ Include environment validation commands to verify correct setup
+> - 🔧 Document project-specific configuration and initialization requirements
+> - 🌐 Specify external service connection and authentication setup procedures
+> - 🔍 Include common setup troubleshooting and resolution steps
+> - 🚫 Avoid duplicating tech stack tools and versions (covered in section 5)
+> - 🚫 Avoid duplicating technical constraints (covered in section 4)
+>
+> **✅ Validation Requirements:**
+>
+ > - 🔧 Setup procedures are complete with step-by-step commands
+> - ✅ Validation commands verify successful environment setup
+> - 🔧 Configuration steps are specific and actionable
+> - 🌐 External service setup includes authentication and connection verification
+> - 🔍 Troubleshooting covers common setup issues with solutions
+> - 🔗 Setup procedures align with tech stack from section 5
 
-> **⬇️ Outcome from this section**
-> 
-> - ☑️ Software/Design Patterns: `{{design_patterns}}`
-> - ☑️ Software Architecture: `{{software_architecture}}`
-> - ☑️ Architectural Rationale: `{{architectural_rationale}}`
+#### Output Format
 
-#### 6.1 Software/Design Pattern(s)
+**Setup Procedures:**
+(Step-by-step commands for local environment setup and installation)
 
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🎨 Identify key design patterns used throughout the codebase (e.g., Factory, Observer, Strategy)
-> - 📦 Include architectural patterns like MVC, MVP, MVVM, or Repository pattern
-> - 🔄 Describe how patterns solve specific problems in the domain
-> - 📝 Reference pattern implementation locations in the codebase
-> - 🎯 Focus on patterns that significantly impact code organization and maintainability
+**Environment Validation:**
+(Commands to verify correct setup and troubleshoot common issues)
 
-**Design Patterns Applied:** `{{applied_design_patterns}}`
-**Pattern Implementation Details:** `{{pattern_implementation}}`
-**Pattern Rationale:** `{{pattern_rationale}}`
+**Project Configuration:**
+(Project-specific configuration steps and initialization requirements)
 
-#### 6.2 Software Architecture (optional)
-
-> [!IMPORTANT]
-> **🤖 Hint for the AI Assistant:**
-> - 🏛️ Describe high-level software architecture (e.g., Layered, Hexagonal, Clean Architecture)
-> - 📊 Map major components and their relationships
-> - 🔗 Explain how different modules/packages interact
-> - 📈 Include data flow and control flow patterns
-> - 🎯 Connect architecture to non-functional requirements (scalability, maintainability, testability)
-
-**Software Architecture Style:** `{{architecture_style}}`
-**Component Organization:** `{{component_organization}}`
-**Module Relationships:** `{{module_relationships}}`
-**Data/Control Flow:** `{{data_control_flow}}`
-
----
-
-### 7. Context Required
-
-### Development Environment Setup
-{{setup_requirements}}
-
-### Dependencies & Prerequisites
-- {{prerequisite_1}}: {{prerequisite_1_version}} - {{prerequisite_1_purpose}}
-- {{prerequisite_2}}: {{prerequisite_2_version}} - {{prerequisite_2_purpose}}
-- {{prerequisite_3}}: {{prerequisite_3_version}} - {{prerequisite_3_purpose}}
-
-### Environment Variables
-{{environment_variables_description}}
-
-### External Services
-- {{external_service_1}}: {{external_service_1_purpose}}
-- {{external_service_2}}: {{external_service_2_purpose}}
-
-### Configuration Requirements
-{{configuration_requirements}}
+**External Service Setup:**
+(External service connection procedures, authentication setup, and verification commands)
 
 ---
 
-### 8. Other Considerations
+### 7. AI Assistant Guidance
 
-### **OTHER CONSIDERATIONS:** Requirements & Gotchas
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🧠 IDENTIFY → AI assistant common pitfalls and mistakes
+> 2. 🎯 SPECIFY → Context-specific behavioral guidance
+> 3. 🔗 REFERENCE → Integration with technical constraints from section 4
+> 4. 📤 PRESENT → AI guidance summary
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+ > - 🧠 Identify specific mistakes, assumptions, and pitfalls AI assistants commonly make in this domain
+> - 🎯 Provide context-specific behavioral guidance for optimal AI assistant performance
+> - 🔍 Include domain-specific patterns, conventions, and best practices AI should follow
+> - 🤖 Specify user interaction patterns and response preferences for this project context
+> - 🚫 Avoid duplicating technical constraints (reference section 4 instead)
+> - 🚫 Avoid duplicating tech stack or setup details (covered in sections 5-6)
+>
+> **✅ Validation Requirements:**
+>
+ > - 🧠 AI pitfalls are specific with concrete examples and prevention strategies
+> - 🎯 Behavioral guidance is actionable and context-specific
+> - 🔍 Domain patterns include clear implementation examples
+> - 🤖 User interaction guidance improves AI assistant effectiveness
+> - 🔗 References to section 4 for technical constraints are clear and appropriate
 
-#### Development Constraints
-- {{constraint_1}}: {{constraint_1_description}}
-- {{constraint_2}}: {{constraint_2_description}}
+#### Output Format
 
-#### Common Gotchas AI Assistants Miss
-- {{gotcha_1}}: {{gotcha_1_explanation}}
-- {{gotcha_2}}: {{gotcha_2_explanation}}
-- {{gotcha_3}}: {{gotcha_3_explanation}}
+**AI Common Pitfalls:**
+(Specific mistakes, assumptions, and errors AI assistants frequently make in this domain with prevention strategies)
 
-#### Performance Considerations
-{{performance_considerations}}
+**Behavioral Guidance:**
+(Context-specific guidance for optimal AI assistant performance and user interaction patterns)
 
-#### Security Requirements
-{{security_requirements}}
+**Domain-Specific Patterns:**
+(Project-specific conventions, best practices, and patterns AI assistants should follow)
 
-#### Deployment Notes
-{{deployment_notes}}
+**Technical Constraints Reference:**
+(Reference section 4 for security, compliance, deployment, and technical implementation constraints)
+
+---
+
+### 8. Reference & Documentation
+
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 📝 COLLECT → User-provided documentation and references
+> 2. 🔧 GATHER → Tech stack documentation using Context7 and web tools
+> 3. 🌐 RESEARCH → Additional authoritative sources and validation
+> 4. 📊 ORGANIZE → Categorize and validate documentation relevance
+> 5. 📤 PRESENT → Comprehensive reference list with descriptions
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+ > - 📝 Document all user-provided links with descriptions and relevance notes
+> - 🔧 **Tech Stack Documentation:** Use Context7 MCP (`resolve-library-id`, `get-library-docs`) for frameworks and libraries from section 5, supplement with web research for official sources
+> - 🌐 **Additional Research:** Search for authoritative sources, GitHub repositories, standards, and community resources using web tools
+> - 📊 **Organization:** Categorize by type (Official, API, Tutorials, Community, Standards) and validate accessibility and relevance
+> - 📋 **Documentation:** Include brief descriptions explaining value and relevance of each resource
+> - 🚫 Avoid outdated, deprecated, or duplicate documentation
+> - 🚫 Avoid including resources not relevant to the tech stack from section 5
+>
+> **🔧 MCP Server Usage Guidelines:**
+>
+> - **Context7:** Prioritize for library and framework documentation (React, Node.js, Python packages, etc.)
+> - **Web Tools:** Use for official project sites, GitHub repositories, standards bodies, and community resources
+> - **Firecrawl:** Employ for deep research on complex topics or comprehensive documentation extraction
+> - **Microsoft Docs:** Utilize specifically for Azure, .NET, TypeScript, and Microsoft ecosystem documentation
+>
+> **✅ Validation Requirements:**
+>
+ > - 📝 All user-provided links are included with context and relevance notes
+> - 🔧 Tech stack documentation aligns with technologies from section 5
+> - 🌐 Additional sources are current, authoritative, and properly validated
+> - 📊 Documentation is properly categorized with clear relevance explanations
+> - ✅ All links are accessible and directly support the project's requirements
+
+#### Output Format
+
+**Official Documentation:**
+(Primary documentation sources, official APIs, and authoritative references from Context7 and web research)
+
+**Library & Framework Documentation:**
+(Context7-sourced documentation for tech stack components with version-specific guidance and API references)
+
+**Development Resources:**
+(Tutorials, guides, best practices, and implementation examples from authoritative sources)
+
+**Community & Tools:**
+(Community resources, third-party tools, libraries, and frameworks with relevance scoring)
+
+**Standards & Specifications:**
+(Technical standards, RFCs, specifications, and compliance documentation)
+
+**MCP-Enhanced Resources:**
+(Comprehensive documentation gathered using Context7, web tools, and other MCP servers with freshness validation)
 
 ---

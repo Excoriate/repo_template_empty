@@ -1,0 +1,190 @@
+---
+description: "Proactively detect and alert about redundancies and jargon violations in documentation to enforce clarity standards, especially for prompt-engineering and context-engineering tasks"
+globs: ["*.md", "*.markdown", "*.txt", "*.rst", "docs/**/*", "README*"]
+alwaysApply: true
+---
+
+# Cursor Documentation Clarity Enforcement Rule
+
+## Description
+
+This rule mandates that Cursor proactively analyzes documentation during editing to detect redundancies and jargon violations that compromise clarity. When editing any documentation, Cursor must alert users to redundant content, unnecessary jargon, and clarity violations even if the user hasn't spotted them. This enforcement is particularly critical for prompt-engineering and context-engineering tasks where precision and clarity are paramount.
+
+**Core Principle**: Jargon-free and redundancy-free documentation is the law.
+
+## Rule
+
+1. **Mandatory Redundancy Detection**: Scan for and alert about:
+   - **Tautologies**: Statements making the same point in different ways
+   - **Pleonasms**: Phrases containing unnecessary words
+   - **Repetitive Content**: Identical concepts restated without adding value
+   - **Verbose Explanations**: Content that can be simplified without losing meaning
+
+2. **Jargon Violation Detection**: Identify and suggest replacements for:
+   - **Undefined Technical Terms**: Domain-specific vocabulary without explanation
+   - **Unexplained Abbreviations**: Acronyms/initialisms used without definition
+   - **Industry Jargon**: Professional terminology that excludes non-experts
+   - **Complex Language**: Unnecessarily sophisticated words when simpler alternatives exist
+
+3. **Prompt-Engineering Clarity Focus**: Apply stricter standards for:
+   - **Prompt Design Documents**: Eliminate ambiguous instructions and undefined terms
+   - **Context-Engineering Guidelines**: Ensure every directive is immediately actionable
+   - **AI Interaction Specifications**: Remove meta-discourse and verbose explanations
+   - **Template Documentation**: Maintain consistency in terminology and format
+
+4. **Proactive Alert Protocol**:
+   - Alert immediately upon detecting violations during editing
+   - Provide specific line references for identified issues
+   - Suggest concrete replacements for jargon and redundant content
+   - Highlight inconsistent terminology across the document
+
+5. **Clarity Enforcement Standards**:
+   - Replace weak language ("might", "could", "perhaps") with definitive statements
+   - Eliminate meta-discourse ("as mentioned above", "you should know")
+   - Ensure active voice and clear subject identification
+   - Maintain terminology consistency throughout documents
+
+6. **Documentation Type Sensitivity**: Apply appropriate standards based on:
+   - **Technical Specifications**: High precision, defined terminology
+   - **User Guides**: Accessible language, minimal jargon
+   - **API Documentation**: Consistent naming, clear examples
+   - **Process Documentation**: Step-by-step clarity, no ambiguity
+
+## Implementation
+
+Cursor IDE will:
+- **Real-time Analysis**: Continuously scan content during editing for redundancy and jargon patterns
+- **Intelligent Alerting**: Display contextual warnings with specific violation details and improvement suggestions
+- **Terminology Database**: Maintain project-specific glossaries to ensure consistency
+- **Severity Classification**: Distinguish between critical clarity issues and minor improvements
+- **Automated Suggestions**: Provide one-click replacements for common jargon and redundancy patterns
+- **Document Type Recognition**: Apply appropriate clarity standards based on file location and content type
+
+## Examples
+
+### ✅ Correct: Clear, Redundancy-Free Content
+
+```markdown
+# API Authentication
+
+Use API keys to authenticate requests.
+
+## Setup Steps
+1. Generate API key in dashboard
+2. Add key to request headers
+3. Test connection
+
+## Required Headers
+```
+Authorization: Bearer {your-api-key}
+```
+
+## Error Handling
+- 401: Invalid key
+- 403: Insufficient permissions
+```
+
+### ❌ Incorrect: Redundant and Jargon-Heavy Content
+
+```markdown
+# API Authentication Implementation and Configuration
+
+In order to properly authenticate API requests in your application, 
+you need to utilize API keys for the authentication process. This 
+authentication mechanism allows you to authenticate and verify requests.
+
+## Setup and Configuration Steps
+1. You should generate an API key in the dashboard interface
+2. After generating the key, you need to add the key to your request headers
+3. Once you've added the headers, test the connection to verify functionality
+
+## Required Headers for Authentication
+```
+Authorization: Bearer {your-api-key}
+```
+
+## Error Handling and Troubleshooting
+- 401 Unauthorized: This indicates an invalid key was provided
+- 403 Forbidden: This means insufficient permissions were granted
+
+Problems:
+- "authentication process" → redundant with "authenticate"
+- "authentication mechanism" → jargon
+- "interface" → unnecessary qualifier
+- "Once you've added" → verbose meta-discourse
+- Repetitive explanations of obvious concepts
+```
+
+### ✅ Correct: Prompt-Engineering Clarity
+
+```markdown
+# Context Engineering Rule Template
+
+## Rule Structure
+1. Define specific behavior
+2. Include concrete examples
+3. Specify output format
+
+## Implementation
+- Use imperative commands
+- Avoid conditional language
+- Reference exact file paths
+
+## Validation
+Test rule effectiveness with sample inputs.
+```
+
+### ❌ Incorrect: Prompt-Engineering Jargon
+
+```markdown
+# Context Engineering Rule Template and Guidelines
+
+When you're designing context engineering rules, you should consider
+implementing a comprehensive framework that leverages best practices
+for prompt optimization and contextual directive specification.
+
+## Rule Structure and Architecture
+1. You need to define specific behavioral parameters
+2. It's important to include concrete illustrative examples
+3. You should specify the desired output format and structure
+
+## Implementation Guidelines and Best Practices
+- You should utilize imperative command structures when possible
+- It's recommended to avoid conditional or ambiguous language constructs
+- Consider referencing exact file paths for optimal specificity
+
+## Validation and Testing Procedures
+You should test rule effectiveness using sample inputs to ensure
+proper functionality and optimal performance characteristics.
+
+Problems:
+- "comprehensive framework" → jargon
+- "leverages best practices" → business speak
+- "behavioral parameters" → technical jargon
+- "illustrative examples" → redundant
+- "language constructs" → unnecessary complexity
+- Verbose meta-discourse throughout
+```
+
+### Visual Clarity Patterns
+
+```
+Documentation Clarity Hierarchy:
+
+High Clarity:
+├── Direct statements ✅
+├── Concrete examples ✅
+├── Consistent terminology ✅
+└── Active voice ✅
+
+Medium Clarity:
+├── Some technical terms (defined) ⚠️
+├── Passive voice occasionally ⚠️
+└── Minor redundancy ⚠️
+
+Low Clarity:
+├── Undefined jargon ❌
+├── Repetitive content ❌
+├── Meta-discourse ❌
+└── Ambiguous instructions ❌
+```
