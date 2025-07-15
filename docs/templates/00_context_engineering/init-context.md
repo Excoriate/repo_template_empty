@@ -39,7 +39,13 @@ Unlike prompt engineering's focus on individual interactions, context engineerin
   - [How to use this document?](#how-to-use-this-document)
     - [Context Engineering Implementation Structure](#context-engineering-implementation-structure)
     - [Context Engineering Methodology Applied](#context-engineering-methodology-applied)
-    - [AI Assistant Obligations](#ai-assistant-obligations)
+    - [Consistency Across Sections](#consistency-across-sections)
+      - [AI Assistant Requirements](#ai-assistant-requirements)
+    - [Critical Document Consistency Framework](#critical-document-consistency-framework)
+      - [Mandatory Cross-Section Dependencies](#mandatory-cross-section-dependencies)
+      - [Consistency Enforcement Protocol](#consistency-enforcement-protocol)
+      - [Section-Specific Consistency Guidelines](#section-specific-consistency-guidelines)
+      - [Consistency Failure Prevention](#consistency-failure-prevention)
   - [Workflow](#workflow)
     - [Initial Context as an Input for PRP](#initial-context-as-an-input-for-prp)
     - [Steps](#steps)
@@ -49,27 +55,41 @@ Unlike prompt engineering's focus on individual interactions, context engineerin
       - [Input Components](#input-components)
       - [Output Generation](#output-generation)
   - [Context Engineering Initial Context](#context-engineering-initial-context)
-    - [1. Product, Application, or Tool Description](#1-product-application-or-tool-description)
-    - [1.1 GitHub Repository](#11-github-repository)
+    - [1. Initial Codebase Awareness](#1-initial-codebase-awareness)
       - [Output Format](#output-format)
-    - [1.2 Application/Tool/Product Name](#12-applicationtoolproduct-name)
+    - [2. Product, Application, or Tool Description](#2-product-application-or-tool-description)
+    - [2.1 GitHub Repository](#21-github-repository)
       - [Output Format](#output-format-1)
-    - [1.3 Primary Purpose (High-Level Description)](#13-primary-purpose-high-level-description)
+    - [2.2 Application/Tool/Product Name](#22-applicationtoolproduct-name)
       - [Output Format](#output-format-2)
-    - [2. Features](#2-features)
+    - [2.3 Primary Purpose (High-Level Description)](#23-primary-purpose-high-level-description)
       - [Output Format](#output-format-3)
-    - [3. Architecture \& Design Patterns](#3-architecture--design-patterns)
+    - [3. Features](#3-features)
       - [Output Format](#output-format-4)
-    - [4. Implementation Requirements](#4-implementation-requirements)
+    - [4. Architecture](#4-architecture)
       - [Output Format](#output-format-5)
-    - [5. Tech Stack](#5-tech-stack)
+    - [5. Software Architecture](#5-software-architecture)
       - [Output Format](#output-format-6)
-    - [6. Local Development Setup](#6-local-development-setup)
+    - [7. Implementation Requirements](#7-implementation-requirements)
       - [Output Format](#output-format-7)
-    - [7. AI Assistant Guidance](#7-ai-assistant-guidance)
+    - [8. Tech Stack](#8-tech-stack)
       - [Output Format](#output-format-8)
-    - [8. Reference \& Documentation](#8-reference--documentation)
+    - [6. UX](#6-ux)
       - [Output Format](#output-format-9)
+    - [9. Third Party Integrations](#9-third-party-integrations)
+      - [Output Format](#output-format-10)
+    - [13. Reference \& Documentation](#13-reference--documentation)
+      - [Output Format](#output-format-11)
+      - [Enhanced Output Format](#enhanced-output-format)
+      - [Output Format](#output-format-12)
+    - [10. Local Development Setup](#10-local-development-setup)
+      - [Output Format](#output-format-13)
+    - [11. Deployment](#11-deployment)
+      - [Output Format](#output-format-14)
+    - [12. AI Assistant Guidance](#12-ai-assistant-guidance)
+      - [Output Format](#output-format-15)
+    - [13. Reference \& Documentation](#13-reference--documentation-1)
+      - [Enhanced Output Format](#enhanced-output-format-1)
 
 ---
 
@@ -92,14 +112,104 @@ This document leverages key context engineering principles:
 3. **Prioritized Information Flow**: Content is organized to maximize AI comprehension within token constraints
 4. **Systematic Validation**: Outcome tracking ensures complete context capture before proceeding
 
-### AI Assistant Obligations
+### Consistency Across Sections
 
-The AI assistant must complete each numbered section following context engineering protocols:
+This section establishes the framework for maintaining consistency across all interdependent sections of the document. The AI assistant must complete each numbered section following context engineering protocols:
 
 - Maintain consistency with established context patterns
 - Validate outcomes against provided [example init-context.md](init-context-example.md) file
 - Ensure information architecture supports downstream AI operations
 - Apply systematic thinking rather than intuitive "vibe-based" approaches
+
+#### AI Assistant Requirements
+
+When completing any section, AI assistants must adhere to the consistency protocols defined in the Critical Document Consistency Framework below. This includes mandatory cross-section dependency validation, systematic enforcement protocols, and failure prevention measures to ensure coherent context generation.
+
+### Critical Document Consistency Framework
+
+> [!IMPORTANT]
+> **Interdependent Sections Consistency Requirements**
+> 
+> This document contains interdependent sections that must maintain consistency to ensure coherent context engineering. Each section builds upon previous sections and informs subsequent ones. AI assistants must follow these consistency protocols:
+
+#### Mandatory Cross-Section Dependencies
+
+**Primary Dependencies (Critical):**
+- Section 3 (Features) → Section 4 (Architecture): The system architecture must support all MVP Features and capabilities
+- Section 3 (Features) → Section 5 (Software Architecture): The MVP Sequence Diagram must implement the Primary Use Cases from MVP Features
+- Section 3 (Features) → Section 6 (UX): UX patterns and flows must support all defined features and target users
+- Section 4 (Architecture) → Section 5 (Software Architecture): Software components must implement architectural decisions and constraints
+- Section 4 (Architecture) → Section 11 (Deployment): Deployment architecture must support system architecture choices
+- Section 8 (Tech Stack) → Section 7 (Implementation Requirements): All requirements must be feasible with chosen technologies
+- Section 8 (Tech Stack) → Section 9 (Third Party Integrations): All integrations must be compatible with chosen tech stack
+- Section 8 (Tech Stack) → Section 10 (Local Development Setup): Setup procedures must use exact versions from Tech Stack
+- Section 8 (Tech Stack) → Section 12 (AI Assistant Guidance): AI pitfalls must be relevant to chosen technologies
+- Section 8 (Tech Stack) → Section 13 (Reference & Documentation): Documentation must support all chosen technologies
+
+**Secondary Dependencies (Important):**
+- Section 5 (Software Architecture) → Section 7 (Implementation Requirements): Requirements must align with software architectural decisions
+- Section 6 (UX) → Section 7 (Implementation Requirements): UX requirements must align with technical implementation constraints
+- Section 7 (Implementation Requirements) → Section 10 (Local Development Setup): External service setup must align with integration specifications
+- Section 7 (Implementation Requirements) → Section 12 (AI Assistant Guidance): Behavioral guidance must incorporate technical constraints
+- Section 9 (Third Party Integrations) → Section 10 (Local Development Setup): Setup must include third-party service configuration
+- Section 9 (Third Party Integrations) → Section 11 (Deployment): Deployment must support third-party integration requirements
+- Section 9 (Third Party Integrations) → Section 12 (AI Assistant Guidance): AI guidance must address third-party integration pitfalls
+
+**Coherence Dependencies (Application-Type Specific):**
+- Section 3 (Features) → Section 4 (Architecture): Architecture components must be coherent with application type (CLI, web, API, library)
+- Section 4 (Architecture) → Section 6 (UX): UX section applicability must align with architectural frontend decisions
+- Section 6 (UX) → Section 8 (Tech Stack): UX technologies must support defined user experience patterns
+- Section 11 (Deployment) → Section 4 (Architecture): Deployment strategy must be coherent with system architecture type
+
+#### Consistency Enforcement Protocol
+
+**Before completing any section, AI assistants must:**
+
+1. Read dependencies: Completely read all sections referenced in the current section's requirements
+2. Validate alignment: Ensure all content aligns with referenced sections
+3. Verify consistency: Cross-check all interdependent elements for coherence
+4. Iterate if needed: Revise content if inconsistencies are found
+
+#### Section-Specific Consistency Guidelines
+
+**For sections with dependencies:**
+- Each section's NOTE block includes specific cross-reference requirements
+- Follow the detailed validation steps provided in each section
+- Ensure all template variables are used consistently across sections
+- Validate that examples and use cases align across dependent sections
+
+**For sections without dependencies:**
+- Focus on section-specific requirements
+- Ensure content supports downstream dependent sections
+- Maintain template variable consistency
+
+#### Consistency Failure Prevention
+
+**Common consistency failures to avoid:**
+- Creating system architecture without referencing actual application type and MVP features
+- Creating sequence diagrams without referencing actual MVP features from Section 3
+- Defining UX patterns for applications without user interfaces (e.g., CLI tools, APIs)
+- Including frontend architecture components for non-UI applications
+- Defining implementation requirements incompatible with chosen tech stack
+- Documenting third-party integrations without corresponding tech stack support
+- Writing setup procedures that don't match specified technology versions
+- Creating deployment strategies incompatible with system architecture
+- Documenting AI pitfalls irrelevant to the project's technology choices and integrations
+- Gathering documentation that doesn't support the chosen tech stack and integrations
+
+**Application-Type Coherence Failures:**
+- CLI Applications: Including traditional frontend architecture or web-based UX patterns
+- Web Applications: Missing frontend architecture or comprehensive UX section
+- API Services: Including user interface components or end-user UX patterns
+- Libraries/SDKs: Including deployment sections or end-user UX patterns
+
+**Validation checkpoints:**
+- Before finalizing any section, verify all cross-references are accurate
+- Ensure template variables are used consistently throughout
+- Confirm all interdependent content aligns properly
+- Validate that section outcomes support dependent sections
+- Verify application-type coherence across architecture, UX, and deployment sections
+- Check that conditional sections (UX, Third Party Integrations, Deployment) are appropriately applied
 
 ---
 
@@ -195,9 +305,73 @@ This process implements key context engineering methodologies:
 
 ## Context Engineering Initial Context
 
-### 1. Product, Application, or Tool Description
+### 1. Initial Codebase Awareness
 
-### 1.1 GitHub Repository
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🔍 DISCOVER → Run repomix --help to understand tool capabilities
+> 2. 📊 ANALYZE → Execute repomix to get complete codebase structure and context
+> 3. 🌳 EXTRACT → Generate ASCII codebase tree from repomix output
+> 4. 📋 IDENTIFY → Create table of most relevant initial files and configurations
+> 5. 🔧 CATEGORIZE → Classify existing configurations, dotfiles, and task executors
+> 6. 📤 PRESENT → Comprehensive initial codebase awareness summary
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 🔍 **Tool Discovery:** Execute `repomix --help` to understand available options and output format
+> - 📊 **Codebase Analysis:** Run `repomix` to get comprehensive codebase description and structure analysis
+> - 🌳 **Tree Generation:** Extract and format ASCII directory tree showing complete repository structure
+> - 📋 **File Identification:** Identify and categorize the most relevant initial files (dotfiles, configurations, task executors like Makefile/Justfile)
+> - 🔧 **Configuration Analysis:** Analyze existing configurations, development tools, and automation scripts
+> - 📁 **Structure Documentation:** Document initial codebase shape and key components that will influence development
+> - 🚫 Avoid making assumptions about codebase without running repomix analysis
+> - 🚫 Avoid detailed implementation analysis (focus on structure and existing tooling)
+>
+> **✅ Validation Requirements:**
+>
+> - 🔍 Repomix tool capabilities are verified with --help command
+> - 📊 Complete codebase analysis is performed using repomix
+> - 🌳 ASCII tree accurately represents repository structure
+> - 📋 Most relevant files table includes descriptions and purposes
+> - 🔧 Existing configurations and task executors are identified and categorized
+> - 📁 Initial codebase shape is documented for future reference
+
+#### Output Format
+
+**Repomix Tool Capabilities:**
+```bash
+# Output from repomix --help command
+(Tool capabilities, options, and usage information)
+```
+
+**Complete Codebase Structure:**
+```
+(ASCII tree representation of the repository structure from repomix output)
+```
+
+**Most Relevant Initial Files:**
+| File/Directory | Type | Purpose | Configuration Details |
+|---------------|------|---------|----------------------|
+| (File path) | (dotfile/config/task executor/etc.) | (What this file does) | (Key settings or commands) |
+| (Another file) | (Category) | (Purpose description) | (Relevant configuration details) |
+| (Configuration file) | (Type) | (Role in project) | (Important settings or patterns) |
+
+**Initial Codebase Analysis:**
+- **Existing Configurations:** (Description of found dotfiles, config files, and their purposes)
+- **Task Executors:** (Makefile, Justfile, npm scripts, or other automation tools found)
+- **Development Tools:** (Pre-commit hooks, linting configs, testing setup, etc.)
+- **Repository Structure:** (High-level organization and key directories)
+
+---
+
+### 2. Product, Application, or Tool Description
+
+### 2.1 GitHub Repository
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
@@ -228,6 +402,13 @@ This process implements key context engineering methodologies:
 > - 🏗️ Keep template variables in YAML only when showing configuration structure/examples
 > - 💯 Use actual values in the summary table output
 >
+> **📋 Template Variable Examples:**
+>
+> - ✅ **Use Templates:** In YAML configuration examples: `name: "{{repository_name}}"` 
+> - ✅ **Use Actual Values:** In summary tables: `cloudcost-cli` (not `{{repository_name}}`)
+> - ✅ **Use Templates:** When showing structure: `description: "{{repository_description}}"`
+> - ✅ **Use Actual Values:** In final output: `AWS cost optimization CLI tool`
+>
 > **✅ Validation Requirements:**
 >
 > - 🔍 Verify repository exists and is accessible (if analyzing existing repo)
@@ -252,7 +433,7 @@ This process implements key context engineering methodologies:
 
 #### Output Format
 
-**MANDATORY STRUCTURE - Present in this exact order:**
+**Mandatory Structure - Present in this exact order:**
 
 1. **Repository Summary Table:**
 
@@ -346,14 +527,14 @@ branches:
         users: ["Excoriate"]
 ```
 
-### 1.2 Application/Tool/Product Name
+### 2.2 Application/Tool/Product Name
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
 >
 > **📋 Process Flow - Follow these steps in order:**
 >
-> ```text
+> ```
 > 1. 🔍 ANALYZE → Extract product name from repository and user input
 > 2. ✏️ STANDARDIZE → Convert to proper product naming format (technical and display)
 > 3. 🔍 VERIFY → Ensure consistency with repository's canonical name
@@ -394,7 +575,7 @@ branches:
 
 #### Output Format
 
-**MANDATORY STRUCTURE - Present in this exact order:**
+**Mandatory Structure - Present in this exact order:**
 
 1. **Product Identification Summary:**
 
@@ -424,7 +605,7 @@ By combining real-time performance metrics, historical usage patterns, and machi
 | **Description** | `{{repository_description}}` |
 | **Other Details** | `{{other_details}}` |
 
-### 1.3 Primary Purpose (High-Level Description)
+### 2.3 Primary Purpose (High-Level Description)
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
@@ -464,37 +645,40 @@ By combining real-time performance metrics, historical usage patterns, and machi
 
 ---
 
-### 2. Features
+### 3. Features
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
 >
 > **📋 Process Flow - Follow these steps in order:**
 >
-> ```
+ > ```
 > 1. 🔍 CATEGORIZE → Group capabilities into logical feature areas
 > 2. 📝 ENUMERATE → List specific capabilities within each category
-> 3. 🎯 PRIORITIZE → Distinguish core vs. extended features
-> 4. 📁 REFERENCE → Connect to concrete examples when available
-> 5. 📤 PRESENT → Output in structured, scannable format
+> 3. 🎯 PRIORITIZE → Classify features into MVP, Next Phase, and Nice to Have tiers
+> 4. 📝 DEFINE → Create high-level User Acceptance Criteria (UAC) for each capability
+> 5. 📁 REFERENCE → Connect to concrete examples when available
+> 6. 📤 PRESENT → Output in structured, scannable format
 > ```
 >
 > **🔧 Detailed Steps:**
 >
-> - 🗂️ Group related capabilities into 3-5 logical feature categories
+ > - 🗂️ Group related capabilities into 3-5 logical feature categories
 > - 👥 Identify target users/roles for each feature category (e.g., developers, administrators, end-users)
 > - 📋 List 3-6 specific capabilities per category with clear descriptions
 > - 📖 Define 1-2 primary use cases per category showing real-world usage scenarios
-> - 🎯 Identify which features are core (essential) vs. extended (nice-to-have)
+> - 🎯 **Classify features into three tiers:** MVP (essential for working version), Next Phase (important enhancements), Nice to Have (optimal user experience)
+> - 📝 **Create high-level User Acceptance Criteria (UAC)** for each capability defining what success looks like
 > - 📊 Specify measurable success indicators for each feature category
 > - 📁 Reference concrete examples from repository or examples/ directory when available
 > - 🔍 Focus on what users can accomplish, not how it's implemented
 >
 > **✅ Validation Requirements:**
 >
-> - 🗂️ Feature categories are distinct and logical
+ > - 🗂️ Feature categories are distinct and logical
 > - 📝 Each capability is specific and actionable (not vague)
-> - 🎯 Core features are clearly distinguished from extended features
+> - 🎯 **Features are properly classified into MVP, Next Phase, and Nice to Have tiers**
+> - 📝 **Each capability includes high-level User Acceptance Criteria (UAC)**
 > - 📋 Descriptions focus on user outcomes, not technical implementation
 > - 👥 Each feature category has identified target users for PRD context
 > - 📖 Use cases provide practical scenarios for user story development
@@ -502,21 +686,122 @@ By combining real-time performance metrics, historical usage patterns, and machi
 
 #### Output Format
 
-**Core Features:**
+**MVP Features (Core and Essential for Working Version):**
 - **Target Users:** (Who will primarily use these features - roles/personas)
 - **Capabilities:** (List essential functionality that defines the solution)
 - **Primary Use Cases:** (1-2 key scenarios showing practical usage context)
+- **User Acceptance Criteria (UAC):** (High-level acceptance criteria for each capability)
 - **Success Indicators:** (Measurable outcomes that define feature effectiveness)
 
-**Extended Features:**
+**Next Phase Features:**
 - **Target Users:** (Who will primarily use these features - roles/personas)
-- **Capabilities:** (List additional functionality for enhanced operation)
+- **Capabilities:** (List important functionality for enhanced operation)
 - **Primary Use Cases:** (1-2 key scenarios showing practical usage context)
+- **User Acceptance Criteria (UAC):** (High-level acceptance criteria for each capability)
+- **Success Indicators:** (Measurable outcomes that define feature effectiveness)
+
+**Nice to Have Features:**
+- **Target Users:** (Who will primarily use these features - roles/personas)
+- **Capabilities:** (List additional functionality for optimal user experience)
+- **Primary Use Cases:** (1-2 key scenarios showing practical usage context)
+- **User Acceptance Criteria (UAC):** (High-level acceptance criteria for each capability)
 - **Success Indicators:** (Measurable outcomes that define feature effectiveness)
 
 ---
 
-### 3. Architecture & Design Patterns
+### 4. Architecture
+
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🏗️ ANALYZE → Application type from Features section to determine architectural components
+> 2. 🗄️ DEFINE → Database/Persistence layer architecture (when applicable)
+> 3. 🖥️ SPECIFY → Frontend architecture components (when applicable)
+> 4. ⚙️ MAP → Backend/Core logic architecture
+> 5. 🔧 IDENTIFY → Additional architectural components (message queues, caching, etc.)
+> 6. 🔗 VALIDATE → Architectural coherence with application type
+> 7. 📤 PRESENT → Complete system architecture summary
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 🏗️ **Application Type Analysis:** Determine architectural components based on application type from Features section (CLI, web app, API, library, etc.)
+> - 🗄️ **Database/Persistence:** Define data storage architecture, database selection, data modeling approach (when applicable)
+> - 🖥️ **Frontend Architecture:** Specify client-side architecture, UI framework, state management (when applicable - NOT for CLI tools, APIs, libraries)
+> - ⚙️ **Backend/Core Logic:** Define server-side or core application architecture, business logic organization, API design
+> - 🔧 **Additional Components:** Identify supporting architectural components (message queues, caching layers, external service integrations, etc.)
+> - 🔗 **Coherence Validation:** Ensure architectural components are coherent with application type and don't include irrelevant components
+> - 📊 **Architecture Diagram:** Create visual representation of system architecture showing component relationships
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 3 (Features). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirement:** The system architecture must support all MVP Features and capabilities while being coherent with the application type.
+>
+> **✅ Validation Requirements:**
+>
+> - 🏗️ **Application type coherence is maintained** (CLI doesn't have traditional frontend, web apps have frontend components, APIs focus on backend)
+> - 🗄️ Database architecture aligns with data requirements from Features section
+> - 🖥️ Frontend architecture is only included when application has user interface components
+> - ⚙️ Backend/Core logic architecture supports all defined capabilities from Features section
+> - 🔧 Additional components are justified by actual requirements, not theoretical needs
+> - 🔗 **All architectural components directly support MVP Features from Section 3**
+> - 📊 Architecture diagram accurately represents component relationships and data flow
+>
+> **🚨 Critical Coherence Rules:**
+>
+> - **CLI Applications:** No traditional frontend architecture; backend becomes "Core Logic"; focus on command processing and output formatting
+> - **Web Applications:** Include both frontend and backend architecture; comprehensive UI architecture
+> - **API Services:** Backend-focused architecture; no end-user frontend components; focus on service architecture
+> - **Libraries/SDKs:** Component-based architecture; no deployment-specific components; focus on modular design
+> - **Desktop Applications:** Native UI architecture; local data storage; platform-specific considerations
+> - **Mobile Applications:** Mobile-specific frontend architecture; offline capabilities; platform considerations
+
+#### Output Format
+
+**Application Type Assessment:**
+(Identify the primary application type based on Features section and justify architectural component selection)
+
+**Database/Persistence Architecture:**
+(Define data storage approach, database selection, data modeling, and persistence patterns - when applicable)
+
+**Frontend Architecture:**
+(Specify client-side architecture, UI framework, state management, and user interface patterns - when applicable and coherent with application type)
+
+**Backend/Core Logic Architecture:**
+(Define server-side or core application architecture, business logic organization, API design, and processing patterns)
+
+**Additional Architectural Components:**
+(Identify supporting components like message queues, caching layers, external service integrations, monitoring, etc. - when justified by requirements)
+
+**System Architecture Diagram:**
+(Create visual representation using ASCII or Mermaid diagrams showing all architectural components and their relationships)
+
+```
+Example for Web Application:
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │    Backend      │    │   Database      │
+│   (React/Vue)   │◄──►│   (Node.js/     │◄──►│   (PostgreSQL/  │
+│                 │    │    Python)      │    │    MongoDB)     │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+        │                        │                        │
+        ▼                        ▼                        ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   CDN/Static    │    │   API Gateway/  │    │   Cache Layer   │
+│   Assets        │    │   Load Balancer │    │   (Redis)       │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+**Architectural Rationale:**
+(Explain why each architectural component was selected, how it supports the application type, and how components work together to fulfill requirements from Features section)
+
+---
+
+### 5. Software Architecture
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
@@ -529,8 +814,9 @@ By combining real-time performance metrics, historical usage patterns, and machi
 > 3. 🏗️ MAP → Main system components and their responsibilities
 > 4. 🏛️ DEFINE → Overall software architecture style (Layered, Hexagonal, etc.)
 > 5. 📁 CREATE → Project structure organization as ASCII tree
-> 6. 🔗 EXPLAIN → How patterns and architecture solve domain problems
-> 7. 📤 PRESENT → Comprehensive architecture summary
+> 6. 🔄 DIAGRAM → Create Mermaid sequence diagram for MVP Features' Primary Use Cases from section 3
+> 7. 🔗 EXPLAIN → How patterns and architecture solve domain problems
+> 8. 📤 PRESENT → Comprehensive software architecture summary
 > ```
 >
 > **🔧 Detailed Steps:**
@@ -540,8 +826,17 @@ By combining real-time performance metrics, historical usage patterns, and machi
 > - 🏗️ Map main system components (services, modules, layers) and responsibilities
 > - 🏛️ Define overall software architecture style and organizational approach
 > - 📁 Create ASCII representation of recommended project structure for organizing source code
+> - 🔄 **Create Mermaid sequence diagram for MVP Features' Primary Use Cases** showing critical user interactions and component message flows based on section 3
 > - 🔗 Explain rationale for architectural decisions and pattern choices
 > - 📋 Show how components interact and patterns solve specific problems
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 3 (Features) and Section 4 (Architecture). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirements:** 
+> - The MVP Sequence Diagram must implement the Primary Use Cases from MVP Features (Section 3)
+> - Software components must implement architectural decisions from Section 4 (Architecture)
 >
 > **✅ Validation Requirements:**
 >
@@ -550,6 +845,10 @@ By combining real-time performance metrics, historical usage patterns, and machi
 > - 🏗️ Components have distinct, clear responsibilities
 > - 🏛️ Architecture style aligns with project complexity and requirements
 > - 📁 Project structure reflects architectural decisions and component organization
+> - 🔄 **Sequence diagram clearly shows MVP Features' Primary Use Cases with proper message flows and component interactions**
+> - 🔗 **Sequence diagram components align with the Main System Components defined in this section**
+> - ✅ **All sequence diagram actors and flows directly correspond to Primary Use Cases from Section 3**
+> - 🏗️ **Software architecture aligns with system architecture from Section 4**
 
 #### Output Format
 
@@ -588,9 +887,36 @@ project-name/
 **Data Flow Diagram:**
 (Visualize how data moves through system components, including input/output flows, transformations, and storage interactions. Use ASCII or mermaid diagrams to show complete data processing pipeline)
 
+**MVP Sequence Diagram:**
+(Create a Mermaid sequence diagram showing the Primary Use Cases from MVP Features in section 3. Include key actors, system components, and message flows for the most critical user scenarios. Each sequence should correspond to a Primary Use Case defined in the MVP Features section)
+
+```mermaid
+sequenceDiagram
+    title: MVP Features Primary Use Cases - [Reference section 3 MVP Features]
+    
+    participant User
+    participant [System Component]
+    participant [Service Layer]
+    participant [External Service]
+    
+    Note over User,[External Service]: Primary Use Case 1: [From MVP Features section 3]
+    User->>[System Component]: [action from use case]
+    [System Component]->>[Service Layer]: [process]
+    [Service Layer]->>[External Service]: [request]
+    [External Service]-->>[Service Layer]: [response]
+    [Service Layer]-->>[System Component]: [result]
+    [System Component]->>User: [output]
+    
+    Note over User,[External Service]: Primary Use Case 2: [From MVP Features section 3]
+    User->>[System Component]: [action from use case]
+    [System Component]->>[Service Layer]: [process]
+    [Service Layer]-->>[System Component]: [result]
+    [System Component]->>User: [output]
+```
+
 ---
 
-### 4. Implementation Requirements
+### 7. Implementation Requirements
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
@@ -613,9 +939,15 @@ project-name/
 > - 🔒 Identify security constraints, compliance needs, and regulatory requirements
 > - 🔗 Document integration protocols, API specifications, and data exchange formats
 > - 🛠️ Specify development environment constraints and deployment requirements
-> - 🚫 Avoid duplicating feature capabilities (covered in section 2)
-> - 🚫 Avoid duplicating architecture patterns (covered in section 3)
-> - 🚫 Avoid duplicating technology choices (covered in section 5)
+> - 🚫 Avoid duplicating feature capabilities (covered in section 3)
+> - 🚫 Avoid duplicating architecture patterns (covered in sections 4-5)
+> - 🚫 Avoid duplicating technology choices (covered in section 8)
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 8 (Tech Stack). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirement:** Implementation Requirements must align with and support the Tech Stack defined in Section 8.
 >
 > **✅ Validation Requirements:**
 >
@@ -624,6 +956,9 @@ project-name/
 > - 🔒 Security requirements address specific threats and compliance standards
 > - 🔗 Integration specifications include protocols, formats, and error handling
 > - 🛠️ Implementation constraints are actionable for development teams
+> - 🔗 **All requirements are technically feasible with the Tech Stack from Section 8**
+> - ✅ **Performance benchmarks are realistic for the chosen primary language and frameworks**
+> - 🔒 **Security constraints leverage the security features of selected technologies**
 
 #### Output Format
 
@@ -644,7 +979,7 @@ project-name/
 
 ---
 
-### 5. Tech Stack
+### 8. Tech Stack
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
@@ -661,26 +996,35 @@ project-name/
 > 7. 📤 PRESENT → Organized tech stack summary
 > ```
 >
-> **🔧 Detailed Steps:**
+ > **🔧 Detailed Steps:**
 >
- > - 🔍 Identify primary programming language with version requirements
+> - 🔍 Identify primary programming language with version requirements
 > - 📦 List core frameworks, libraries, and essential dependencies
 > - 🛠️ Document development tools, package managers, and build tools
 > - 🐳 Include containerization, CI/CD, and deployment technologies when used
 > - ☁️ Specify cloud platform and infrastructure tools when applicable
 > - 📝 Document rationale for major technology choices (why this framework vs alternatives)
-> - 🚫 Avoid implementation details (covered in section 4)
-> - 🚫 Avoid architectural patterns (covered in section 3)
+> - 🚫 Avoid implementation details (covered in section 7)
+> - 🚫 Avoid architectural patterns (covered in sections 4-5)
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 3 (Features). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirement:** Tech Stack choices must directly support the Features defined in Section 3.
 >
 > **✅ Validation Requirements:**
 >
- > - 🔍 Primary language includes version requirements
-> - 📦 Core technologies are essential to the project
-> - 🛠️ Development tools support the development workflow
-> - 🐳 Only include technologies actually used in the project
-> - 🔗 Tech stack aligns with project requirements from sections 1-4
-> - ⚖️ Technology choices support identified features and architecture patterns
-> - 🏷️ Tech stack topics align with GitHub repository configuration from section 1
+> - 🔍 Primary language includes specific version requirements and compatibility constraints
+> - 📦 **Core technologies are essential and directly support identified features from section 3**
+> - 🛠️ Development tools enable the development workflow and architecture patterns from sections 4-5
+> - 🐳 Only include deployment technologies actually used in the project lifecycle
+> - 🔗 Tech stack choices are technically justified with rationale for major decisions
+> - ⚖️ Technology selections support performance and scalability requirements from section 7
+> - 🏷️ Tech stack aligns with GitHub repository configuration and organizational standards
+> - ✅ **All technology choices directly enable MVP Features from Section 3**
+> - 🎯 **Framework selections support the Target Users and Primary Use Cases from Section 3**
+> - 📊 **Development tools enable the Success Indicators measurement from Section 3**
 
 #### Output Format
 
@@ -701,7 +1045,90 @@ project-name/
 
 ---
 
-### 6. Local Development Setup
+### 6. UX
+
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🔍 ASSESS → Application type from Features and Architecture sections for UX relevance
+> 2. 🎨 DEFINE → User interface patterns and design system approach
+> 3. 🗺️ MAP → User experience flows and interaction patterns
+> 4. 📱 SPECIFY → Platform-specific UX considerations
+> 5. ♿ IDENTIFY → Accessibility and usability requirements
+> 6. 🔗 VALIDATE → UX coherence with application type and architecture
+> 7. 📤 PRESENT → Complete UX specification (when applicable)
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 🔍 **Applicability Assessment:** Determine if UX section is relevant based on application type (web apps, mobile apps, desktop apps have UX; CLI tools, APIs, libraries have different UX considerations)
+> - 🎨 **Design System:** Define UI patterns, component libraries, design tokens, visual hierarchy, and styling approach
+> - 🗺️ **User Flows:** Map critical user journeys, interaction patterns, navigation structure, and user task completion flows
+> - 📱 **Platform Considerations:** Specify responsive design, mobile-first approach, platform-specific guidelines (iOS, Android, web, desktop)
+> - ♿ **Accessibility:** Define accessibility standards, keyboard navigation, screen reader support, and inclusive design principles
+> - 🔗 **Coherence Validation:** Ensure UX specifications align with application type and don't include irrelevant patterns
+> - 📊 **UX Metrics:** Define user experience success metrics and usability testing approaches
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 3 (Features) and Section 4 (Architecture). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirements:** 
+> - UX patterns and flows must support all defined features and target users from Section 3
+> - UX section applicability must align with architectural frontend decisions from Section 4
+>
+> **✅ Validation Requirements:**
+>
+> - 🔍 **UX section is only included when application has user interface components**
+> - 🎨 Design system specifications align with target users from Features section
+> - 🗺️ User flows directly support Primary Use Cases from MVP Features
+> - 📱 Platform considerations match architectural decisions from Section 4
+> - ♿ Accessibility requirements are specific and measurable
+> - 🔗 **UX patterns are coherent with application type** (no web UX patterns for CLI tools)
+> - 📊 UX metrics align with Success Indicators from Features section
+>
+> **🚨 Critical Coherence Rules:**
+>
+> - **CLI Applications:** Focus on command-line UX (help text, error messages, output formatting, command discoverability)
+> - **Web Applications:** Comprehensive web UX (responsive design, browser compatibility, web accessibility standards)
+> - **Mobile Applications:** Mobile-specific UX (touch interactions, platform guidelines, offline capabilities)
+> - **Desktop Applications:** Native desktop UX (platform conventions, keyboard shortcuts, window management)
+> - **API Services:** Developer UX (documentation, error responses, SDK design, API discoverability)
+> - **Libraries/SDKs:** Developer UX (API design, documentation, examples, integration patterns)
+>
+> **⚠️ Conditional Applicability:**
+>
+> This section should be **SKIPPED** for applications without direct user interaction (pure backend services, data processing pipelines, infrastructure tools without UI). When skipped, clearly state: "UX section not applicable for this application type."
+
+#### Output Format
+
+**UX Applicability Assessment:**
+(Determine if UX section is relevant based on application type and architectural decisions. If not applicable, clearly state why and skip remaining sections)
+
+**User Interface Design System:**
+(Define UI patterns, component libraries, design tokens, visual hierarchy, color schemes, typography, and styling approach - when applicable)
+
+**User Experience Flows:**
+(Map critical user journeys, interaction patterns, navigation structure, and task completion flows that support MVP Features from Section 3)
+
+**Platform-Specific UX Considerations:**
+(Specify responsive design, mobile-first approach, platform-specific guidelines, and technical UX constraints based on architectural decisions)
+
+**Accessibility & Usability Standards:**
+(Define accessibility standards, keyboard navigation, screen reader support, inclusive design principles, and usability testing approaches)
+
+**UX Success Metrics:**
+(Define measurable user experience metrics, usability testing criteria, and success indicators that align with Features section requirements)
+
+**UX Architecture Integration:**
+(Explain how UX decisions integrate with system architecture from Section 4 and support technical implementation)
+
+---
+
+### 9. Third Party Integrations
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
@@ -718,74 +1145,203 @@ project-name/
 >
 > **🔧 Detailed Steps:**
 >
- > - 🔧 Provide step-by-step local environment setup procedures and installation commands
+> - 🔧 Provide step-by-step local environment setup procedures and installation commands
 > - ✅ Include environment validation commands to verify correct setup
 > - 🔧 Document project-specific configuration and initialization requirements
 > - 🌐 Specify external service connection and authentication setup procedures
 > - 🔍 Include common setup troubleshooting and resolution steps
-> - 🚫 Avoid duplicating tech stack tools and versions (covered in section 5)
-> - 🚫 Avoid duplicating technical constraints (covered in section 4)
+> - 🚫 Avoid duplicating tech stack tools and versions (covered in section 8)
+> - 🚫 Avoid duplicating technical constraints (covered in section 7)
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 8 (Tech Stack) and Section 7 (Implementation Requirements). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirements:** 
+> - Local Development Setup must directly implement the Tech Stack defined in Section 8
+> - External service setup must align with Integration Specifications from Section 7
 >
 > **✅ Validation Requirements:**
 >
- > - 🔧 Setup procedures are complete with step-by-step commands
+> - 🔧 Setup procedures are complete with step-by-step commands
 > - ✅ Validation commands verify successful environment setup
 > - 🔧 Configuration steps are specific and actionable
 > - 🌐 External service setup includes authentication and connection verification
 > - 🔍 Troubleshooting covers common setup issues with solutions
-> - 🔗 Setup procedures align with tech stack from section 5
+> - 🔗 **Setup procedures align with tech stack from section 8**
+> - ✅ **All installation commands use exact versions from Section 8**
+> - 🛠️ **Development tools setup matches the Development Environment from Section 8**
+> - 🔗 **External service setup aligns with Integration Specifications from Section 7**
 
 #### Output Format
 
 **Setup Procedures:**
-(Step-by-step commands for local environment setup and installation)
+
+1. **Install {{primary_language}} {{version_requirement}}**
+   ```bash
+   # Platform-specific installation commands based on tech stack from section 8
+   # Include multiple platform options (macOS, Linux, Windows)
+   # Reference official installation documentation
+   ```
+
+2. **Verify {{primary_language}} installation**
+   ```bash
+   # Version verification command
+   # Environment validation commands
+   ```
+
+3. **Clone the repository**
+   ```bash
+   git clone https://github.com/{{organization}}/{{repository_name}}.git
+   cd {{repository_name}}
+   ```
+
+4. **Install project dependencies**
+   ```bash
+   # Language-specific dependency installation commands
+   # Based on tech stack from section 8
+   ```
+
+5. **Install development tools referenced in current codebase**
+   ```bash
+   # Install tools found in justfile, Makefile, or scripts/
+   # Include pre-commit, linting tools, testing frameworks
+   # Reference actual tools present in the repository
+   ```
+
+6. **Setup development workflow tools**
+   ```bash
+   # Commands to initialize hooks, linting, formatting
+   # Use actual commands from justfile/Makefile when available
+   ```
 
 **Environment Validation:**
-(Commands to verify correct setup and troubleshoot common issues)
+
+1. **Verify {{primary_language}} environment**
+   ```bash
+   # Language-specific environment verification commands
+   # Path, version, and configuration validation
+   ```
+
+2. **Test project build**
+   ```bash
+   # Build command specific to the project and tech stack
+   # Verify successful compilation/build process
+   ```
+
+3. **Run development workflow validation**
+   ```bash
+   # Execute linting, formatting, and pre-commit hooks
+   # Use actual commands from project's development setup
+   ```
+
+4. **Verify external service access (if applicable)**
+   ```bash
+   # Test connections to external services from section 7
+   # Authentication and permission validation
+   ```
 
 **Project Configuration:**
-(Project-specific configuration steps and initialization requirements)
+
+1. **Initialize project configuration**
+   ```bash
+   # Copy and configure project-specific configuration files
+   # Reference actual config files in the repository
+   ```
+
+2. **Configure external service credentials**
+   ```bash
+   # Service-specific credential setup from section 7
+   # Multiple authentication methods when applicable
+   ```
+
+3. **Set up local environment variables**
+   ```bash
+   # Environment variable configuration
+   # Reference actual .env files or environment setup
+   ```
 
 **External Service Setup:**
-(External service connection procedures, authentication setup, and verification commands)
+
+1. **Configure service permissions and access**
+   ```bash
+   # Service-specific permission setup from section 7
+   # Test required permissions and access levels
+   ```
+
+2. **Test external service connections**
+   ```bash
+   # Validate connectivity to external services
+   # Test API endpoints, database connections, etc.
+   ```
+
+**Troubleshooting:**
+
+**Common Issues and Solutions:**
+- **Issue:** (Common setup problem specific to this tech stack)
+  **Solution:** (Step-by-step resolution with specific commands)
+- **Issue:** (Environment validation failure patterns)
+  **Solution:** (Diagnostic steps and fix procedures)
+- **Issue:** (Dependency installation problems for this tech stack)
+  **Solution:** (Alternative installation methods and troubleshooting)
 
 ---
 
-### 7. AI Assistant Guidance
+### 13. Reference & Documentation
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
 >
 > **📋 Process Flow - Follow these steps in order:**
 >
-> ```
-> 1. 🧠 IDENTIFY → AI assistant common pitfalls and mistakes
-> 2. 🎯 SPECIFY → Context-specific behavioral guidance
-> 3. 🔗 REFERENCE → Integration with technical constraints from section 4
-> 4. 📤 PRESENT → AI guidance summary
+ > ```
+> 1. 🧠 IDENTIFY → AI assistant common pitfalls with definitions and identification methods
+> 2. 🛠️ ANALYZE → How to solve and overcome each identified pitfall
+> 3. 🎯 SPECIFY → Context-specific behavioral guidance for optimal performance
+> 4. 🔗 REFERENCE → Integration with technical constraints from section 5
+> 5. 📤 PRESENT → Comprehensive AI guidance summary
 > ```
 >
 > **🔧 Detailed Steps:**
 >
- > - 🧠 Identify specific mistakes, assumptions, and pitfalls AI assistants commonly make in this domain
+ > - 🧠 **AI Pitfalls Table:** Create a comprehensive table with "Pitfall", "What It Is", "How to Identify", and "How to Solve/Overcome" columns showing specific mistakes, definitions, identification methods, and concrete prevention strategies
 > - 🎯 Provide context-specific behavioral guidance for optimal AI assistant performance
 > - 🔍 Include domain-specific patterns, conventions, and best practices AI should follow
 > - 🤖 Specify user interaction patterns and response preferences for this project context
-> - 🚫 Avoid duplicating technical constraints (reference section 4 instead)
-> - 🚫 Avoid duplicating tech stack or setup details (covered in sections 5-6)
+> - 🚫 Avoid duplicating technical constraints (reference section 5 instead)
+> - 🚫 Avoid duplicating tech stack or setup details (covered in sections 6-7)
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 6 (Tech Stack) and Section 5 (Implementation Requirements). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirements:** 
+> - AI Assistant Guidance must be relevant to the Tech Stack (Section 6) and Implementation Requirements (Section 5)
+> - AI pitfalls must be specific to the chosen technologies and constraints
 >
 > **✅ Validation Requirements:**
 >
- > - 🧠 AI pitfalls are specific with concrete examples and prevention strategies
+ > - 🧠 **AI pitfalls table includes specific pitfalls with clear definitions, identification methods, and actionable prevention strategies**
 > - 🎯 Behavioral guidance is actionable and context-specific
 > - 🔍 Domain patterns include clear implementation examples
 > - 🤖 User interaction guidance improves AI assistant effectiveness
-> - 🔗 References to section 4 for technical constraints are clear and appropriate
+> - 🔗 References to section 5 for technical constraints are clear and appropriate
+> - 🛠️ **AI pitfalls are specific to the Tech Stack from Section 6**
+> - 🔒 **Behavioral guidance incorporates security constraints from Section 5**
+> - 📊 **Domain-specific patterns align with the primary language and frameworks from Section 6**
+> - ✅ **User interaction guidance supports the development workflow from Section 7**
 
 #### Output Format
 
 **AI Common Pitfalls:**
-(Specific mistakes, assumptions, and errors AI assistants frequently make in this domain with prevention strategies)
+
+| Pitfall | What It Is | How to Identify | How to Solve/Overcome |
+|---------|------------|-----------------|----------------------|
+| (Specific mistake name) | (Clear definition of the pitfall and why it occurs in this domain) | (Observable signs, symptoms, or indicators that this pitfall is happening) | (Concrete prevention strategy with actionable steps and validation methods) |
+| (Another domain-specific pitfall) | (Detailed explanation of the mistake and its technical context) | (Specific warning signs and detection methods) | (Detailed solution strategy with technical specifics and best practices) |
+| (Implementation-related error) | (Description of the assumption or error and its impact) | (How to recognize when this mistake is being made) | (Validation approach, correction steps, and prevention guidance) |
+| (User interaction mistake) | (Explanation of the workflow or communication error) | (Signs that user interaction is suboptimal) | (Proper procedure, safety measures, and improvement strategies) |
+| (Technical complexity oversight) | (Definition of the technical blind spot or oversimplification) | (Indicators of insufficient technical depth or analysis) | (Systematic approach, constraint awareness, and comprehensive analysis methods) |
 
 **Behavioral Guidance:**
 (Context-specific guidance for optimal AI assistant performance and user interaction patterns)
@@ -794,11 +1350,191 @@ project-name/
 (Project-specific conventions, best practices, and patterns AI assistants should follow)
 
 **Technical Constraints Reference:**
-(Reference section 4 for security, compliance, deployment, and technical implementation constraints)
+(Reference section 7 for security, compliance, deployment, and technical implementation constraints)
 
 ---
 
-### 8. Reference & Documentation
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Enhanced Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 📝 COLLECT → Direct user links and documentation requirements
+> 2. ✅ VALIDATE → Verify accessibility and relevance of user-provided links
+> 3. 🔧 GATHER → Tech stack documentation using Context7 and web tools
+ > 4. 🌐 RESEARCH → Additional authoritative sources with validation
+> 5. 📊 ORGANIZE → Categorize with Context7 indicators and access methods
+> 6. ⚠️ IDENTIFY → Document missing, incomplete, or outdated documentation gaps
+> 7. 📤 PRESENT → Comprehensive reference list with validation status and gap documentation
+> ```
+>
+> **🔧 Enhanced Detailed Steps:**
+>
+> - 📝 **Direct Links Collection:** Accept and document user-provided links with immediate validation, categorize by type (official, tutorial, reference, community), document user context and relevance notes
+> - ✅ **Link Validation:** Validate accessibility and current status of all user-provided links, save with metadata (source, validation status, relevance score, timestamp), document any broken or outdated links with alternatives
+> - 🔧 **Tech Stack Documentation:** Use Context7 MCP (if available: `resolve-library-id`, `get-library-docs`) for frameworks and libraries from section 6, document Context7 availability using structured format: `Documentation | Description | Link | How to Obtain`, supplement with web research for official sources
+> - 🌐 **Additional Research:** Search for authoritative sources, GitHub repositories, standards, and community resources using web tools, validate accessibility and authority, document discovery method (Context7, web research, inference)
+ > - 📊 **Organization:** Categorize by type with Context7 indicators using structured format, validate relevance to tech stack from section 6, include access method documentation for future reference
+> - ⚠️ **Gap Identification:** Document any missing, incomplete, or outdated documentation with risk assessment and user action requirements, specify why missing documentation is critical and what users should provide
+> - 📋 **Comprehensive Presentation:** Include validation status for all links to support future markdown conversion, provide brief descriptions explaining value and relevance, maintain Context7 availability indicators, include gap documentation section
+> - 🚫 Avoid outdated, deprecated, or duplicate documentation
+> - 🚫 Avoid including resources not relevant to the tech stack from section 6
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 6 (Tech Stack). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirement:** Reference & Documentation must directly support the Tech Stack defined in Section 6.
+>
+> **🔧 MCP Server Usage Guidelines:**
+>
+> - **Context7 (if available):** Prioritize for library and framework documentation (React, Node.js, Python packages, etc.) - document availability using format: `Documentation | Description | Link | How to Obtain`
+> - **Web Tools:** Use for official project sites, GitHub repositories, standards bodies, and community resources - indicate as "Direct Web: [URL]" in access method
+> - **Firecrawl (if available):** Employ for deep research on complex topics or comprehensive documentation extraction - indicate as "Firecrawl Research: [topic]" in access method
+> - **Microsoft Docs (if available):** Utilize specifically for Azure, .NET, TypeScript, and Microsoft ecosystem documentation - indicate as "Microsoft Docs: [URL]" in access method
+>
+> **✅ Enhanced Validation Requirements:**
+>
+> - 📝 All user-provided direct links are validated for accessibility and documented with context
+> - ✅ Link validation includes metadata saving: source, validation status, relevance score, timestamp
+> - 🔧 **Tech stack documentation aligns with technologies from section 6 and includes Context7 availability indicators**
+> - 🌐 Additional sources are current, authoritative, and properly validated with discovery method documentation
+ > - 📊 Documentation is properly categorized with Context7 indicators using structured format
+> - ⚠️ Missing or incomplete documentation is identified with risk assessment and specific user action requirements
+> - ✅ All links include validation status and access method for future markdown conversion support
+> - 🛠️ **All documentation directly supports the Primary Language & Version from Section 6**
+> - 📦 **Official documentation is included for all Core Technologies from Section 6**
+> - 🔧 **Development resources cover all Development Environment tools from Section 6**
+> - ✅ **Documentation version compatibility is verified against tech stack versions**
+> - ⚠️ **Documentation gaps are identified specifically for Section 6 technologies**
+
+#### Enhanced Output Format
+
+**Official Documentation:**
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Primary documentation sources with Context7 availability indicators and validation status) |
+
+**Library & Framework Documentation:**
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Context7-sourced documentation with structured format and access method documentation) |
+
+**Development Resources:**
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Tutorials, guides, best practices with validation status and discovery method) |
+
+**Community & Tools:**
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Community resources with relevance scoring and access method documentation) |
+
+**Standards & Specifications:**
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Technical standards, RFCs, specifications with validation status and authority verification) |
+
+**User-Provided Links:**
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Direct user links with context, relevance notes, and validation metadata) |
+
+**Missing or Incomplete Documentation:**
+
+> [!WARNING]
+> **📋 Documentation Gaps & Risks**
+>
+> If any required documentation could not be obtained, is outdated, or appears incomplete, document it here so users can provide missing resources if needed.
+
+| Missing Documentation | Why It's Needed | Risk Level | User Action Required |
+|----------------------|-----------------|------------|---------------------|
+| (Specific missing documentation) | (Explanation of why this documentation is critical for the project) | (High/Medium/Low) | (Specific request for user to provide or verify this documentation) |
+| (Outdated documentation concern) | (Description of why current documentation may be insufficient) | (High/Medium/Low) | (Request for user to verify or provide updated documentation) |
+| (Incomplete documentation) | (Areas where documentation exists but lacks critical information) | (High/Medium/Low) | (Specific gaps user should help fill) |
+
+**Note:** Users should review this section and provide missing documentation or verify the completeness of flagged resources to ensure comprehensive project context.
+
+---
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🔍 ASSESS → Integration requirements from Features and Architecture sections
+> 2. 🔌 IDENTIFY → Required third-party services and APIs
+> 3. 🔐 SPECIFY → Authentication and security requirements
+> 4. 📊 DOCUMENT → Data exchange formats and protocols
+> 5. 🚨 PLAN → Error handling and fallback strategies
+> 6. 🔗 VALIDATE → Integration coherence with tech stack
+> 7. 📤 PRESENT → Complete integration specification (when applicable)
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 🔍 **Integration Assessment:** Determine if third-party integrations are required based on Features and Architecture sections
+> - 🔌 **Service Identification:** Identify required external services (AI APIs, payment processors, authentication providers, data services)
+> - 🔐 **Security Specifications:** Define authentication methods, API key management, security protocols, and data privacy requirements
+> - 📊 **Data Exchange:** Document API specifications, data formats, request/response structures, and rate limiting considerations
+> - 🚨 **Error Handling:** Plan for service failures, timeout handling, circuit breakers, and graceful degradation
+> - 🔗 **Tech Stack Alignment:** Ensure integrations are compatible with chosen technologies and architectural decisions
+> - 📋 **Configuration Management:** Define environment-specific configuration and secrets management
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 8 (Tech Stack). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirement:** All integrations must be compatible with chosen tech stack and architectural decisions.
+>
+> **✅ Validation Requirements:**
+>
+> - 🔍 **Third-party integrations are only included when required by Features section**
+> - 🔌 Each integration directly supports specific capabilities from MVP Features
+> - 🔐 Security specifications align with overall security requirements
+> - 📊 Data exchange formats are compatible with chosen tech stack
+> - 🚨 Error handling strategies are technically feasible with selected technologies
+> - 🔗 **All integrations are compatible with Tech Stack from Section 8**
+> - 📋 Configuration management aligns with deployment architecture
+>
+> **🚨 Critical Integration Categories:**
+>
+> - **AI Services:** OpenAI, Anthropic, Google AI, Azure AI - for AI-powered features
+> - **Payment Processing:** Stripe, PayPal, Square - for e-commerce functionality
+> - **Authentication:** Auth0, Firebase Auth, AWS Cognito - for user management
+> - **Data Services:** External APIs, databases, analytics services
+> - **Communication:** Email services, SMS providers, push notification services
+> - **Monitoring:** Error tracking, analytics, performance monitoring services
+>
+> **⚠️ Conditional Applicability:**
+>
+> This section should be **SKIPPED** for applications without external service dependencies (standalone applications, libraries without external API calls). When skipped, clearly state: "Third Party Integrations section not applicable - no external service dependencies."
+
+#### Output Format
+
+**Integration Requirements Assessment:**
+(Determine if third-party integrations are required based on Features and Architecture sections. If not applicable, clearly state why and skip remaining sections)
+
+**Required Third-Party Services:**
+(List essential external services with specific providers, API versions, and integration purposes)
+
+**Authentication & Security:**
+(Define authentication methods, API key management, security protocols, and data privacy requirements for each integration)
+
+**Data Exchange Specifications:**
+(Document API specifications, data formats, request/response structures, rate limiting, and error response handling)
+
+**Error Handling & Resilience:**
+(Plan for service failures, timeout handling, circuit breakers, graceful degradation, and fallback strategies)
+
+**Configuration Management:**
+(Define environment-specific configuration, secrets management, and deployment considerations for integrations)
+
+**Integration Architecture:**
+(Explain how third-party integrations fit into the overall system architecture and align with tech stack choices)
+
+---
+
+### 10. Local Development Setup
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
@@ -806,56 +1542,412 @@ project-name/
 > **📋 Process Flow - Follow these steps in order:**
 >
 > ```
-> 1. 📝 COLLECT → User-provided documentation and references
-> 2. 🔧 GATHER → Tech stack documentation using Context7 and web tools
-> 3. 🌐 RESEARCH → Additional authoritative sources and validation
-> 4. 📊 ORGANIZE → Categorize and validate documentation relevance
-> 5. 📤 PRESENT → Comprehensive reference list with descriptions
+> 1. 🔧 SETUP → Local environment setup procedures
+> 2. ✅ VALIDATE → Environment validation commands
+> 3. 🔧 CONFIGURE → Project-specific configuration
+> 4. 🌐 CONNECT → External service setup
+> 5. 📤 PRESENT → Complete setup guide
 > ```
 >
 > **🔧 Detailed Steps:**
 >
- > - 📝 Document all user-provided links with descriptions and relevance notes
-> - 🔧 **Tech Stack Documentation:** Use Context7 MCP (`resolve-library-id`, `get-library-docs`) for frameworks and libraries from section 5, supplement with web research for official sources
-> - 🌐 **Additional Research:** Search for authoritative sources, GitHub repositories, standards, and community resources using web tools
-> - 📊 **Organization:** Categorize by type (Official, API, Tutorials, Community, Standards) and validate accessibility and relevance
-> - 📋 **Documentation:** Include brief descriptions explaining value and relevance of each resource
-> - 🚫 Avoid outdated, deprecated, or duplicate documentation
-> - 🚫 Avoid including resources not relevant to the tech stack from section 5
+> - 🔧 Provide step-by-step local environment setup procedures and installation commands
+> - ✅ Include environment validation commands to verify correct setup
+> - 🔧 Document project-specific configuration and initialization requirements
+> - 🌐 Specify external service connection and authentication setup procedures
+> - 🔍 Include common setup troubleshooting and resolution steps
+> - 🚫 Avoid duplicating tech stack tools and versions (covered in section 8)
+> - 🚫 Avoid duplicating technical constraints (covered in section 7)
 >
-> **🔧 MCP Server Usage Guidelines:**
->
-> - **Context7:** Prioritize for library and framework documentation (React, Node.js, Python packages, etc.)
-> - **Web Tools:** Use for official project sites, GitHub repositories, standards bodies, and community resources
-> - **Firecrawl:** Employ for deep research on complex topics or comprehensive documentation extraction
-> - **Microsoft Docs:** Utilize specifically for Azure, .NET, TypeScript, and Microsoft ecosystem documentation
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 8 (Tech Stack) and Section 7 (Implementation Requirements). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirements:** 
+> - Local Development Setup must directly implement the Tech Stack defined in Section 8
+> - External service setup must align with Integration Specifications from Section 7
 >
 > **✅ Validation Requirements:**
 >
- > - 📝 All user-provided links are included with context and relevance notes
-> - 🔧 Tech stack documentation aligns with technologies from section 5
-> - 🌐 Additional sources are current, authoritative, and properly validated
-> - 📊 Documentation is properly categorized with clear relevance explanations
-> - ✅ All links are accessible and directly support the project's requirements
+> - 🔧 Setup procedures are complete with step-by-step commands
+> - ✅ Validation commands verify successful environment setup
+> - 🔧 Configuration steps are specific and actionable
+> - 🌐 External service setup includes authentication and connection verification
+> - 🔍 Troubleshooting covers common setup issues with solutions
+> - 🔗 **Setup procedures align with tech stack from section 8**
+> - ✅ **All installation commands use exact versions from Section 8**
+> - 🛠️ **Development tools setup matches the Development Environment from Section 8**
+> - 🔗 **External service setup aligns with Integration Specifications from Section 7**
 
 #### Output Format
 
+**Setup Procedures:**
+
+1. **Install {{primary_language}} {{version_requirement}}**
+   ```bash
+   # Platform-specific installation commands based on tech stack from section 8
+   # Include multiple platform options (macOS, Linux, Windows)
+   # Reference official installation documentation
+   ```
+
+2. **Verify {{primary_language}} installation**
+   ```bash
+   # Version verification command
+   # Environment validation commands
+   ```
+
+3. **Clone the repository**
+   ```bash
+   git clone https://github.com/{{organization}}/{{repository_name}}.git
+   cd {{repository_name}}
+   ```
+
+4. **Install project dependencies**
+   ```bash
+   # Language-specific dependency installation commands
+   # Based on tech stack from section 8
+   ```
+
+5. **Install development tools referenced in current codebase**
+   ```bash
+   # Install tools found in justfile, Makefile, or scripts/
+   # Include pre-commit, linting tools, testing frameworks
+   # Reference actual tools present in the repository
+   ```
+
+6. **Setup development workflow tools**
+   ```bash
+   # Commands to initialize hooks, linting, formatting
+   # Use actual commands from justfile/Makefile when available
+   ```
+
+**Environment Validation:**
+
+1. **Verify {{primary_language}} environment**
+   ```bash
+   # Language-specific environment verification commands
+   # Path, version, and configuration validation
+   ```
+
+2. **Test project build**
+   ```bash
+   # Build command specific to the project and tech stack
+   # Verify successful compilation/build process
+   ```
+
+3. **Run development workflow validation**
+   ```bash
+   # Execute linting, formatting, and pre-commit hooks
+   # Use actual commands from project's development setup
+   ```
+
+4. **Verify external service access (if applicable)**
+   ```bash
+   # Test connections to external services from section 7
+   # Authentication and permission validation
+   ```
+
+**Project Configuration:**
+
+1. **Initialize project configuration**
+   ```bash
+   # Copy and configure project-specific configuration files
+   # Reference actual config files in the repository
+   ```
+
+2. **Configure external service credentials**
+   ```bash
+   # Service-specific credential setup from section 7
+   # Multiple authentication methods when applicable
+   ```
+
+3. **Set up local environment variables**
+   ```bash
+   # Environment variable configuration
+   # Reference actual .env files or environment setup
+   ```
+
+**External Service Setup:**
+
+1. **Configure service permissions and access**
+   ```bash
+   # Service-specific permission setup from section 7
+   # Test required permissions and access levels
+   ```
+
+2. **Test external service connections**
+   ```bash
+   # Validate connectivity to external services
+   # Test API endpoints, database connections, etc.
+   ```
+
+**Troubleshooting:**
+
+**Common Issues and Solutions:**
+- **Issue:** (Common setup problem specific to this tech stack)
+  **Solution:** (Step-by-step resolution with specific commands)
+- **Issue:** (Environment validation failure patterns)
+  **Solution:** (Diagnostic steps and fix procedures)
+- **Issue:** (Dependency installation problems for this tech stack)
+  **Solution:** (Alternative installation methods and troubleshooting)
+
+---
+
+### 11. Deployment
+
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🔍 ASSESS → Deployment requirements from Features and Architecture sections
+> 2. ☁️ IDENTIFY → Target deployment platforms and environments
+> 3. 🏗️ SPECIFY → Infrastructure requirements and configurations
+> 4. 🚀 DOCUMENT → Deployment procedures and automation
+> 5. 🔐 PLAN → Security and monitoring considerations
+> 6. 🔗 VALIDATE → Deployment coherence with system architecture
+> 7. 📤 PRESENT → Complete deployment specification (when applicable)
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 🔍 **Deployment Assessment:** Determine if deployment section is relevant based on application type and requirements
+> - ☁️ **Platform Selection:** Identify target deployment platforms (cloud providers, hosting services, on-premise)
+> - 🏗️ **Infrastructure Requirements:** Define server specifications, scaling requirements, and resource allocation
+> - 🚀 **Deployment Procedures:** Document deployment automation, CI/CD pipelines, and release processes
+> - 🔐 **Security & Monitoring:** Plan for security configurations, monitoring, logging, and alerting
+> - 🔗 **Architecture Alignment:** Ensure deployment strategy supports system architecture and tech stack choices
+> - 📋 **Environment Management:** Define staging, production, and development environment configurations
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 4 (Architecture) and Section 8 (Tech Stack). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirements:** 
+> - Deployment architecture must support system architecture choices from Section 4
+> - Deployment technologies must be compatible with Tech Stack from Section 8
+>
+> **✅ Validation Requirements:**
+>
+> - 🔍 **Deployment section is only included when application requires deployment**
+> - ☁️ Platform choices align with architectural requirements and constraints
+> - 🏗️ Infrastructure specifications support system architecture from Section 4
+> - 🚀 Deployment procedures are compatible with chosen tech stack
+> - 🔐 Security configurations align with overall security requirements
+> - 🔗 **Deployment strategy is coherent with system architecture type**
+> - 📋 Environment configurations support development and operational workflows
+>
+> **🚨 Critical Deployment Categories:**
+>
+> - **Web Applications:** Cloud hosting, CDN, database hosting, SSL certificates
+> - **API Services:** Container orchestration, load balancing, API gateways, monitoring
+> - **Mobile Applications:** App store deployment, backend service hosting, push notification services
+> - **Desktop Applications:** Distribution platforms, update mechanisms, installer creation
+> - **Libraries/SDKs:** Package registry publishing, documentation hosting, version management
+> - **CLI Tools:** Binary distribution, package manager publishing, cross-platform builds
+>
+> **⚠️ Conditional Applicability:**
+>
+> This section should be **SKIPPED** for applications that don't require deployment (development tools, local utilities, proof-of-concept projects). When skipped, clearly state: "Deployment section not applicable for this application type."
+
+#### Output Format
+
+**Deployment Requirements Assessment:**
+(Determine if deployment is required based on application type and architectural decisions. If not applicable, clearly state why and skip remaining sections)
+
+**Target Deployment Platforms:**
+(Identify specific cloud providers, hosting services, or deployment targets with justification based on requirements)
+
+**Infrastructure Requirements:**
+(Define server specifications, scaling requirements, resource allocation, and technical infrastructure needs)
+
+**Deployment Architecture:**
+(Explain how deployment architecture supports system architecture and integrates with chosen technologies)
+
+**Deployment Procedures:**
+(Document step-by-step deployment processes, automation scripts, and CI/CD pipeline configurations)
+
+**Environment Management:**
+(Define staging, production, and development environment configurations with promotion procedures)
+
+**Security & Monitoring:**
+(Plan for security configurations, monitoring, logging, alerting, and operational considerations)
+
+**Deployment Validation:**
+(Define deployment verification procedures, health checks, and rollback strategies)
+
+---
+
+### 12. AI Assistant Guidance
+
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 🧠 IDENTIFY → AI assistant common pitfalls with definitions and identification methods
+> 2. 🛠️ ANALYZE → How to solve and overcome each identified pitfall
+> 3. 🎯 SPECIFY → Context-specific behavioral guidance for optimal performance
+> 4. 🔗 REFERENCE → Integration with technical constraints from section 7
+> 5. 📤 PRESENT → Comprehensive AI guidance summary
+> ```
+>
+> **🔧 Detailed Steps:**
+>
+> - 🧠 **AI Pitfalls Table:** Create a comprehensive table with "Pitfall", "What It Is", "How to Identify", and "How to Solve/Overcome" columns showing specific mistakes, definitions, identification methods, and concrete prevention strategies
+> - 🎯 Provide context-specific behavioral guidance for optimal AI assistant performance
+> - 🔍 Include domain-specific patterns, conventions, and best practices AI should follow
+> - 🤖 Specify user interaction patterns and response preferences for this project context
+> - 🚫 Avoid duplicating technical constraints (reference section 7 instead)
+> - 🚫 Avoid duplicating tech stack or setup details (covered in sections 8-10)
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 8 (Tech Stack) and Section 7 (Implementation Requirements). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirements:** 
+> - AI Assistant Guidance must be relevant to the Tech Stack (Section 8) and Implementation Requirements (Section 7)
+> - AI pitfalls must be specific to the chosen technologies and constraints
+>
+> **✅ Validation Requirements:**
+>
+> - 🧠 **AI pitfalls table includes specific pitfalls with clear definitions, identification methods, and actionable prevention strategies**
+> - 🎯 Behavioral guidance is actionable and context-specific
+> - 🔍 Domain patterns include clear implementation examples
+> - 🤖 User interaction guidance improves AI assistant effectiveness
+> - 🔗 References to section 7 for technical constraints are clear and appropriate
+> - 🛠️ **AI pitfalls are specific to the Tech Stack from Section 8**
+> - 🔒 **Behavioral guidance incorporates security constraints from Section 7**
+> - 📊 **Domain-specific patterns align with the primary language and frameworks from Section 8**
+> - ✅ **User interaction guidance supports the development workflow from Section 10**
+
+#### Output Format
+
+**AI Common Pitfalls:**
+
+| Pitfall | What It Is | How to Identify | How to Solve/Overcome |
+|---------|------------|-----------------|----------------------|
+| (Specific mistake name) | (Clear definition of the pitfall and why it occurs in this domain) | (Observable signs, symptoms, or indicators that this pitfall is happening) | (Concrete prevention strategy with actionable steps and validation methods) |
+| (Another domain-specific pitfall) | (Detailed explanation of the mistake and its technical context) | (Specific warning signs and detection methods) | (Detailed solution strategy with technical specifics and best practices) |
+| (Implementation-related error) | (Description of the assumption or error and its impact) | (How to recognize when this mistake is being made) | (Validation approach, correction steps, and prevention guidance) |
+| (User interaction mistake) | (Explanation of the workflow or communication error) | (Signs that user interaction is suboptimal) | (Proper procedure, safety measures, and improvement strategies) |
+| (Technical complexity oversight) | (Definition of the technical blind spot or oversimplification) | (Indicators of insufficient technical depth or analysis) | (Systematic approach, constraint awareness, and comprehensive analysis methods) |
+
+**Behavioral Guidance:**
+(Context-specific guidance for optimal AI assistant performance and user interaction patterns)
+
+**Domain-Specific Patterns:**
+(Project-specific conventions, best practices, and patterns AI assistants should follow)
+
+**Technical Constraints Reference:**
+(Reference section 7 for security, compliance, deployment, and technical implementation constraints)
+
+---
+
+### 13. Reference & Documentation
+
+> [!NOTE]
+> **🤖 Instructions for AI Assistant:**
+>
+> **📋 Enhanced Process Flow - Follow these steps in order:**
+>
+> ```
+> 1. 📝 COLLECT → Direct user links and documentation requirements
+> 2. ✅ VALIDATE → Verify accessibility and relevance of user-provided links
+> 3. 🔧 GATHER → Tech stack documentation using Context7 and web tools
+> 4. 🌐 RESEARCH → Additional authoritative sources with validation
+> 5. 📊 ORGANIZE → Categorize with Context7 indicators and access methods
+> 6. ⚠️ IDENTIFY → Document missing, incomplete, or outdated documentation gaps
+> 7. 📤 PRESENT → Comprehensive reference list with validation status and gap documentation
+> ```
+>
+> **🔧 Enhanced Detailed Steps:**
+>
+> - 📝 **Direct Links Collection:** Accept and document user-provided links with immediate validation, categorize by type (official, tutorial, reference, community), document user context and relevance notes
+> - ✅ **Link Validation:** Validate accessibility and current status of all user-provided links, save with metadata (source, validation status, relevance score, timestamp), document any broken or outdated links with alternatives
+> - 🔧 **Tech Stack Documentation:** Use Context7 MCP (if available: `resolve-library-id`, `get-library-docs`) for frameworks and libraries from section 8, document Context7 availability using structured format: `Documentation | Description | Link | How to Obtain`, supplement with web research for official sources
+> - 🌐 **Additional Research:** Search for authoritative sources, GitHub repositories, standards, and community resources using web tools, validate accessibility and authority, document discovery method (Context7, web research, inference)
+> - 📊 **Organization:** Categorize by type with Context7 indicators using structured format, validate relevance to tech stack from section 8, include access method documentation for future reference
+> - ⚠️ **Gap Identification:** Document any missing, incomplete, or outdated documentation with risk assessment and user action requirements, specify why missing documentation is critical and what users should provide
+> - 📋 **Comprehensive Presentation:** Include validation status for all links to support future markdown conversion, provide brief descriptions explaining value and relevance, maintain Context7 availability indicators, include gap documentation section
+> - 🚫 Avoid outdated, deprecated, or duplicate documentation
+> - 🚫 Avoid including resources not relevant to the tech stack from section 8
+>
+> **🔗 Cross-Section Dependencies:**
+> 
+> This section has critical dependencies on Section 8 (Tech Stack). See the [Critical Document Consistency Framework](#critical-document-consistency-framework) for complete requirements.
+> 
+> **Key Requirement:** Reference & Documentation must directly support the Tech Stack defined in Section 8.
+>
+> **🔧 MCP Server Usage Guidelines:**
+>
+> - **Context7 (if available):** Prioritize for library and framework documentation (React, Node.js, Python packages, etc.) - document availability using format: `Documentation | Description | Link | How to Obtain`
+> - **Web Tools:** Use for official project sites, GitHub repositories, standards bodies, and community resources - indicate as "Direct Web: [URL]" in access method
+> - **Firecrawl (if available):** Employ for deep research on complex topics or comprehensive documentation extraction - indicate as "Firecrawl Research: [topic]" in access method
+> - **Microsoft Docs (if available):** Utilize specifically for Azure, .NET, TypeScript, and Microsoft ecosystem documentation - indicate as "Microsoft Docs: [URL]" in access method
+>
+> **✅ Enhanced Validation Requirements:**
+>
+> - 📝 All user-provided direct links are validated for accessibility and documented with context
+> - ✅ Link validation includes metadata saving: source, validation status, relevance score, timestamp
+> - 🔧 **Tech stack documentation aligns with technologies from section 8 and includes Context7 availability indicators**
+> - 🌐 Additional sources are current, authoritative, and properly validated with discovery method documentation
+> - 📊 Documentation is properly categorized with Context7 indicators using structured format
+> - ⚠️ Missing or incomplete documentation is identified with risk assessment and specific user action requirements
+> - ✅ All links include validation status and access method for future markdown conversion support
+> - 🛠️ **All documentation directly supports the Primary Language & Version from Section 8**
+> - 📦 **Official documentation is included for all Core Technologies from Section 8**
+> - 🔧 **Development resources cover all Development Environment tools from Section 8**
+> - ✅ **Documentation version compatibility is verified against tech stack versions**
+> - ⚠️ **Documentation gaps are identified specifically for Section 8 technologies**
+
+#### Enhanced Output Format
+
 **Official Documentation:**
-(Primary documentation sources, official APIs, and authoritative references from Context7 and web research)
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Primary documentation sources with Context7 availability indicators and validation status) |
 
 **Library & Framework Documentation:**
-(Context7-sourced documentation for tech stack components with version-specific guidance and API references)
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Context7-sourced documentation with structured format and access method documentation) |
 
 **Development Resources:**
-(Tutorials, guides, best practices, and implementation examples from authoritative sources)
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Tutorials, guides, best practices with validation status and discovery method) |
 
 **Community & Tools:**
-(Community resources, third-party tools, libraries, and frameworks with relevance scoring)
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Community resources with relevance scoring and access method documentation) |
 
 **Standards & Specifications:**
-(Technical standards, RFCs, specifications, and compliance documentation)
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Technical standards, RFCs, specifications with validation status and authority verification) |
 
-**MCP-Enhanced Resources:**
-(Comprehensive documentation gathered using Context7, web tools, and other MCP servers with freshness validation)
+**User-Provided Links:**
+| Documentation | Description | Link | How to Obtain | Validation Status |
+|--------------|-------------|------|---------------|-------------------|
+| (Direct user links with context, relevance notes, and validation metadata) |
+
+**Missing or Incomplete Documentation:**
+
+> [!WARNING]
+> **📋 Documentation Gaps & Risks**
+>
+> If any required documentation could not be obtained, is outdated, or appears incomplete, document it here so users can provide missing resources if needed.
+
+| Missing Documentation | Why It's Needed | Risk Level | User Action Required |
+|----------------------|-----------------|------------|---------------------|
+| (Specific missing documentation) | (Explanation of why this documentation is critical for the project) | (High/Medium/Low) | (Specific request for user to provide or verify this documentation) |
+| (Outdated documentation concern) | (Description of why current documentation may be insufficient) | (High/Medium/Low) | (Request for user to verify or provide updated documentation) |
+| (Incomplete documentation) | (Areas where documentation exists but lacks critical information) | (High/Medium/Low) | (Specific gaps user should help fill) |
+
+**Note:** Users should review this section and provide missing documentation or verify the completeness of flagged resources to ensure comprehensive project context.
 
 ---
