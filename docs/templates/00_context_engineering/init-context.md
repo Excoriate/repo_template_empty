@@ -36,33 +36,25 @@ Unlike prompt engineering's focus on individual interactions, context engineerin
     - [Key Components of Context Engineering](#key-components-of-context-engineering)
     - [Context Engineering vs. Traditional Approaches](#context-engineering-vs-traditional-approaches)
   - [Table of Contents](#table-of-contents)
-  - [How to use this document?](#how-to-use-this-document)
-    - [Context Engineering Implementation Structure](#context-engineering-implementation-structure)
-    - [Context Engineering Methodology Applied](#context-engineering-methodology-applied)
-    - [Consistency Across Sections](#consistency-across-sections)
-      - [AI Assistant Requirements](#ai-assistant-requirements)
+  - [Operational Protocol \& Consistency Mandate](#operational-protocol--consistency-mandate)
+    - [Execution Structure](#execution-structure)
     - [Critical Document Consistency Framework](#critical-document-consistency-framework)
       - [Mandatory Cross-Section Dependencies](#mandatory-cross-section-dependencies)
       - [Consistency Enforcement Protocol](#consistency-enforcement-protocol)
       - [Section-Specific Consistency Guidelines](#section-specific-consistency-guidelines)
       - [Consistency Failure Prevention](#consistency-failure-prevention)
-  - [Workflow](#workflow)
-    - [Initial Context as an Input for PRP](#initial-context-as-an-input-for-prp)
-    - [Steps](#steps)
-    - [Context Engineering Flow Principles](#context-engineering-flow-principles)
-    - [Inputs \& Outputs](#inputs--outputs)
-      - [Visual Flow](#visual-flow)
-      - [Input Components](#input-components)
-      - [Output Generation](#output-generation)
+  - [AI Operational Workflow: Document Completion](#ai-operational-workflow-document-completion)
+    - [Three-Phase Completion Protocol](#three-phase-completion-protocol)
+    - [Workflow Rationale](#workflow-rationale)
   - [Context Engineering Initial Context](#context-engineering-initial-context)
     - [1. Initial Codebase Awareness](#1-initial-codebase-awareness)
       - [Output Format](#output-format)
     - [2. Product, Application, or Tool Description](#2-product-application-or-tool-description)
     - [2.1 GitHub Repository](#21-github-repository)
       - [Output Format](#output-format-1)
-    - [2.2 Application/Tool/Product Name](#22-applicationtoolproduct-name)
+    - [2.2 Product Identity \& Definition](#22-product-identity--definition)
       - [Output Format](#output-format-2)
-    - [2.3 Primary Purpose (High-Level Description)](#23-primary-purpose-high-level-description)
+    - [2.3 Problem \& Value Proposition](#23-problem--value-proposition)
       - [Output Format](#output-format-3)
     - [3. Features](#3-features)
       - [Output Format](#output-format-4)
@@ -93,213 +85,138 @@ Unlike prompt engineering's focus on individual interactions, context engineerin
 
 ---
 
-## How to use this document?
+## Operational Protocol & Consistency Mandate
 
-This document implements **context engineering best practices** to create comprehensive information ecosystems for AI systems. Each section is designed following proven context engineering methodologies:
+For you, 🤖 AI agent - Your primary function is to execute the completion of this document by adhering strictly to the protocols outlined below. This is not a guide; it is your operational mandate. Each section must be processed in sequence, using the defined structure and validation checks.
 
-### Context Engineering Implementation Structure
+### Execution Structure
 
-- **🤖 Hint for the AI Assistant**: Structured context guidance that provides semantic understanding and role definition for AI systems, following context engineering principles of clear instruction architecture
-- **⬇️ Outcome from this section**: Explicit outcome tracking that enables AI systems to validate completeness and maintain consistency across context layers. No section can be skipped, and each section must be completed with all the required information identified as outcome.
-- **📋 Template Variables**: Standardized placeholders (e.g., `{{repository_name}}`) that enable dynamic context adaptation while maintaining structural integrity
+Every section in this document adheres to the following mandatory structure. You MUST parse and act upon each component:
 
-### Context Engineering Methodology Applied
-
-This document leverages key context engineering principles:
-
-1. **Structured Information Architecture**: Each section builds upon previous context to create comprehensive understanding
-2. **Tool Integration**: Sections are designed to integrate with external data sources and repository analysis tools
-3. **Prioritized Information Flow**: Content is organized to maximize AI comprehension within token constraints
-4. **Systematic Validation**: Outcome tracking ensures complete context capture before proceeding
-
-### Consistency Across Sections
-
-This section establishes the framework for maintaining consistency across all interdependent sections of the document. The AI assistant must complete each numbered section following context engineering protocols:
-
-- Maintain consistency with established context patterns
-- Validate outcomes against provided [example init-context.md](init-context-example.md) file
-- Ensure information architecture supports downstream AI operations
-- Apply systematic thinking rather than intuitive "vibe-based" approaches
-
-#### AI Assistant Requirements
-
-When completing any section, AI assistants must adhere to the consistency protocols defined in the Critical Document Consistency Framework below. This includes mandatory cross-section dependency validation, systematic enforcement protocols, and failure prevention measures to ensure coherent context generation.
+- **🤖 AI Assistant Instructions**: This block contains your direct, non-negotiable instructions for the section. Execute them precisely.
+- **⬇️ Expected Outcomes**: This block defines the required output. You MUST generate all specified artifacts to mark the section as complete. Your output must be validated against these outcomes.
+- **📋 Template Variables**: This block lists variables (e.g., `{{repository_name}}`) that require substitution. You MUST replace them with the correct values from the established context.
 
 ### Critical Document Consistency Framework
 
 > [!IMPORTANT]
 > **Interdependent Sections Consistency Requirements**
-> 
-> This document contains interdependent sections that must maintain consistency to ensure coherent context engineering. Each section builds upon previous sections and informs subsequent ones. AI assistants must follow these consistency protocols:
+>
+> This document contains interdependent sections that must maintain consistency to ensure coherent context engineering. Each section builds upon previous sections and informs subsequent ones. You are required to follow these consistency protocols without deviation.
 
 #### Mandatory Cross-Section Dependencies
 
 **Primary Dependencies (Critical):**
-- Section 3 (Features) → Section 4 (Architecture): The system architecture must support all MVP Features and capabilities
-- Section 3 (Features) → Section 5 (Software Architecture): The MVP Sequence Diagram must implement the Primary Use Cases from MVP Features
-- Section 3 (Features) → Section 6 (UX): UX patterns and flows must support all defined features and target users
-- Section 4 (Architecture) → Section 5 (Software Architecture): Software components must implement architectural decisions and constraints
-- Section 4 (Architecture) → Section 11 (Deployment): Deployment architecture must support system architecture choices
-- Section 8 (Tech Stack) → Section 7 (Implementation Requirements): All requirements must be feasible with chosen technologies
-- Section 8 (Tech Stack) → Section 9 (Third Party Integrations): All integrations must be compatible with chosen tech stack
-- Section 8 (Tech Stack) → Section 10 (Local Development Setup): Setup procedures must use exact versions from Tech Stack
-- Section 8 (Tech Stack) → Section 12 (AI Assistant Guidance): AI pitfalls must be relevant to chosen technologies
-- Section 8 (Tech Stack) → Section 13 (Reference & Documentation): Documentation must support all chosen technologies
+- Section 3 (Features) → Section 4 (Architecture): The system architecture must support all MVP Features and capabilities.
+- Section 3 (Features) → Section 5 (Software Architecture): The MVP Sequence Diagram must implement the Primary Use Cases from MVP Features.
+- Section 3 (Features) → Section 6 (UX): UX patterns and flows must support all defined features and target users.
+- Section 4 (Architecture) → Section 5 (Software Architecture): Software components must implement architectural decisions and constraints.
+- Section 4 (Architecture) → Section 11 (Deployment): Deployment architecture must support system architecture choices.
+- Section 8 (Tech Stack) → Section 7 (Implementation Requirements): All requirements must be feasible with chosen technologies.
+- Section 8 (Tech Stack) → Section 9 (Third Party Integrations): All integrations must be compatible with chosen tech stack.
+- Section 8 (Tech Stack) → Section 10 (Local Development Setup): Setup procedures must use exact versions from Tech Stack.
+- Section 8 (Tech Stack) → Section 12 (AI Assistant Guidance): AI pitfalls must be relevant to chosen technologies.
+- Section 8 (Tech Stack) → Section 13 (Reference & Documentation): Documentation must support all chosen technologies.
 
 **Secondary Dependencies (Important):**
-- Section 5 (Software Architecture) → Section 7 (Implementation Requirements): Requirements must align with software architectural decisions
-- Section 6 (UX) → Section 7 (Implementation Requirements): UX requirements must align with technical implementation constraints
-- Section 7 (Implementation Requirements) → Section 10 (Local Development Setup): External service setup must align with integration specifications
-- Section 7 (Implementation Requirements) → Section 12 (AI Assistant Guidance): Behavioral guidance must incorporate technical constraints
-- Section 9 (Third Party Integrations) → Section 10 (Local Development Setup): Setup must include third-party service configuration
-- Section 9 (Third Party Integrations) → Section 11 (Deployment): Deployment must support third-party integration requirements
-- Section 9 (Third Party Integrations) → Section 12 (AI Assistant Guidance): AI guidance must address third-party integration pitfalls
+- Section 5 (Software Architecture) → Section 7 (Implementation Requirements): Requirements must align with software architectural decisions.
+- Section 6 (UX) → Section 7 (Implementation Requirements): UX requirements must align with technical implementation constraints.
+- Section 7 (Implementation Requirements) → Section 10 (Local Development Setup): External service setup must align with integration specifications.
+- Section 7 (Implementation Requirements) → Section 12 (AI Assistant Guidance): Behavioral guidance must incorporate technical constraints.
+- Section 9 (Third Party Integrations) → Section 10 (Local Development Setup): Setup must include third-party service configuration.
+- Section 9 (Third Party Integrations) → Section 11 (Deployment): Deployment must support third-party integration requirements.
+- Section 9 (Third Party Integrations) → Section 12 (AI Assistant Guidance): AI guidance must address third-party integration pitfalls.
 
 **Coherence Dependencies (Application-Type Specific):**
-- Section 3 (Features) → Section 4 (Architecture): Architecture components must be coherent with application type (CLI, web, API, library)
-- Section 4 (Architecture) → Section 6 (UX): UX section applicability must align with architectural frontend decisions
-- Section 6 (UX) → Section 8 (Tech Stack): UX technologies must support defined user experience patterns
-- Section 11 (Deployment) → Section 4 (Architecture): Deployment strategy must be coherent with system architecture type
+- Section 3 (Features) → Section 4 (Architecture): Architecture components must be coherent with application type (CLI, web, API, library).
+- Section 4 (Architecture) → Section 6 (UX): UX section applicability must align with architectural frontend decisions.
+- Section 6 (UX) → Section 8 (Tech Stack): UX technologies must support defined user experience patterns.
+- Section 11 (Deployment) → Section 4 (Architecture): Deployment strategy must be coherent with system architecture type.
 
 #### Consistency Enforcement Protocol
 
-**Before completing any section, AI assistants must:**
+**Before completing any section, you MUST:**
 
-1. Read dependencies: Completely read all sections referenced in the current section's requirements
-2. Validate alignment: Ensure all content aligns with referenced sections
-3. Verify consistency: Cross-check all interdependent elements for coherence
-4. Iterate if needed: Revise content if inconsistencies are found
+1. **Read Dependencies:** Completely read all sections referenced in the current section's requirements.
+2. **Validate Alignment:** Ensure all generated content aligns with the established context from referenced sections.
+3. **Verify Coherence:** Cross-check all interdependent elements for logical consistency.
+4. **Iterate if Needed:** If inconsistencies are detected, you must revise the content until full consistency is achieved.
 
 #### Section-Specific Consistency Guidelines
 
-**For sections with dependencies:**
-- Each section's NOTE block includes specific cross-reference requirements
-- Follow the detailed validation steps provided in each section
-- Ensure all template variables are used consistently across sections
-- Validate that examples and use cases align across dependent sections
-
-**For sections without dependencies:**
-- Focus on section-specific requirements
-- Ensure content supports downstream dependent sections
-- Maintain template variable consistency
+- **For sections with dependencies:** Each section's `NOTE` block includes specific cross-reference requirements. Follow the detailed validation steps provided. Ensure all template variables are used consistently.
+- **For sections without dependencies:** Focus on the section-specific requirements and ensure the output supports downstream dependent sections.
 
 #### Consistency Failure Prevention
 
-**Common consistency failures to avoid:**
-- Creating system architecture without referencing actual application type and MVP features
-- Creating sequence diagrams without referencing actual MVP features from Section 3
-- Defining UX patterns for applications without user interfaces (e.g., CLI tools, APIs)
-- Including frontend architecture components for non-UI applications
-- Defining implementation requirements incompatible with chosen tech stack
-- Documenting third-party integrations without corresponding tech stack support
-- Writing setup procedures that don't match specified technology versions
-- Creating deployment strategies incompatible with system architecture
-- Documenting AI pitfalls irrelevant to the project's technology choices and integrations
-- Gathering documentation that doesn't support the chosen tech stack and integrations
+**You MUST avoid the following common consistency failures:**
+
+- Creating system architecture without referencing the actual application type and MVP features.
+- Creating sequence diagrams that do not map to the Primary Use Cases in Section 3.
+- Defining UX patterns for applications without user interfaces (e.g., CLI tools, APIs).
+- Including frontend architecture components for non-UI applications.
+- Defining implementation requirements incompatible with the chosen tech stack.
+- Documenting third-party integrations without corresponding tech stack support.
+- Writing setup procedures that do not match specified technology versions.
+- Creating deployment strategies incompatible with the system architecture.
+- Documenting AI pitfalls irrelevant to the project's technology choices.
 
 **Application-Type Coherence Failures:**
-- CLI Applications: Including traditional frontend architecture or web-based UX patterns
-- Web Applications: Missing frontend architecture or comprehensive UX section
-- API Services: Including user interface components or end-user UX patterns
-- Libraries/SDKs: Including deployment sections or end-user UX patterns
+- **CLI Applications:** Do NOT include traditional frontend architecture or web-based UX patterns.
+- **Web Applications:** MUST include both frontend architecture and a comprehensive UX section.
+- **API Services:** Do NOT include user interface components or end-user UX patterns.
+- **Libraries/SDKs:** Do NOT include deployment sections or end-user UX patterns.
 
-**Validation checkpoints:**
-- Before finalizing any section, verify all cross-references are accurate
-- Ensure template variables are used consistently throughout
-- Confirm all interdependent content aligns properly
-- Validate that section outcomes support dependent sections
-- Verify application-type coherence across architecture, UX, and deployment sections
-- Check that conditional sections (UX, Third Party Integrations, Deployment) are appropriately applied
-
+**Validation Checkpoints:**
+- Before finalizing any section, verify all cross-references are accurate.
+- Confirm all interdependent content aligns properly.
+- Validate that section outcomes support all dependent sections.
+- Verify application-type coherence across architecture, UX, and deployment sections.
 ---
 
-## Workflow
+## AI Operational Workflow: Document Completion
 
-### Initial Context as an Input for PRP
+This section outlines the mandatory workflow you must follow to complete this `init-context.md` document. Your purpose is to act as the primary agent in transforming initial user inputs into a comprehensive, structured, and consistent context document.
 
-This workflow follows a **context engineering workflow** to assess a first initial context, which's a "vertical slice" of all the neccessary context, and then use that context to create a comprehensive information ecosystem for the AI assistant. This document, once completed, constitutes the most important input for any PRP (Product Requirement Prompt)
+This document, once completed, serves as the foundational input for all subsequent documentation and code generation tasks.
 
-### Steps
+### Three-Phase Completion Protocol
 
-1. **Context Priming Phase**: User provides initial information through the [helper prompt](init-context-helper-prompt.md) to establish foundational context layers and semantic understanding framework. This [helper prompt](init-context-helper-prompt.md) is a prompt that is used to guide the AI assistant to understand the user's requirements, and complete each section of the [init-context.md](init-context.md) file throughtout an assisted and verified process.
-2. **Concrete Context Grounding**: User provides examples to enable pattern recognition and contextual anchoring, supporting the AI's understanding through tangible reference points (following context engineering's emphasis on concrete examples over abstract descriptions)
-3. **Structured Context Generation**: The comprehensive initial context is systematically generated in [initial_context.md](../../00_context_engineering/init-context.md) following structured information architecture principles. This document is the most important input for any PRP (Product Requirement Prompt)
+You will execute the following three phases in sequence. Do not proceed to the next phase until the current one is complete and validated.
 
-### Context Engineering Flow Principles
+**Phase 1: Context Priming and Analysis**
+Your first step is to gather and analyze the initial project information provided by the user.
 
-This process implements key context engineering methodologies:
+* **Action:** Process the inputs from the user, which may include responses to a helper prompt, direct instructions, or example files.
+* **Process:**
+    1.  Analyze all provided materials to establish a foundational understanding of the project's purpose, scope, and technical stack.
+    2.  If repository analysis tools (e.g., `repomix`) are available, execute them to get a structural overview of the codebase.
+    3.  Synthesize this initial data to prepare for populating the sections below.
+* **Output:** A preliminary, in-memory model of the project's key attributes.
 
-- **Layered Information Building**: Each step builds upon previous context to create comprehensive understanding. Each section provides key information to specifics PRPs (Product Requirement Prompts) to complete each documentation layer in the [docs](../../../docs/) directory.
-- **Concrete Grounding**: Examples in the [examples](../../00_context_engineering/examples/) directory provide essential pattern recognition, guidance, known-patterns and implementation details for AI assistants.
-- **Structured Output**: Final context document follows systematic organization for optimal AI consumption.
-- **Validation Loops**: Each phase includes outcome verification to ensure context completeness
+**Phase 2: Structured Content Generation**
+Your primary task is to systematically populate each numbered section of this document, from "1. Initial Codebase Awareness" to "13. Reference & Documentation".
 
-### Inputs & Outputs
+* **Action:** For each section, generate the required content based on the established context.
+* **Process:**
+    1.  Adhere strictly to the **🤖 AI Assistant Instructions** provided in each section.
+    2.  Generate all artifacts specified in the **⬇️ Expected Outcomes** block for each section.
+    3.  Strictly follow the **Critical Document Consistency Framework** by cross-referencing dependent sections to ensure coherence.
+* **Output:** A fully populated `init-context.md` document.
 
-#### Visual Flow
+**Phase 3: Final Validation**
+Before concluding, you must perform a final validation pass on the entire document.
 
-> **🚀 Context Engineering Dual-Input Architecture**
->
-> Following [industry research findings](https://medium.com/@tam.tamanna18/understanding-context-engineering-c7bfeeb41889), this dual-input architecture ensures AI systems receive both conceptual guidance and concrete reference points, enabling **10x better accuracy** compared to traditional prompt-based approaches.
->
-> **Visual Input Flow:**
->
-> ```
-> ┌─────────────────────────────────────────────────────────────────┐
-> │                    CONTEXT ENGINEERING WORKFLOW                 │
-> └─────────────────────────────────────────────────────────────────┘
->                                 │
->                                 ▼
->                    ┌─────────────────────────┐
->                    │       USER INPUTS       │
->                    └─────────────────────────┘
->                                 │
->         ┌───────────────────────┼───────────────────────┐
->         ▼                       │                       ▼
-> ┌───────────────────┐           │           ┌───────────────────┐
-> │  HELPER PROMPT    │           │           │    EXAMPLES       │
-> │  (Required)       │           │           │   (Optional)      │
-> │                   │           │           │                   │
-> │ • Repository info │           │           │ • Code samples    │
-> │ • Tech stack      │           │           │ • Config files   │
-> │ • Requirements    │           │           │ • Links/URLs      │
-> │ • Architecture    │           │           │ • Documentation  │
-> └───────────────────┘           │           └───────────────────┘
->         │                       │                       │
->         └───────────────────────┼───────────────────────┘
->                                 ▼
->                    ┌─────────────────────────┐
->                    │    AI ASSISTANT         │
->                    │    PROCESSES INPUTS     │
->                    └─────────────────────────┘
->                                 │
->                                 ▼
->                    ┌─────────────────────────┐
->                    │       GENERATES         │
->                    └─────────────────────────┘
->                                 │
->         ┌───────────────────────┼───────────────────────┐
->         ▼                       │                       ▼
-> ┌───────────────────┐           │           ┌───────────────────┐
-> │  init-context.md  │           │           │  examples/        │
-> │                   │           │           │  directory        │
-> │ • Complete context│           │           │                   │
-> │ • PRP-ready       │           │           │ • Refined examples│
-> │ • All sections    │           │           │ • Generated files │
-> │ • Template vars   │           │           │ • Reference docs  │
-> └───────────────────┘           │           └───────────────────┘
-> ```
->
+* **Action:** Review the completed document for internal consistency and adherence to all protocols.
+* **Process:**
+    1.  Verify that all mandatory cross-section dependencies are met.
+    2.  Check for any application-type coherence failures (e.g., a CLI tool having a web UX section).
+    3.  Ensure all `{{template_variables}}` have been correctly substituted.
+* **Output:** A validated, final version of `init-context.md` ready for use in downstream tasks.
 
-#### Input Components
+### Workflow Rationale
 
-- ✅ **Helper Prompt (Required):** User answers guided questions from [helper prompt](init-context-helper-prompt.md) to provide systematic project information
-- ✅ **Examples (Optional):** User provides example files, code samples, documentation, or links in the [examples directory](../../00_context_engineering/examples) for AI reference and pattern recognition
-
-#### Output Generation
-
-- 📄 **init-context.md:** Complete [initial context](../../00_context_engineering/init_context.md) document ready for PRP (Product Requirement Prompt) usage
-- 📁 **examples/ directory:** Refined [examples](../../00_context_engineering/examples/), generated reference files, and processed documentation from user inputs
+This phased approach ensures a systematic and rigorous process. By separating initial analysis from content generation and final validation, it minimizes errors, prevents context-drift, and guarantees that the final document is a reliable and coherent foundation for any subsequent AI-driven development tasks.
 
 ---
 
@@ -313,33 +230,31 @@ This process implements key context engineering methodologies:
 > **📋 Process Flow - Follow these steps in order:**
 >
 > ```
-> 1. 🔍 DISCOVER → Run repomix --help to understand tool capabilities
-> 2. 📊 ANALYZE → Execute repomix to get complete codebase structure and context
-> 3. 🌳 EXTRACT → Generate ASCII codebase tree from repomix output
-> 4. 📋 IDENTIFY → Create table of most relevant initial files and configurations
-> 5. 🔧 CATEGORIZE → Classify existing configurations, dotfiles, and task executors
-> 6. 📤 PRESENT → Comprehensive initial codebase awareness summary
+> 1. 🔧 VALIDATE TOOL → Verify `repomix` is installed and executable.
+> 2. 🔍 DISCOVER → Run `repomix --help` to understand tool capabilities.
+> 3. 📊 ANALYZE → Execute `repomix` to get the complete codebase structure.
+> 4. 🌳 EXTRACT & CATALOG → Generate ASCII tree and create a table of ALL initial files.
+> 5. 📝 SYNTHESIZE & PRESENT → Produce a comprehensive summary based on the analysis.
 > ```
 >
 > **🔧 Detailed Steps:**
 >
-> - 🔍 **Tool Discovery:** Execute `repomix --help` to understand available options and output format
-> - 📊 **Codebase Analysis:** Run `repomix` to get comprehensive codebase description and structure analysis
-> - 🌳 **Tree Generation:** Extract and format ASCII directory tree showing complete repository structure
-> - 📋 **File Identification:** Identify and categorize the most relevant initial files (dotfiles, configurations, task executors like Makefile/Justfile)
-> - 🔧 **Configuration Analysis:** Analyze existing configurations, development tools, and automation scripts
-> - 📁 **Structure Documentation:** Document initial codebase shape and key components that will influence development
-> - 🚫 Avoid making assumptions about codebase without running repomix analysis
-> - 🚫 Avoid detailed implementation analysis (focus on structure and existing tooling)
+> - **Tool Validation:** Execute `command -v repomix`. If the tool is not found, report an error and halt. This step is mandatory.
+> - **Tool Discovery:** Execute `repomix --help` to understand available options and the expected output format.
+> - **Codebase Analysis:** Run `repomix` on the current directory to perform a comprehensive structural analysis.
+> - **Initial State Cataloging:**
+>     - From the `repomix` output, generate a complete ASCII directory tree.
+>     - Create a table listing **all** discovered files. For new repositories, every file is relevant.
+>     - For each file, classify its type (e.g., `dotfile`, `configuration`, `task-runner`, `documentation`) and infer its purpose based on conventions (`.gitignore` ignores files, `Justfile` defines tasks, etc.).
+> - **Synthesize Analysis:** Write a brief narrative summary that interprets the structured findings (the tree and table). This summary should state the inferred project status (e.g., "newly initialized," "template-based") and highlight the purpose of the existing tooling.
+> - 🚫 **Constraint:** Do not perform a deep analysis of file *contents*. The focus is on structure, configuration, and tooling at this stage.
 >
 > **✅ Validation Requirements:**
 >
-> - 🔍 Repomix tool capabilities are verified with --help command
-> - 📊 Complete codebase analysis is performed using repomix
-> - 🌳 ASCII tree accurately represents repository structure
-> - 📋 Most relevant files table includes descriptions and purposes
-> - 🔧 Existing configurations and task executors are identified and categorized
-> - 📁 Initial codebase shape is documented for future reference
+> - `repomix` command is successfully validated before proceeding.
+> - ASCII tree accurately represents the repository's initial file structure.
+> - The "Initial Files" table is exhaustive for the new repository state.
+> - The final analysis is a direct synthesis of the tree and table, not new information.
 
 #### Output Format
 
@@ -354,18 +269,18 @@ This process implements key context engineering methodologies:
 (ASCII tree representation of the repository structure from repomix output)
 ```
 
-**Most Relevant Initial Files:**
-| File/Directory | Type | Purpose | Configuration Details |
-|---------------|------|---------|----------------------|
-| (File path) | (dotfile/config/task executor/etc.) | (What this file does) | (Key settings or commands) |
-| (Another file) | (Category) | (Purpose description) | (Relevant configuration details) |
-| (Configuration file) | (Type) | (Role in project) | (Important settings or patterns) |
+**Initial Files Catalog:**
+| File/Directory | Type | Inferred Purpose & Configuration Details |
+| --- | --- | --- |
+| (e.g., .gitignore) | dotfile | Standard Git ignore file. Configured to ignore node_modules, .env, etc. |
+| (e.g., Justfile) | task-runner | Defines project automation tasks. Contains recipes for build, test, lint. |
+| (e.g., README.md) | documentation | Project's primary documentation file. Currently contains initial template text. |
 
-**Initial Codebase Analysis:**
-- **Existing Configurations:** (Description of found dotfiles, config files, and their purposes)
-- **Task Executors:** (Makefile, Justfile, npm scripts, or other automation tools found)
-- **Development Tools:** (Pre-commit hooks, linting configs, testing setup, etc.)
-- **Repository Structure:** (High-level organization and key directories)
+**Initial Codebase Synthesis:**
+(A concise, 1-2 paragraph summary interpreting the findings above.)
+
+Example Synthesis:
+"The repository {{repository_name}} appears to be newly initialized from a project template. The structure includes standard configuration files such as .gitignore and a README.md. A Justfile is present, indicating that project tasks like building and testing are intended to be managed via the just task runner. The initial state suggests the project is set up for [Language/Framework] development but contains no application source code yet."
 
 ---
 
@@ -379,155 +294,151 @@ This process implements key context engineering methodologies:
 > **📋 Process Flow - Follow these steps in order:**
 >
 > ```
-> 1. 🔍 ANALYZE → Extract repository info from user prompt
-> 2. 📂 CATEGORIZE → Separate user-specified vs. auto-inferred settings  
-> 3. 📊 GENERATE TABLE → Create summary table with configurable settings
-> 4. ⚙️ CREATE YAML → Generate detailed configuration with comments
-> 5. ✅ VALIDATE → Check syntax and completeness
-> 6. 📤 PRESENT → Output in mandatory structure format
+> 1. 🔧 VALIDATE TOOL → Verify `gh` (GitHub CLI) is installed and authenticated.
+> 2. 🔍 PARSE & GATHER → Extract explicit user requirements for the repository.
+> 3. ⚙️ SYNTHESIZE & GENERATE → Create a complete YAML configuration in memory.
+> 4. ✅ VALIDATE → Ensure the generated YAML is syntactically correct and complete.
+> 5. 📝 WRITE OR UPDATE FILE → Create or update the `.github/settings.yml` file.
+> 6. 📊 GENERATE SUMMARY → Create a human-readable summary table *from* the final YAML.
+> 7. 📤 PRESENT → Output the final YAML and the summary table.
 > ```
 >
 > **🔧 Detailed Steps:**
 >
-> - 📍 Analyze the repository location from user's helper prompt (default: `github.com/Excoriate/{{repository_name}}`)
-> - 🏷️ Extract repository metadata (name, description, tech stack)
-> - 🗂️ Categorize settings as user-specified vs. auto-inferred based on analysis
-> - 📋 Generate simplified summary table and detailed YAML configuration
-> - 📖 Reference [settings.yaml](../../../.github/settings.yml) for complete configuration structure
->
-> **🔄 Template Variable Handling:**
->
-> - ✏️ Replace `{{repository_name}}` with actual repository name from user input
-> - 📝 Replace `{{repository_description}}` with actual description from analysis
-> - 🏗️ Keep template variables in YAML only when showing configuration structure/examples
-> - 💯 Use actual values in the summary table output
->
-> **📋 Template Variable Examples:**
->
-> - ✅ **Use Templates:** In YAML configuration examples: `name: "{{repository_name}}"` 
-> - ✅ **Use Actual Values:** In summary tables: `cloudcost-cli` (not `{{repository_name}}`)
-> - ✅ **Use Templates:** When showing structure: `description: "{{repository_description}}"`
-> - ✅ **Use Actual Values:** In final output: `AWS cost optimization CLI tool`
+> - **Tool Validation:** Execute `gh auth status`. If the CLI is not installed or authenticated, report an error and halt. This step is mandatory.
+> - **Input Analysis:** Parse the user-provided information for the repository `name`, `description`, required `topics`, `team` permissions, and `branch protection` rules.
+> - **Configuration Synthesis:**
+>     - Use the user's input as the primary source for the configuration.
+>     - For any settings *not* specified by the user, apply the default best practices defined in the schema below (e.g., `require_code_owner_reviews: true`).
+>     - Auto-infer technology-specific `labels` and CI/CD `contexts` based on the tech stack that will be defined in Section 8. Use placeholders if the stack is currently unknown.
+> - **YAML Generation:** Create a single, complete `settings.yml` configuration block in memory. **You MUST substitute all `{{template_variables}}` with their actual values.**
+> - **File Operation:**
+>     - Check if `.github/settings.yml` exists.
+>     - If it exists, update it with the generated configuration.
+>     - If it does not exist, create the file at `.github/settings.yml` and write the generated configuration to it.
+> - **Summary Table Generation:** After creating the final YAML, generate the "Repository Summary Table" as a high-level view.
 >
 > **✅ Validation Requirements:**
 >
-> - 🔍 Verify repository exists and is accessible (if analyzing existing repo)
-> - ⚖️ Check for obvious inconsistencies between stated purpose and detected tech stack
-> - 📋 Validate YAML syntax before presenting configuration
-> - 🔧 Ensure all required fields have values (use defaults when user input incomplete)
-> - 📚 Cross-reference against settings.yml schema for completeness
->
-> **🚨 Error Handling & Fallback Strategies:**
->
-> - **❌ Missing Repository:** If repository doesn't exist or isn't accessible, proceed with template structure using provided information
-> - **⚠️ Incomplete Information:** Use organization defaults (Excoriate standards) for missing user specifications
-> - **🔧 Tech Stack Detection Failure:** Request clarification or use "general" labels and minimal CI requirements
-> - **❌ Invalid Input:** Politely request correction while providing helpful examples of expected format
-> - **⚡ Conflicting Requirements:** Prioritize security and best practices, note conflicts in output
-
-> [!NOTE]
-> **⬇️ Expected Outcomes:**
->
-> - ☑️ Git Repository Location: `github.com/Excoriate/{{repository_name}}`
-> - ☑️ GitHub Repository Settings configuration matching requirements from settings.yaml
+> - The generated YAML MUST be syntactically correct.
+> - All required configuration fields (e.g., `repository.name`) MUST have a value.
+> - Branch protection rules must adhere to security best practices (e.g., `required_approving_review_count` should be at least 1).
 
 #### Output Format
 
 **Mandatory Structure - Present in this exact order:**
 
-1. **Repository Summary Table:**
+1.  **Complete GitHub Repository Settings (`.github/settings.yml`):**
 
-| GitHub Repository | Description | Configurable Settings |
-|------------------|-------------|----------------------|
-| `{{repository_name}}` | `{{repository_description}}` | **User-Specified:**<br>- Repository name and description<br>- Technology-specific topics<br>- Team access permissions<br>- Branch protection requirements<br><br>**Auto-Inferred:**<br>- Labels based on tech stack<br>- CI/CD status checks<br>- Security configurations<br>- Best practice defaults |
+    *(This is the actual file content that will be written to `.github/settings.yml`)*
 
-**Example:**
-| GitHub Repository | Description | Configurable Settings |
-|------------------|-------------|----------------------|
-| `cloudcost-cli` | A powerful CLI tool for AWS cost optimization and resource rightsizing | **User-Specified:**<br>- Repository name: cloudcost-cli<br>- Technology topics: ["cli", "aws", "cost-optimization"]<br>- Team access: maintainers (admin), contributors (push)<br>- Branch protection: require 1 reviewer<br><br>**Auto-Inferred:**<br>- Labels: "go", "terraform", "cli-tool"<br>- CI/CD: ["ci/test", "ci/build", "ci/lint"]<br>- Security: dependabot, code scanning<br>- Best practices: branch protection, required reviews |
+    ```yml
+    # GitHub Repository Settings Configuration
+    # Generated from user requirements and best practice defaults
+    
+    repository:
+      name: {{repository_name}}
+      description: {{repository_description}}
+      topics: {{tech_stack_topics}}
+      private: {{is_private}}
+      has_issues: true
+      has_projects: true
+      has_wiki: false
+      has_downloads: true
+      default_branch: main
+      allow_squash_merge: true
+      allow_merge_commit: false
+      allow_rebase_merge: true
+      delete_branch_on_merge: true
+      enable_automated_security_fixes: true
+      enable_vulnerability_alerts: true
+    
+    # Team Access Configuration
+    teams:
+      - name: {{team_maintainers}}
+        permission: admin
+      - name: {{team_contributors}}
+        permission: push
+    
+    # Technology-Specific Labels
+    labels:
+      - name: {{primary_language}}
+        color: "{{language_color}}"
+        description: "{{primary_language}} related changes"
+      - name: {{framework_name}}
+        color: "{{framework_color}}"
+        description: "{{framework_name}} specific functionality"
+      - name: bug
+        color: "d73a4a"
+        description: "Something isn't working"
+      - name: enhancement
+        color: "a2eeef"
+        description: "New feature or request"
+      - name: documentation
+        color: "0075ca"
+        description: "Improvements or additions to documentation"
+    
+    # Branch Protection Rules
+    branches:
+      - name: main
+        protection:
+          required_pull_request_reviews:
+            required_approving_review_count: {{min_reviewers}}
+            require_code_owner_reviews: {{require_codeowners}}
+            dismiss_stale_reviews: true
+            require_review_from_code_owners: true
+          required_status_checks:
+            strict: true
+            contexts: {{ci_status_checks}}
+          enforce_admins: true
+          restrictions:
+            users: [{{repository_owner}}]
+            teams: [{{admin_team}}]
+          required_linear_history: true
+          allow_force_pushes: false
+          allow_deletions: false
+    
+    # Automated Security and Maintenance
+    security_and_analysis:
+      secret_scanning:
+        status: enabled
+      secret_scanning_push_protection:
+        status: enabled
+      dependabot_security_updates:
+        status: enabled
+      private_vulnerability_reporting:
+        status: enabled
+    ```
 
-2. **Complete GitHub Repository Settings Configuration:**
+2.  **Repository Summary Table:**
 
-*Note: Replace template variables `{{variable}}` with actual analyzed values. Variables with `:-default` show fallback values when analysis is incomplete.*
+    | Setting Category | Configuration | Value |
+    |------------------|---------------|-------|
+    | **Repository Info** | Name | `{{repository_name}}` |
+    | | Description | `{{repository_description}}` |
+    | | Topics | `{{tech_stack_topics}}` |
+    | | Visibility | `{{visibility_status}}` |
+    | **Team Access** | Maintainers | `{{team_maintainers}}` (admin) |
+    | | Contributors | `{{team_contributors}}` (push) |
+    | **Branch Protection** | Required Reviewers | `{{min_reviewers}}` |
+    | | Code Owner Reviews | `{{require_codeowners}}` |
+    | | Status Checks | `{{ci_status_checks}}` |
+    | **Security** | Secret Scanning | Enabled |
+    | | Dependabot | Enabled |
+    | | Vulnerability Alerts | Enabled |
+    | **Labels** | Technology | `{{primary_language}}`, `{{framework_name}}` |
+    | | Standard | `bug`, `enhancement`, `documentation` |
 
-```yml
-# Core Repository Configuration (User-Specified + Auto-Inferred)
-repository:
-  name: {{repository_name}}                    # REPLACE: Actual repository name
-  description: {{repository_description}}      # REPLACE: Actual description from analysis
-  topics: {{tech_stack_topics}}               # REPLACE: Auto-inferred from primary language & frameworks
-                                               # Example: ["typescript", "react", "nodejs"]
+3.  **File Operation Summary:**
 
-# Team Access Configuration (User-Specified or Default Best Practices)
-teams:
-  - name: maintainers
-    permission: admin
-  - name: contributors  
-    permission: push
+    ```
+    📁 File Operation: [CREATED/UPDATED] .github/settings.yml
+    📊 Configuration Status: ✅ Valid YAML syntax
+    🔧 GitHub CLI Status: ✅ Authenticated and ready
+    ⚙️ Settings Applied: [NUMBER] configuration sections
+    ```
 
-# Technology-Specific Labels (Auto-Inferred from Tech Stack)
-labels:
-  - name: {{primary_language}}                # REPLACE: Detected primary language
-    color: "{{language_color}}"               # REPLACE: Standard color for language
-    description: "{{primary_language}} related changes"
-  - name: {{framework_name}}                  # REPLACE: Detected framework if applicable
-    color: "{{framework_color}}"              # REPLACE: Framework-specific color
-    description: "{{framework_name}} specific functionality"
-
-# Branch Protection (User Requirements + Security Best Practices)
-branches:
-  - name: main
-    protection:
-      required_pull_request_reviews:
-        required_approving_review_count: {{min_reviewers:-1}}      # DEFAULT: 1 reviewer minimum
-        require_code_owner_reviews: {{require_codeowners:-true}}   # DEFAULT: true
-      required_status_checks:
-        contexts: {{ci_status_checks}}                             # REPLACE: Auto-inferred from CI/CD workflow
-                                                                   # Example: ["ci/lint", "ci/test", "ci/build"]
-      restrictions:
-        users: [{{repository_owner:-"Excoriate"}}]                # DEFAULT: "Excoriate"
-```
-
-Entire [settings.yml](../../../.github/settings.yml) file is present on this repo (on this path `.github/settings.yml`), and is modified according to the user's requirements.
-
-**Example Complete Configuration:**
-```yml
-# Core Repository Configuration
-repository:
-  name: cloudcost-cli
-  description: "A powerful CLI tool for AWS cost optimization and resource rightsizing"
-  topics: ["go", "cli", "aws", "cost-optimization", "devops"]
-
-# Team Access Configuration
-teams:
-  - name: maintainers
-    permission: admin
-  - name: contributors  
-    permission: push
-
-# Technology-Specific Labels
-labels:
-  - name: go
-    color: "00ADD8"
-    description: "Go language related changes"
-  - name: cli
-    color: "0366d6"
-    description: "Command-line interface functionality"
-
-# Branch Protection
-branches:
-  - name: main
-    protection:
-      required_pull_request_reviews:
-        required_approving_review_count: 1
-        require_code_owner_reviews: true
-      required_status_checks:
-        contexts: ["ci/test", "ci/build", "ci/lint"]
-      restrictions:
-        users: ["Excoriate"]
-```
-
-### 2.2 Application/Tool/Product Name
+### 2.2 Product Identity & Definition
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
@@ -535,77 +446,53 @@ branches:
 > **📋 Process Flow - Follow these steps in order:**
 >
 > ```
-> 1. 🔍 ANALYZE → Extract product name from repository and user input
-> 2. ✏️ STANDARDIZE → Convert to proper product naming format (technical and display)
-> 3. 🔍 VERIFY → Ensure consistency with repository's canonical name
-> 4. 📝 DOCUMENT → Record technical name (for env vars, configs) and display name (for docs)
-> 5. ✅ VALIDATE → Check alignment with user specifications
-> 6. 📤 PRESENT → Output in standardized format
+> 1. 🔍 PARSE & SYNTHESIZE → Consolidate context from Sections 1 & 2.1.
+> 2. 📝 GENERATE SUMMARY → Create the comprehensive narrative product summary.
+> 3. ⚙️ DEFINE & POPULATE TABLE → Define the product's names and populate the definition table.
+> 4. ✅ VALIDATE → Ensure all definitions are consistent and correctly formatted.
+> 5. 📤 PRESENT → Output the product summary and the definition table.
 > ```
 >
 > **🔧 Detailed Steps:**
 >
-> - 📝 Use the exact repository name as the **Technical Name** (for environment variable prefixes, config keys, file names)
-> - 🔍 Ensure consistency with the GitHub repository's canonical name
-> - 🏷️ Only deviate if explicitly specified by the product manager or stakeholder
-> - 📌 Create **Display Name** by converting technical names to proper title case for documentation
-> - 🔄 Maintain technical accuracy while improving readability
-> - 📝 Create comprehensive product summary (2-3 paragraphs) as product manager would describe to stakeholders
->
-> **🔄 Template Variable Handling:**
->
-> - ✏️ Replace `{{repository_name}}` with actual repository name
-> - 📝 Replace `{{repository_description}}` with actual description from analysis
-> - 🏗️ Convert technical naming to **Display Name** for documentation (e.g., "ai-assistant-template" → "AI Assistant Template")
+> - **Context Synthesis:** Review the `Initial Codebase Synthesis` (Section 1) and the `Repository Summary Table` (Section 2.1) to establish the project's context.
+> - **Product Summary Generation:** Based on the synthesized context and the user-provided `repository_description`, write a comprehensive product summary (2-3 paragraphs). This summary should be written from the perspective of a product manager explaining the product's purpose, value, and target audience to a stakeholder. This is the primary generative task of this section.
+> - **Product Definition Table Generation:**
+>     - Set the `Technical Name` to be the exact `repository_name` from Section 2.1.
+>     - Create the `Display Name` by converting the `Technical Name` into a human-readable title case format (e.g., "cloud-cost-cli" becomes "Cloud Cost CLI").
+>     - Use the `repository_description` from Section 2.1 for the `Description` field.
+>     - Populate the "Product Definition Table" with these values.
 >
 > **✅ Validation Requirements:**
 >
-> - 🔍 Verify Technical Name consistency across repository metadata
-> - ⚖️ Check for conflicts between technical and display names
-> - 📋 Ensure Technical Name follows organization naming conventions (for env vars, configs)
-> - 🔧 Validate that Display Name clearly represents the product for documentation
->
-> **🚨 Error Handling & Fallback Strategies:**
->
-> - **❌ Missing Product Name:** Use repository name as fallback with proper formatting
-> - **⚠️ Unclear Repository Purpose:** Extract intent from README, package.json, or repository description
-> - **🔧 Inconsistent Naming:** Prioritize user-specified names over auto-detected ones
-> - **❌ Invalid Characters:** Clean and standardize name while preserving meaning
-> - **⚡ Multiple Naming Conventions:** Use the most descriptive and user-friendly version
+> - The `Technical Name` in the table MUST exactly match the `repository.name` from Section 2.1.
+> - The `Display Name` MUST be a properly formatted, title-cased version of the `Technical Name`.
+> - The generated `Product Summary` must be coherent and align logically with the one-sentence `Description` in the table.
 
 #### Output Format
 
 **Mandatory Structure - Present in this exact order:**
 
-1. **Product Identification Summary:**
+1.  **Product Summary:**
 
-| Product Name | Display Name | Description |
-|--------------|--------------|-------------|
-| `{{repository_name}}` | `{{display_name}}` | `{{repository_description}}` |
+    *(A comprehensive, 2-3 paragraph overview of the product, its purpose, and its value proposition. This is the primary narrative artifact.)*
 
-2. **Product Summary:**
+    Example:
+    > CloudCost CLI is a powerful command-line interface (CLI) tool designed to help cloud engineers and DevOps teams streamline their Amazon Web Services infrastructure management. By providing intelligent cost analysis, resource rightsizing recommendations, and automated optimization strategies, this tool transforms complex cloud resource management into a simple, actionable process.
+    >
+    > The CLI leverages advanced algorithmic analysis to scan existing AWS environments, identifying underutilized or overprovisioned resources. Engineers can quickly generate comprehensive reports that highlight potential cost savings and recommend precise adjustments. With built-in safety checks and preview modes, teams can confidently optimize their cloud infrastructure without risking service disruptions.
 
-(A comprehensive, complete and descriptive overview of the product, described as a product manager would describe it to a stakeholder. 2-3 paragraphs)
-Example:
+2.  **Product Definition Table:**
 
-```text
-CloudCost CLI is a powerful command-line interface (CLI) tool designed to help cloud engineers and DevOps teams streamline their Amazon Web Services infrastructure management. By providing intelligent cost analysis, resource rightsizing recommendations, and automated optimization strategies, this tool transforms complex cloud resource management into a simple, actionable process.
+    *(This table is the structured source of truth for the product's identity.)*
 
-The CLI leverages advanced algorithmic analysis to scan existing AWS environments, identifying underutilized or overprovisioned EC2 instances, RDS databases, and EBS volumes. Engineers can quickly generate comprehensive reports that highlight potential cost savings, recommend precise resource adjustments, and provide clear migration or downsizing strategies. With built-in safety checks and preview modes, teams can confidently optimize their cloud infrastructure without risking service disruptions.
+| Field | Value | Purpose |
+| :--- | :--- | :--- |
+| **Technical Name** | `{{repository_name}}` | Used for configs, environment variables, and scripts. |
+| **Display Name** | `{{display_name}}` | Used for documentation, UI, and marketing. |
+| **Description** | `{{repository_description}}` | A concise, one-sentence summary of the product. |
 
-By combining real-time performance metrics, historical usage patterns, and machine learning-driven insights, CloudCost CLI empowers organizations to reduce cloud spending, improve operational efficiency, and maintain optimal infrastructure performance. Whether managing small startup environments or complex enterprise deployments, this tool provides a user-friendly, data-driven approach to cloud resource management.
-```
-
-3. **Complete Product Definition:**
-
-| Field | Value |
-|-------|-------|
-| **Technical Name** | `{{repository_name}}` |
-| **Display Name** | `{{display_name}}` |
-| **Description** | `{{repository_description}}` |
-| **Other Details** | `{{other_details}}` |
-
-### 2.3 Primary Purpose (High-Level Description)
+### 2.3 Problem & Value Proposition
 
 > [!NOTE]
 > **🤖 Instructions for AI Assistant:**
@@ -613,35 +500,49 @@ By combining real-time performance metrics, historical usage patterns, and machi
 > **📋 Process Flow - Follow these steps in order:**
 >
 > ```
-> 1. 🎯 IDENTIFY → What specific problem does this solve?
-> 2. 📝 CLARIFY → Explain the problem in simple, jargon-free terms
-> 3. 💡 ARTICULATE → Define the unique value this solution provides
-> 4. ✅ VALIDATE → Ensure clarity for non-technical stakeholders
-> 5. 📤 PRESENT → Output in clear, concise format
+> 1. 🔄 SYNTHESIZE → Ingest context from Product Summary (Sec 2.2) and user input.
+> 2. 🎯 DEFINE PROBLEM → Abstract the "what" and "why" into a clear Problem Statement.
+> 3. 💡 FORMULATE VALUE → Define the "how" and "benefit" as a compelling Value Proposition.
+> 4. ✅ VALIDATE → Ensure the Problem and Value are distinct and logically linked.
+> 5. 📤 PRESENT → Output the two distinct narrative blocks.
 > ```
 >
 > **🔧 Detailed Steps:**
 >
-> - 🎯 Identify the core problem being solved (what pain point or challenge?)
-> - 📝 Explain this problem using everyday language, avoiding technical jargon
-> - 💡 Articulate the specific value this solution delivers (what benefit or outcome?)
-> - 🔍 Ensure the value proposition is unique and differentiated
-> - ✅ Test clarity by asking: "Would a non-technical person understand this?"
+> - **Context Synthesis:** Your primary source of truth is the `Product Summary` from Section 2.2. Use the user's input for this section as supplementary detail.
+> - **Problem Statement Generation:**
+>     - Analyze the synthesized context to identify the core pain point or challenge this project addresses.
+>     - Articulate this problem in 1-2 sentences. The language MUST be clear, concise, and understandable to a non-technical stakeholder (e.g., a project manager or business analyst).
+>     - Frame the problem in terms of the user's or business's need, not the technical implementation.
+> - **Value Proposition Generation:**
+>     - Based on the Problem Statement, define how this project provides a unique and effective solution.
+>     - Articulate this value in 1-2 sentences, focusing on the primary benefit or outcome for the user.
+>     - The value proposition must directly address the problem you defined.
 >
 > **✅ Validation Requirements:**
 >
-> - 🔍 Problem statement is specific and concrete (not abstract or vague)
-> - 📝 Language is accessible to non-technical stakeholders
-> - 💡 Value proposition clearly connects to the identified problem
-> - 🎯 Focus remains on WHAT problem is solved and WHY it matters
+> - The `Problem Statement` and `Value Proposition` MUST be two distinct, non-overlapping blocks of text.
+> - The `Value Proposition` must offer a clear solution or benefit directly related to the `Problem Statement`.
+> - The language used MUST avoid technical jargon and be accessible to a business audience.
+> - The content MUST be consistent with the `Product Summary` defined in Section 2.2.
 
 #### Output Format
 
-**Problem Statement:**
-(Clearly explain what specific problem or challenge this solves, using everyday language that anyone can understand)
+**Mandatory Structure - Present in this exact order:**
 
-**Value Proposition:**
-(Describe the unique benefit or outcome this solution provides, focusing on why it matters to users)
+1.  **Problem Statement:**
+
+    *(A clear, jargon-free explanation of the specific problem, pain point, or challenge this project is designed to solve.)*
+
+    *Example:*
+    > Finance and DevOps teams often struggle to attribute rising cloud costs to specific projects or teams. Without clear visibility into resource consumption, budgets are difficult to forecast and control, leading to significant and unexpected operational expenses.
+
+2.  **Value Proposition:**
+
+    *(A concise statement describing the unique benefit this project delivers to solve the stated problem.)*
+
+    *Example:*
+    > This tool provides engineers with an on-demand command-line interface to instantly generate detailed cost-attribution reports. It empowers teams to take ownership of their spending and provides leadership with the actionable data needed to manage cloud resources effectively.
 
 ---
 
