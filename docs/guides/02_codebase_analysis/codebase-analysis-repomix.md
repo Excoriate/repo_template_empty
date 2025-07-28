@@ -503,7 +503,6 @@ echo "📄 Overview document: codebase-awareness-overview.md"
 
 ### Related Guides
 
-- [Initial Context Engineering](../../templates/00_context_engineering/00-prp-initcontext-initial-codebase-awareness.md): Comprehensive context engineering framework
 - [Repository Template Setup](../01_setup/repository-initialization.md): Repository structure and organization patterns
 
 ### Official Documentation
@@ -519,6 +518,5 @@ echo "📄 Overview document: codebase-awareness-overview.md"
 ### Documentation References
 
 - [Repomix GitHub Repository](https://github.com/yamadashy/repomix): Source code, issues, and community discussions
-- [Context Engineering Best Practices](../../ai/04_ai_documentation/04.1_anthropic_prompt_engineering/): AI-assisted development workflow documentation
 
 </resources>

@@ -446,140 +446,6 @@ graph TD
 - Technology documentation verification through Context7/WebTool is required for all external dependencies
 - Current documentation ensures recommendations align with latest best practices and established project patterns
 
-### Codebase Structure Analysis
-
-> **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
->
-> **⚠️ Important**: When creating an actual PRP from this template, remove all notes, guidance sections, placeholders, and instructional content. This includes:
-> - All 🤖Agent Notes sections
-> - All 📝Template Note sections (if any remain)
-> - Example guidance and instructional text
-> - Template placeholders ({{PLACEHOLDER}} text)
-> - Any explanatory notes about template usage
-> - This warning itself
->
-> **Critical Requirement**: Your PRP must include comprehensive codebase structure analysis showing both current state and expected changes (if applicable). This visual documentation is essential for AI spatial understanding and prevents implementation errors.
->
-> **Action required**: Include detailed codebase structure analysis as a mandatory output section of your PRP implementation. This provides AI with essential spatial context about the codebase organization and planned changes.
->
-> **📋 Structure Documentation Requirements**:
-> - **Current Structure**: 
->   - Use `tree` command with specific depth and exclusion flags
->   - Recommended depth levels:
->     - Level 1-2: High-level project overview
->     - Level 3-4: Detailed component breakdown
->   - **Mandatory Exclusions**: Always ignore:
->     - `node_modules/`
->     - `.git/`
->     - `dist/`
->     - `build/`
->     - `*.log`
->     - `.cache/`
->     - `__pycache__/`
->   - **Tree Command Example**: 
->     ```bash
->     tree -L 3 -I 'node_modules|.git|dist|build'
->     ```
-> - **Expected Structure**: If changes are planned, show the expected structure with clear annotations for new/modified components
-> - **Key Area Annotations**: Mark important files and directories with explanatory arrows (e.g., `← Key: Authentication patterns`)
-> - **Change Indicators**: Use clear markers for new (← New), modified (← Modified), or removed components
-> - **Rationale Inclusion**: Provide explanation for structural changes and their relevance to the AI task
-// End of Selection
->
-> **✅ Completion Criteria**:
-> - **Current Structure Documentation**: Tree output included showing existing codebase organization with key areas highlighted
-> - **Change Visualization**: Expected structure (if applicable) clearly shows planned modifications with annotations
-> - **Spatial Context**: Structure provides clear spatial understanding of component relationships
-> - **Change Rationale**: Structural modifications include explanation of why changes are needed for the AI task
-> - **Implementation Guidance**: Structure analysis guides AI on where to focus attention and make changes
->
-> **🎯 Universal Elements (Required)**:
-> 1. **Tree Output Format**: Use standard tree command format or repomix ASCII directory structure
-> 2. **Key Area Highlighting**: Mark important files/directories with explanatory annotations
-> 3. **Change Annotations**: Clear indicators for new, modified, or removed components
-> 4. **Rationale Documentation**: Explanation of why structural changes support the AI task
-> 5. **Implementation Focus**: Structure guides AI attention to relevant areas
->
-> **💡 Template Structure**:
-> ```
-> ### Current Codebase Structure
-> [TREE_OUTPUT_WITH_KEY_ANNOTATIONS]
-> [HIGHLIGHT_AREAS_RELEVANT_TO_AI_TASK]
-> 
-> ### Expected Codebase Structure (If Applicable)
-> [TREE_OUTPUT_SHOWING_PLANNED_CHANGES]
-> [NEW_COMPONENTS] ← New: [RATIONALE]
-> [MODIFIED_COMPONENTS] ← Modified: [RATIONALE]
-> 
-> **Structural Change Rationale**: [EXPLANATION_OF_WHY_CHANGES_SUPPORT_AI_TASK]
-> ```
->
-> **Examples**:
-> **CLI Tool Structure Analysis Example**:
-> ```
-> ### Current Codebase Structure
-> aws-cli-tool/
-> ├── cmd/
-> │   ├── root.go
-> │   └── s3/
-> │       ├── upload.go             ← Key: S3 upload command implementation
-> │       └── download.go
-> ├── pkg/
-> │   ├── auth/
-> │   │   ├── aws-credentials.go    ← Key: AWS authentication patterns
-> │   │   └── iam-roles.go
-> │   └── commands/
-> │       └── s3/
-> │           └── upload.go         ← Key: S3 upload logic
-> ├── config/
-> │   ├── aws-regions.yml          ← Key: Region validation
-> │   └── defaults.yml
-> └── internal/
->     └── sdk/
->         └── client.go            ← Key: SDK client patterns
-> 
-> ### Expected Codebase Structure (If Applicable)
-> aws-cli-tool/
-> ├── cmd/
-> │   ├── root.go
-> │   ├── s3/
-> │   │   ├── upload.go
-> │   │   └── download.go
-> │   └── ec2/                     ← New: EC2 command support
-> │       ├── list.go              ← New: EC2 instance listing
-> │       └── start.go             ← New: EC2 instance management
-> ├── pkg/
-> │   ├── auth/
-> │   │   ├── aws-credentials.go
-> │   │   ├── iam-roles.go
-> │   │   └── mfa-support.go       ← New: MFA authentication
-> │   ├── commands/
-> │   │   ├── s3/
-> │   │   │   └── upload.go
-> │   │   └── ec2/                 ← New: EC2 command handlers
-> │   │       ├── list.go          ← New: Instance listing logic
-> │   │       └── management.go    ← New: Instance lifecycle
-> │   └── validation/              ← New: Input validation package
-> │       ├── regions.go           ← New: Region validation logic
-> │       └── credentials.go       ← New: Credential validation
-> ├── config/
-> │   ├── aws-regions.yml
-> │   ├── defaults.yml
-> │   └── ec2-instance-types.yml   ← New: EC2 type configurations
-> └── internal/
->     └── sdk/
->         ├── client.go
->         └── ec2-client.go        ← New: EC2-specific client
-> 
-> **Structural Change Rationale**: Adding EC2 support requires new command structure following existing S3 patterns, validation package for reusable validation logic, and EC2-specific configurations. This structure maintains consistency with existing patterns while enabling EC2 functionality.
-> ```
->
-> **🚫 Anti-Patterns to Avoid**:
-> - Omitting structure analysis entirely (e.g., skipping tree output documentation)
-> - Providing structure without key area annotations (e.g., plain tree output without explanatory arrows)
-> - Missing expected structure when changes are planned (e.g., describing changes without showing visual structure)
-> - Using vague change indicators (e.g., "some files will be added" instead of specific file paths with rationale)
-> - Including irrelevant structural details (e.g., showing entire codebase when only specific areas are relevant to AI task)
 
 ### Success Criteria
 
@@ -672,6 +538,80 @@ graph TD
 
 
 ---
+
+## Context Gathering
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
+>
+> **⚠️ Important**: When creating an actual PRP from this template, remove all notes, guidance sections, placeholders, and instructional content. This includes:
+> - All 🤖Agent Notes sections
+> - All 📝Template Note sections (if any remain)
+> - Example guidance and instructional text
+> - Template placeholders ({{PLACEHOLDER}} text)
+> - Any explanatory notes about template usage
+> - This warning itself
+>
+> **Repository Analysis Protocol**: All context engineering operations must begin with systematic repository analysis using established methodologies:
+>
+> 1. **Comprehensive Codebase Analysis**: Follow the [Codebase Analysis with Repomix Guide](../../guides/02_codebase_analysis/codebase-analysis-repomix.md) for complete repository analysis including:
+>    - Tool validation and capabilities discovery
+>    - Comprehensive analysis execution with optimal configuration
+>    - Complete output processing and content analysis
+>    - Security findings and compliance verification
+>
+> 2. **Directory Structure Analysis**: Use the [Codebase Structure Analysis with Tree Command Guide](../../guides/02_codebase_analysis/codebase-analysis-tree.md) for:
+>    - Visual directory hierarchy mapping
+>    - Project organization pattern identification  
+>    - Key area highlighting and structural documentation
+>    - Output capture for integration into workflows
+>
+> 3. **Anti-Hallucination Protocol**:
+>    - Base all technical claims on concrete file:line references from analysis output
+>    - When information is insufficient: "I don't have enough information to confidently assess this. Additional [specific data type] would be required for accurate analysis."
+>    - NEVER supplement analysis with external knowledge unless explicitly requested
+>
+> **Critical Enforcement**: Repository analysis using both repomix and tree methodologies is mandatory before proceeding with context engineering tasks. All subsequent analysis must reference and build upon these findings.
+>
+> **Action required**: As part of implementing your PRP, this section must output a comprehensive list of required context sources needed to fulfill the specific task at hand. Each context source must include detailed rationale explaining why it's needed.
+>
+> **✅ Completion Criteria**:
+>
+> - **Context Source Identification**: Complete list of all required context sources (codebase files, external documents, configurations, etc.)
+> - **Rationale Documentation**: Clear explanation for why each context source is needed for the specific PRP task
+> - **Priority Classification**: Context sources organized by importance and dependency relationships
+> - **Access Requirements**: Specification of how to obtain or access each required context source
+> - **Integration Planning**: How context sources will be combined and synthesized for task completion
+
+**Template Structure for Context Requirements**:
+
+```
+### Required Context Sources
+
+#### Codebase Context (Highest Priority)
+- **[FILE_PATH/FUNCTION]**: [WHY_NEEDED_FOR_TASK] - [HOW_IT_IMPACTS_IMPLEMENTATION]
+- **[CONFIG_FILE]**: [CONFIGURATION_RELEVANCE] - [DEPENDENCY_RELATIONSHIP]
+
+#### External Documentation Context
+- **[API_DOCUMENTATION]**: [SPECIFIC_KNOWLEDGE_NEEDED] - [INTEGRATION_REQUIREMENTS]
+- **[FRAMEWORK_DOCS]**: [TECHNICAL_PATTERNS_REQUIRED] - [IMPLEMENTATION_GUIDANCE]
+
+#### System Context
+- **[DEPLOYMENT_CONFIG]**: [OPERATIONAL_CONSTRAINTS] - [ENVIRONMENT_CONSIDERATIONS]
+- **[DEPENDENCY_MANIFEST]**: [VERSION_COMPATIBILITY] - [INTEGRATION_LIMITATIONS]
+
+#### Historical/Evolution Context
+- **[GIT_HISTORY/CHANGELOG]**: [CHANGE_PATTERNS] - [ARCHITECTURAL_DECISIONS]
+- **[PREVIOUS_IMPLEMENTATIONS]**: [LESSONS_LEARNED] - [COMPATIBILITY_REQUIREMENTS]
+```
+
+**🚫 Anti-Patterns to Avoid**:
+- Generic context lists without specific rationale
+- Missing priority classification or dependency relationships  
+- Vague access requirements without specific paths or sources
+- Context sources that don't directly support the specific PRP task objectives
+
+---
+
 <role>
 
 ## Role
@@ -1330,200 +1270,259 @@ You are an expert Software Development Engineer specializing in reverse engineer
 
 ---
 
+## Step-by-Step PRP Implementation
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
+>
+> **Context Foundation**: Before proceeding with these steps, ensure you have completed the **Mandatory Context Sources** section above. The repository analysis (repomix and tree) provides the essential context specific to your PRP's declared purpose. These steps build upon that foundational understanding.
+>
+> **Action required**: Replace the generic steps below with specific steps tailored to your PRP's domain and objectives. Each step should be actionable, measurable, and include verification methods.
+>
+> **✅ Completion Criteria**:
+>
+> - **Step Customization**: All generic steps replaced with domain-specific actions and processes
+> - **Sequential Logic**: Steps follow logical progression from analysis to implementation
+> - **Evidence Collection**: Each step produces verifiable outputs and documentation
+> - **Quality Validation**: Each step includes verification and troubleshooting guidance
+> - **Domain Integration**: Steps align with the specific PRP purpose and technical requirements
+
+### Step 1: [Step Title]
+
+<step>
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: Replace this step with the actual first step of your PRP implementation. Each step should be specific, actionable, and include verification methods. For PRP implementations, the first step typically involves repository analysis using the established guides.
+
+**Action**: [Describe exactly what should be done in this step]
+
+**Process**:
+
+1. **[Sub-action 1]**: [Specific process or command to execute]
+2. **[Sub-action 2]**: [Additional process or analysis required]
+3. **[Sub-action 3]**: [Synthesis or integration step]
+
+**Expected Result**: [Describe what should be achieved when the step is completed successfully]
+
+**Verification**: [Explain how to confirm the step was completed correctly]
+
+</step>
+
+**Troubleshooting**: [List common issues and their solutions for this step]
+
+### Step 2: [Step Title]
+
+<step>
+
+**Action**: [Describe exactly what should be done in this step]
+
+**Process**:
+
+1. **[Sub-action 1]**: [Specific process or analysis to execute]
+2. **[Sub-action 2]**: [Additional requirements or integration steps]
+3. **[Sub-action 3]**: [Validation or cross-reference activities]
+
+**Expected Result**: [Describe what should be achieved when the step is completed successfully]
+
+**Verification**: [Explain how to confirm the step was completed correctly]
+
+</step>
+
+**Troubleshooting**: [List common issues and their solutions for this step]
+
+### Step 3: [Step Title]
+
+<step>
+
+**Action**: [Describe exactly what should be done in this step]
+
+**Process**:
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: This step should be customized based on your specific PRP purpose and domain requirements. Consider what specialized analysis or techniques are needed for your particular use case.
+
+1. **[Domain-Specific Action]**: [Process tailored to your PRP's technical domain]
+2. **[Analysis Method]**: [Specialized techniques relevant to your objectives]
+3. **[Integration Step]**: [How findings connect to overall PRP goals]
+
+**Expected Result**: [Domain-specific outcomes and deliverables]
+
+**Verification**: [How to validate domain-specific requirements are met]
+
+</step>
+
+**Troubleshooting**: [Domain-specific issues and resolution strategies]
+
+### Step 4: [Step Title]
+
+<step>
+
+**Action**: [Describe exactly what should be done in this step]
+
+**Process**:
+
+1. **[Synthesis Action]**: [How to organize and structure findings]
+2. **[Documentation Step]**: [Evidence and reference requirements]
+3. **[Quality Validation]**: [Completeness and consistency checks]
+
+**Expected Result**: [Final deliverable or framework output]
+
+**Verification**: [How to confirm the complete PRP implementation meets objectives]
+
+</step>
+
+**Troubleshooting**: [Final validation issues and resolution approaches]
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: Continue adding steps as needed for your specific PRP implementation. Most PRPs will require 3-6 steps depending on complexity. Remove this note when creating actual PRPs.
+
+---
+
+## Outputs
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
+>
+> **Action required**: Define the specific outputs and deliverables that your PRP will produce. This section must be customized based on your PRP's domain and objectives. Consider what artifacts, files, documentation, or other deliverables are needed to fulfill the task requirements.
+>
+> **✅ Completion Criteria**:
+>
+> - **Output Definition**: Clear specification of all deliverables with quality standards and acceptance criteria
+> - **Format Specification**: Detailed format requirements for each output type (files, documentation, configurations, etc.)
+> - **Delivery Requirements**: Location, naming conventions, and integration requirements for outputs
+> - **Validation Standards**: Success criteria and verification methods for each deliverable
+
+### Expected Deliverables
+
+> **📝Template Note**: Replace the placeholder content below with specific outputs tailored to your PRP's domain. Examples might include:
+> - **Files**: Source code, configuration files, documentation, scripts
+> - **Artifacts**: Build outputs, deployment packages, compiled binaries
+> - **Documentation**: Technical specifications, user guides, API documentation
+> - **Reports**: Analysis results, recommendations, compliance findings
+> - **Configurations**: Environment settings, deployment configurations, security policies
+
+**Primary Outputs**:
+- [Output Type 1]: [Description of what will be delivered, format requirements, and quality standards]
+- [Output Type 2]: [Description of what will be delivered, format requirements, and quality standards]
+- [Output Type 3]: [Description of what will be delivered, format requirements, and quality standards]
+
+**Secondary Outputs** (if applicable):
+- [Supporting Output 1]: [Description and delivery requirements]
+- [Supporting Output 2]: [Description and delivery requirements]
+
+---
+
 ## Rules
 
 ### Universal Rules (Apply to All PRPs)
 
-#### Anti-Hallucination Protocol
+### Anti-Hallucination Protocol
 
-All PRP implementations must implement rigorous verification and grounding measures:
+**Evidence Requirements**:
+- Every technical assertion must include specific file:line references with direct code excerpts
+- Use Context7/WebTool MCP tools to verify technology claims against current, authoritative sources
+- Cross-reference findings across codebase evidence, AI agent configurations, and current documentation
 
-##### Evidence Requirements
-
-- **Concrete Citations**: Every technical assertion must include specific file:line references with direct code excerpts
-- **Current Documentation Grounding**: Use Context7/WebTool MCP tools to verify all technology claims against authoritative, up-to-date sources
-- **Multi-Source Validation**: Cross-reference findings across codebase evidence, AI agent configurations, and current documentation
-
-##### Uncertainty Handling Standards
-
-- **Explicit Acknowledgment**: When information is insufficient, state clearly: "I don't have enough information to confidently assess [specific aspect]. Additional [specific data type] would be required for accurate analysis."
-- **Confidence Calibration**: Use specific language for different certainty levels:
+**Uncertainty Handling**:
+- When information is insufficient: "I don't have enough information to confidently assess [specific aspect]. Additional [specific data type] would be required for accurate analysis."
+- Use calibrated confidence language:
   - High confidence: "Based on analysis of [specific evidence]..."
-  - Medium confidence: "The available evidence suggests [conclusion], though [specific limitation]..."
-  - Low confidence: "Limited evidence indicates [tentative conclusion]; verification through [specific method] would be needed"
+  - Medium confidence: "Available evidence suggests [conclusion], though [specific limitation]..."
+  - Low confidence: "Limited evidence indicates [tentative conclusion]; verification through [specific method] needed"
 
-##### Source Verification Hierarchy
+**Source Verification Hierarchy**:
+1. Existing codebase with file:line evidence
+2. User examples, AI agent context, current technology documentation (Context7/WebTool)
+3. Repository documentation, configuration files, historical context
 
-1. **Primary Sources**: Existing codebase with file:line evidence
-2. **High Priority Sources**: User examples, AI agent context, current technology documentation (Context7/WebTool)
-3. **Secondary Sources**: Repository documentation, configuration files, historical context
-
-##### Knowledge Boundaries
-
-- **Scope Limitations**: Explicitly acknowledge when questions fall outside expertise areas
-- **Referral Protocols**: Direct users to appropriate resources or specialists when boundaries are reached
-- **No Speculation**: Never supplement analysis with unverified external knowledge or assumptions
-
-#### Response Structure Requirements
-
-All PRP responses must follow structured, hierarchical organization following Anthropic best practices:
-
-##### XML Organization Framework
-
-- **Semantic Structure**: Use clear XML tags for logical organization (`<analysis>`, `<findings>`, `<recommendations>`, `<implementation>`, `<verification>`)
-- **Hierarchical Content**: Nest related information within appropriate parent tags for clarity
-- **Consistent Naming**: Apply uniform tag conventions across all responses for predictability
-
-##### Citation and Evidence Standards  
-
-- **File References**: Include complete citations in format `[filename:line-range]` with direct code excerpts
-- **Multi-Source Integration**: Combine evidence from codebase, AI agent configs, and current documentation
-- **Source Attribution**: Clearly identify whether information comes from static analysis, dynamic verification, or external documentation
-
-##### Logical Flow Requirements
-
-- **Sequential Structure**: Follow evidence gathering → analysis → recommendations → implementation → validation sequence
-- **Clear Transitions**: Use explicit connectors between sections to maintain logical coherence
-- **Progressive Detail**: Start with high-level findings, then provide implementation-specific details
-
-##### Boundary Communication
-
-- **Explicit Limitations**: State capability boundaries upfront when relevant to the query
-- **Referral Guidance**: Provide specific next steps when expertise limits are reached
-- **Confidence Indicators**: Include confidence levels for different aspects of the analysis
-
-#### Quality Assurance Standards
-
-- **Technical Precision**: Use specific version numbers, configuration parameters, and measurable success criteria
-- **Implementation Specificity**: Provide actionable guidance with concrete examples and execution steps
-- **Cross-Reference Validation**: Ensure all recommendations align with existing codebase patterns and constraints
-- **Iterative Improvement**: Build upon previous analysis with explicit connections and progressive refinement
-
-### Context Gathering Rules
-
-#### Repository Analysis Protocol
-
-All context engineering operations must begin with systematic repository analysis using the following sequence:
-
-1. **Directory Structure Discovery**
-   - Execute `tree docs/` to inspect documentation structure and context availability
-   - Execute `tree -a -I '.git|node_modules|__pycache__|*.pyc'` for comprehensive project structure
-
-2. **Mandatory Repomix Codebase Analysis**
-   - **Tool Validation**: Execute `command -v repomix` or `which repomix` to verify installation
-     - **Fallback Check**: Verify `~/.local/bin/repomix` or `./node_modules/.bin/repomix` if not in PATH
-     - **Critical Requirement**: Process cannot proceed without functional repomix installation
-
-   - **Capabilities Discovery**: Execute `repomix --help` to understand available options and output formats
-
-   - **Comprehensive Analysis**: Execute repomix with optimal configuration based on repository context:
-     - **Standard Command**: `repomix --style markdown --compress --remove-empty-lines -o analysis.md`
-     - **Large Repositories**: `repomix --no-files --style markdown --include-empty-directories` for structure-only analysis
-     - **Custom Filtering**: Use `--ignore "*.log,*.tmp,node_modules"` to exclude noise files as needed
-     - **Configuration Override**: Use `-o filename.md` to override config settings when needed
-
-   - **Complete Analysis Requirement**: Read the entire generated repomix output file to extract:
-     - File summary sections and processing metadata
-     - Directory structure with full ASCII tree visualization  
-     - Complete file classification and technology stack identification
-     - Configuration patterns and development workflow analysis
-     - Security findings and compliance notes
-
-3. **Anti-Hallucination Protocol**
-   - Base all technical claims on concrete file:line references from repomix output
-   - When information is insufficient: "I don't have enough information to confidently assess this. Additional [specific data type] would be required for accurate analysis."
-   - NEVER supplement analysis with external knowledge unless explicitly requested
-
-**Critical Enforcement**: Failure to complete repomix analysis before proceeding with context engineering tasks is a blocking condition. All subsequent analysis must reference and build upon the repomix findings.
-
----
-
-## Output
+**Knowledge Boundaries**:
+- Explicitly acknowledge when questions fall outside expertise areas
+- Direct users to appropriate resources when boundaries are reached
+- Never supplement analysis with unverified external knowledge or assumptions
 
 > **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
 >
-> **Action required**: Define the expected output format and deliverables for your specific PRP domain. This section establishes clear expectations for what the AI assistant should produce.
->
-> - Specify required output structure and formatting standards
-> - Define deliverable types and their acceptance criteria
-> - Establish quality standards and validation methods
+> **Action required**: Add specific rules tailored to your PRP's purpose and domain. These rules complement the universal rules above and should address domain-specific requirements, constraints, and quality standards.
 >
 > **✅ Completion Criteria**:
 >
-> - **Output Structure**: Clear format templates with required sections and organization
-> - **Deliverable Types**: Specific artifacts the assistant will produce (analysis, recommendations, implementations)
-> - **Quality Standards**: Measurable criteria for output acceptance and validation
-> - **Format Requirements**: Technical specifications for citations, evidence, and presentation
-> - **Success Metrics**: Quantifiable measures of output quality and completeness
+> - **Domain Alignment**: Rules specifically address the technical domain and use case of your PRP
+> - **Quality Standards**: Measurable criteria for success in your specific domain
+> - **Constraint Documentation**: Technical, business, or environmental limitations specific to your PRP
+> - **Integration Requirements**: How your PRP integrates with existing systems, workflows, or standards
+> - **Success Metrics**: Quantifiable measures of PRP effectiveness in your domain
 >
-> **🎯 Universal Elements (Required)**:
+> **🎯 Universal Elements for Specific Rules**:
 >
-> 1. **Structured Format**: Consistent section organization using XML tags or clear hierarchical formatting
-> 2. **Evidence Requirements**: Mandatory citations and proof standards for all technical claims
-> 3. **Deliverable Specifications**: Clear definition of expected artifacts and their formats
-> 4. **Quality Thresholds**: Minimum standards for technical precision and completeness
-> 5. **Validation Methods**: How outputs will be verified and accepted
+> 1. **Domain-Specific Evidence Standards**: What constitutes valid proof in your technical domain
+> 2. **Technology Stack Constraints**: Specific limitations or requirements for your target technologies
+> 3. **Integration Protocols**: How your PRP connects with existing systems, APIs, or workflows
+> 4. **Quality Thresholds**: Minimum acceptable standards for deliverables in your domain
+> 5. **Compliance Requirements**: Industry, security, or regulatory standards that apply to your PRP
 >
-> **💡 Template Structure**:
+> **💡 Template Structure for Specific Rules**:
 >
 > ```
-> **Primary Deliverables**:
-> - [DELIVERABLE_TYPE]: [FORMAT_SPECIFICATION] with [QUALITY_STANDARD]
-> - [ANALYSIS_TYPE]: [EVIDENCE_REQUIREMENT] with [VALIDATION_METHOD]
+> ### Specific Rules (Domain: [YOUR_DOMAIN])
 > 
-> **Output Format Standards**:
-> - Structure: [XML_TAGS/HIERARCHICAL_FORMAT] 
-> - Citations: [FILE_LINE_REFERENCE_FORMAT]
-> - Evidence: [PROOF_REQUIREMENT_LEVEL]
+> #### [DOMAIN] Evidence Standards
+> - [SPECIFIC_EVIDENCE_REQUIREMENTS_FOR_YOUR_DOMAIN]
+> - [VALIDATION_METHODS_SPECIFIC_TO_YOUR_TECHNOLOGY_STACK]
 > 
-> **Quality Validation**:
-> - [SUCCESS_CRITERIA] with [MEASUREMENT_METHOD]
-> - [COMPLETENESS_STANDARD] verified through [VALIDATION_PROCESS]
-> ```
->
-> **📚 Examples**:
->
-> **DevOps Infrastructure Analysis Example**:
->
-> ```
-> **Primary Deliverables**:
-> - Infrastructure Assessment: Comprehensive analysis with file:line references to all configuration files
-> - Optimization Recommendations: Specific improvements with quantifiable performance targets
-> - Implementation Guide: Step-by-step instructions with validation commands
+> #### [DOMAIN] Quality Requirements
+> - [MEASURABLE_SUCCESS_CRITERIA_FOR_YOUR_DOMAIN]
+> - [PERFORMANCE_BENCHMARKS_OR_COMPLIANCE_STANDARDS]
 > 
-> **Output Format Standards**:
-> - Structure: XML tags (<analysis>, <recommendations>, <implementation>)
-> - Citations: [filename:line-range] format with direct code excerpts
-> - Evidence: Configuration files, metrics, and command outputs required
+> #### [DOMAIN] Integration Protocols
+> - [HOW_YOUR_PRP_CONNECTS_WITH_EXISTING_SYSTEMS]
+> - [COMPATIBILITY_REQUIREMENTS_AND_CONSTRAINTS]
 > ```
 >
-> **🚫 Anti-Patterns to Avoid**:
+> **📚 Examples of Domain-Specific Rules**:
 >
-> - Vague output descriptions without specific format requirements
-> - Missing quality standards or validation criteria
-> - Deliverables that cannot be verified or measured
-> - Generic output requirements not tailored to domain needs
-
-### Output Format Requirements
-
-**Primary Deliverables**:
-
-- **Technical Analysis**: Comprehensive codebase analysis with systematic evidence citations and concrete file:line references
-- **Context Framework**: Structured information architecture optimized for AI-assisted development workflows
-- **Implementation Guidance**: Actionable recommendations with specific steps, validation criteria, and success metrics
-
-**Response Structure Standards**:
-
-- **Format Template**: Use structured XML tags (`<analysis>`, `<findings>`, `<recommendations>`, `<implementation>`) for clear organization
-- **Evidence Citation**: Include complete file:line references in format `[filename:line-range]` with direct code quotes
-- **Technical Precision**: Provide implementation-level detail with concrete examples and measurable outcomes
-
-**Quality Validation Criteria**:
-
-- All technical claims must include specific file:line references with supporting evidence
-- Recommendations must be compatible with existing technology stack and architectural constraints
-- Implementation guidance must include clear success criteria and verification methods
-- Analysis must demonstrate systematic tool usage (repomix, static analysis) with documented completeness
+> **Frontend Development PRP Example**:
+>
+> ```
+> ### Specific Rules (Domain: Frontend Development)
+> 
+> #### Frontend Evidence Standards
+> - Component analysis must include React DevTools profiler data and performance metrics
+> - UI/UX recommendations must reference actual user interaction patterns and accessibility compliance
+> - State management changes must include before/after bundle size analysis
+> 
+> #### Frontend Quality Requirements
+> - Performance optimizations must demonstrate measurable Core Web Vitals improvements
+> - Component designs must pass WCAG 2.1 AA accessibility validation
+> - Code changes must maintain or improve existing test coverage percentages
+> 
+> #### Frontend Integration Protocols
+> - All recommendations must be compatible with existing build pipeline and deployment process
+> - Component changes must maintain backward compatibility with existing API contracts
+> - Styling modifications must align with established design system tokens and patterns
+> ```
+>
+> **Infrastructure/DevOps PRP Example**:
+>
+> ```
+> ### Specific Rules (Domain: Infrastructure/DevOps)
+> 
+> #### Infrastructure Evidence Standards
+> - All configuration recommendations must include infrastructure-as-code examples (Terraform, CloudFormation)
+> - Performance claims must be supported by actual metrics from monitoring systems (Prometheus, CloudWatch)
+> - Security recommendations must reference specific compliance frameworks (SOC2, ISO27001, PCI-DSS)
+> 
+> #### Infrastructure Quality Requirements
+> - Deployment strategies must achieve 99.9% uptime targets with automated rollback capabilities
+> - Security configurations must pass automated compliance scanning with zero critical findings
+> - Resource optimization must demonstrate measurable cost reduction or performance improvement
+> 
+> #### Infrastructure Integration Protocols
+> - All changes must be compatible with existing CI/CD pipelines and deployment automation
+> - Infrastructure modifications must maintain disaster recovery and backup capabilities
+> - Monitoring and alerting must integrate with existing observability stack and on-call procedures
+> ```
+>
+> **🚫 Anti-Patterns to Avoid in Specific Rules**:
+>
+> - Generic rules that could apply to any domain (these belong in Universal Rules)
+> - Rules that contradict or override the Universal Rules (these should complement, not replace)
+> - Vague quality standards without measurable criteria
+> - Missing integration considerations for existing systems and workflows
+> - Rules that exceed the defined scope and capabilities of your PRP
 
 ---
-
