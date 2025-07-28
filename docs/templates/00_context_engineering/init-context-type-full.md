@@ -48,34 +48,35 @@ Unlike prompt engineering's focus on individual interactions, context engineerin
     - [Workflow Rationale](#workflow-rationale)
   - [Context Engineering Initial Context](#context-engineering-initial-context)
     - [1. Initial Codebase Awareness](#1-initial-codebase-awareness)
-      - [Output Format](#output-format)
+      - [Outcome of This Step](#outcome-of-this-step)
+      - [Output(s)](#outputs)
     - [2. Product, Application, or Tool Description](#2-product-application-or-tool-description)
     - [2.1 GitHub Repository](#21-github-repository)
-      - [Output Format](#output-format-1)
+      - [Output Format](#output-format)
     - [2.2 Product Identity \& Definition](#22-product-identity--definition)
-      - [Output Format](#output-format-2)
+      - [Output Format](#output-format-1)
     - [2.3 Problem \& Value Proposition](#23-problem--value-proposition)
-      - [Output Format](#output-format-3)
+      - [Output Format](#output-format-2)
     - [3. Features](#3-features)
-      - [Output Format](#output-format-4)
+      - [Output Format](#output-format-3)
     - [4. Architecture](#4-architecture)
-      - [Output Format](#output-format-5)
+      - [Output Format](#output-format-4)
     - [5. Software Architecture](#5-software-architecture)
-      - [Output Format](#output-format-6)
+      - [Output Format](#output-format-5)
     - [6. User \& Developer Experience (UX/DX)](#6-user--developer-experience-uxdx)
-      - [Output Format](#output-format-7)
+      - [Output Format](#output-format-6)
     - [7. Tech Stack](#7-tech-stack)
-      - [Output Format](#output-format-8)
+      - [Output Format](#output-format-7)
     - [8. Third Party Integrations](#8-third-party-integrations)
-      - [Output Format](#output-format-9)
+      - [Output Format](#output-format-8)
     - [9. Local Development Setup](#9-local-development-setup)
-      - [Output Format](#output-format-10)
+      - [Output Format](#output-format-9)
     - [10. Deployment](#10-deployment)
-      - [Output Format](#output-format-11)
+      - [Output Format](#output-format-10)
     - [11. AI Assistant Guidance](#11-ai-assistant-guidance)
-      - [Output Format](#output-format-12)
+      - [Output Format](#output-format-11)
     - [12. Reference \& Documentation](#12-reference--documentation)
-      - [Output Format](#output-format-13)
+      - [Output Format](#output-format-12)
 
 ---
 
@@ -228,53 +229,188 @@ This phased approach ensures a systematic and rigorous process. By separating in
 > 2. 🔍 DISCOVER → Run `repomix --help` to understand tool capabilities.
 > 3. 📊 ANALYZE → Execute `repomix` to get the complete codebase structure.
 > 4. 🌳 EXTRACT & CATALOG → Generate ASCII tree and create a table of ALL initial files.
-> 5. 📝 SYNTHESIZE & PRESENT → Produce a comprehensive summary based on the analysis.
+> 5. 📖 READ & SUMMARIZE → Read the generated repomix file entirely and create comprehensive overview.
+> 6. 📝 CREATE OVERVIEW DOC → Generate 00-codebase-awareness-overview.md with complete repo summary.
+> 7. ✅ VALIDATE & PRESENT → Ensure both artifacts are complete and ready for downstream use.
 > ```
 >
 > **🔧 Detailed Steps:**
 >
-> - **Tool Validation:** Execute `command -v repomix`. If the tool is not found, report an error and halt. This step is mandatory.
-> - **Tool Discovery:** Execute `repomix --help` to understand available options and the expected output format.
-> - **Codebase Analysis:** Run `repomix` on the current directory to perform a comprehensive structural analysis.
+> - **Tool Validation:** Execute `command -v repomix` or `which repomix`. If the tool is not found, report an error and halt. This step is mandatory.
+>     - **Fallback Check**: If `repomix` is not in PATH, check common installation locations: `~/.local/bin/repomix`, `./node_modules/.bin/repomix`
+>     - **Installation Verification**: Run `repomix --version` to confirm the tool is executable
+> - **Tool Discovery:** Execute `repomix --help` to understand available options and output formats.
+> - **Comprehensive Codebase Analysis:** Execute `repomix` with appropriate flags based on the repository context:
+>     - **Primary Command (Recommended)**: `repomix --style markdown --compress --remove-empty-lines -o docs/00_context_engineering/00-repomix-analysis.md`
+>         - This provides comprehensive markdown output with clean formatting and compression
+>         - Includes full file contents, directory structure, and metadata
+>         - Uses Git change count sorting by default (most changed files at bottom)
+>     - **For Large Repositories**: `repomix --no-files --style markdown --include-empty-directories -o docs/00_context_engineering/00-repomix-structure.md`
+>         - This generates structure-only output (no file contents) for faster analysis when full content isn't needed
+>     - **For Deep Analysis**: `repomix --style markdown -o docs/00_context_engineering/00-repomix-full.md`
+>         - Uncompressed output with full file contents for detailed examination
+>     - **Custom Filtering**: Use `--ignore "*.log,*.tmp,node_modules"` to exclude noise files if needed
+>     - **Config Override Note**: If repository has `repomix.config.json`, use `-o filename.md` to override config settings
+>     - **Completeness Verification**: Ensure the command captures all key repository aspects (directory structure, file metadata, content processing, exclusion patterns)
+> - **Output Processing & Extraction:**
+>     - **Directory Tree Extraction**: From repomix output, locate the "Directory Structure" section and extract the ASCII tree
+>     - **File Inventory Creation**: Parse the file list from repomix output, noting file types and sizes
+>     - **Metadata Analysis**: Extract repository metadata (total files, total size, ignored patterns) from repomix summary
 > - **Initial State Cataloging:**
->     - From the `repomix` output, generate a complete ASCII directory tree.
->     - Create a table listing **all** discovered files. For new repositories, every file is relevant.
->     - For each file, classify its type (e.g., `dotfile`, `configuration`, `task-runner`, `documentation`) and infer its purpose based on conventions (`.gitignore` ignores files, `Justfile` defines tasks, etc.).
-> - **Synthesize Analysis:** Write a brief narrative summary that interprets the structured findings (the tree and table). This summary should state the inferred project status (e.g., "newly initialized," "template-based") and highlight the purpose of the existing tooling.
-> - 🚫 **Constraint:** Do not perform a deep analysis of file *contents*. The focus is on structure, configuration, and tooling at this stage.
+>     - Create a complete table listing **all** discovered files with classifications:
+>         - `dotfile` (.gitignore, .env.example, .github/*, etc.)
+>         - `configuration` (package.json, Cargo.toml, pyproject.toml, etc.)
+>         - `task-runner` (Makefile, Justfile, package.json scripts, etc.)
+>         - `documentation` (README.md, docs/*, CHANGELOG.md, etc.)
+>         - `template` (.template files, example configs, scaffolding, etc.)
+>     - **Purpose Inference**: For each file, infer purpose based on standard conventions and file patterns
+> - **Error Handling & Validation:**
+>     - **Verify Complete Output**: Ensure repomix completed successfully (no truncated output or error messages)
+>     - **Validate Structure**: Confirm the directory tree matches expected patterns for the project type
+>     - **Handle Large Repositories**: If output is too large, re-run with `--compress` or `--no-files` flags
+> - **Synthesize Analysis:** Write a brief narrative summary interpreting the structured findings:
+>     - State inferred project status (e.g., "newly initialized," "template-based," "active development")
+>     - Highlight existing tooling and configuration patterns
+>     - Note any unusual or non-standard repository structure
+> - **Complete Repomix File Reading:** Read the entire generated repomix file (docs/00_context_engineering/00-repomix-analysis.md) from start to finish:
+>     - **File Summary Section**: Extract purpose, format description, and usage guidelines from the header
+>     - **Processing Notes Analysis**: Parse all metadata including exclusion patterns, file counts, compression settings, and sorting methods
+>     - **User Header Extraction**: Capture any user-provided repository description or context
+>     - **Directory Structure Analysis**: Parse the complete ASCII directory tree structure
+>     - **File Classification**: Categorize all files by type, purpose, and development role
+>     - **Configuration Pattern Analysis**: Examine dotfiles, build configs, package manifests, and CI/CD setups
+>     - **Technology Stack Identification**: Identify languages, frameworks, and tools from file extensions, imports, and dependencies
+>     - **Development Workflow Recognition**: Parse build tools, task runners, testing frameworks, and automation patterns
+>     - **Security and Compliance Notes**: Identify any security-related files, configurations, or findings
+>     - **Content Processing Details**: Understand what content was compressed, excluded, or processed differently
+> - **Comprehensive Overview Generation:** Create a complete but lightweight repository overview:
+>     - **Repository Classification**: Determine project type (web app, CLI, library, template, etc.)
+>     - **Technology Stack Summary**: List primary languages, frameworks, and development tools
+>     - **Project Structure Assessment**: Analyze organization patterns and architectural approach
+>     - **Configuration Analysis**: Summarize key configuration files and their purposes
+>     - **Development Environment**: Document build tools, task runners, and development workflows
+>     - **Documentation Status**: Assess existing documentation and knowledge management
+> - **Overview Document Creation:** Generate `docs/00_context_engineering/01-codebase-awareness-overview.md` with:
+>     - **Source Reference**: Relative path to the repomix file (`00-repomix-analysis.md`)
+>     - **Repomix Metadata Analysis**: Extract and summarize all key metadata from the repomix file header
+>     - **Processing Statistics**: Include file counts, exclusion patterns, and processing configuration
+>     - **Executive Summary**: 2-3 paragraph high-level repository overview
+>     - **Comprehensive Analysis**: Organized sections covering all repository aspects discovered in repomix
+>     - **Security and Compliance**: Any security findings or compliance notes from the repomix analysis
+>     - **Quick Reference**: Key files, commands, and entry points for immediate use
+> - 🚫 **Constraint:** Focus on structure, configuration, and tooling patterns. Do not perform deep analysis of file contents at this stage.
 >
 > **✅ Validation Requirements:**
 >
 > - `repomix` command is successfully validated before proceeding.
-> - ASCII tree accurately represents the repository's initial file structure.
-> - The "Initial Files" table is exhaustive for the new repository state.
-> - The final analysis is a direct synthesis of the tree and table, not new information.
+> - Repomix file (00-repomix-analysis.md) is generated successfully in the docs/00_context_engineering/ directory.
+> - Complete repomix file is read and analyzed entirely, not just parsed sections.
+> - Overview document (01-codebase-awareness-overview.md) is created with comprehensive repository summary.
+> - Overview document includes proper relative path reference to the repomix file (00-repomix-analysis.md).
+> - Both artifacts are ready for downstream consumption by subsequent context engineering steps.
 
-#### Output Format
+#### Outcome of This Step
 
-**Repomix Tool Capabilities:**
-```bash
-# Output from repomix --help command
-(Tool capabilities, options, and usage information)
+This step establishes comprehensive awareness of the repository's current state by generating both a detailed technical analysis and a curated overview document. The process creates foundational knowledge artifacts that serve as the primary reference for all subsequent context engineering steps.
+
+**Primary Achievement**: Complete repository understanding through systematic analysis of structure, configuration, tooling, and development patterns, distilled into actionable documentation.
+
+#### Output(s)
+
+All the outputs from this step will be stored in the `docs/00_context_engineering/` directory.
+
+**`repomix-analysis.md`**
+
+This is the standard repomix output file, obtained from the repomix commands inidicated in the `🤖 Instructions for AI Assistant` block.
+
+- **Path**: `docs/00_context_engineering/repomix-analysis.md`
+- **Purpose**: Complete technical analysis of the entire codebase
+- **Content**: Full directory structure, file metadata, content analysis, and repository statistics
+- **Usage**: Detailed reference for comprehensive codebase queries and analysis
+
+**`codebase-awareness-overview.md`**
+- **Path**: `docs/00_context_engineering/codebase-awareness-overview.md`
+- **Purpose**: Lightweight but complete repository overview for immediate consumption
+- **Content**: Executive summary, technology stack, project classification, key configurations, and development workflow
+- **Structure**:
+
+  ```markdown
+  # Repository Overview: {{repository_name}}
+  
+  **Source Reference**: `00-repomix-analysis.md` (for detailed queries)
+  
+  ## Repomix Analysis Metadata
+  - **Analysis Date**: [Date of repomix generation]
+  - **Total Files Processed**: [X files]
+  - **Content Processing**: [Compressed/Full/Structure-only]
+  - **Exclusion Patterns**: [Summary of ignored file patterns]
+  - **Sorting Method**: [Git changes/Alphabetical/Custom]
+  - **Security Findings**: [Any security notes from analysis]
+  
+  ## Executive Summary
+  (2-3 paragraph high-level overview incorporating repomix findings)
+  
+  ## Repository Classification
+  - **Project Type**: [Web App/CLI Tool/Library/Template/etc.]
+  - **Development Status**: [New/Active/Template/Archived]
+  - **Primary Purpose**: [Brief description from user header + analysis]
+  - **Repository Pattern**: [Template/Monorepo/Standard/Custom]
+  
+  ## Technology Stack Analysis
+  - **Primary Language(s)**: [Languages identified from file extensions]
+  - **Frameworks**: [Detected frameworks from configs and imports]
+  - **Build Tools**: [Make/npm/cargo/justfile/etc. from configs]
+  - **Development Tools**: [Linters, formatters, pre-commit, etc.]
+  - **Package Managers**: [npm/yarn/pip/cargo from lock files]
+  
+  ## Project Structure Assessment
+  - **Organization Pattern**: [Monorepo/Standard/Domain-driven from directory tree]
+  - **Key Directories**: [src/, docs/, tests/, etc. from structure analysis]
+  - **Configuration Files**: [All key configs and their inferred purposes]
+  - **Asset Organization**: [Static files, templates, resources]
+  - **Documentation Structure**: [docs/, README patterns, inline docs]
+  
+  ## Development Environment Configuration
+  - **Build System**: [How to build from Makefiles/package.json/etc.]
+  - **Task Runners**: [Available commands from justfile/Makefile/npm scripts]
+  - **Testing Framework**: [Test setup from config analysis]
+  - **CI/CD Pipeline**: [GitHub Actions/other automation from .github/]
+  - **Code Quality**: [Linting, formatting, pre-commit hooks]
+  - **Container Support**: [Docker/compose setup if detected]
+  
+  ## File Classification Summary
+  - **Configuration Files**: [Count and types: dotfiles, package configs, etc.]
+  - **Documentation Files**: [README, docs/, inline documentation]
+  - **Source Code Files**: [by language/framework]
+  - **Template/Boilerplate**: [.template files, examples, scaffolding]
+  - **Automation/Scripts**: [build scripts, deployment, utilities]
+  - **Assets/Resources**: [static files, images, data files]
+  
+  ## Quick Reference Guide
+  - **Entry Points**: [Main executable files/commands from analysis]
+  - **Key Documentation**: [Most important docs identified]
+  - **Setup Commands**: [Inferred from Makefile/justfile/package.json]
+  - **Development Workflow**: [Standard commands for build/test/deploy]
+  - **Important Paths**: [Critical directories and files for navigation]
+  
+  ## Processing Notes & Limitations
+  - **Binary Files**: [Status of binary file inclusion]
+  - **Large Files**: [Any files too large for analysis]
+  - **Excluded Content**: [What was intentionally omitted]
+  - **Analysis Constraints**: [Any limitations in the current overview]
+  ```
+
+**Validation Confirmation**:
 ```
-
-**Complete Codebase Structure:**
+✅ Repository analysis complete
+📁 Primary artifact: 00-repomix-analysis.md (generated successfully in docs/00_context_engineering/)
+📄 Overview document: 01-codebase-awareness-overview.md (created successfully in docs/00_context_engineering/)
+🔗 Cross-references validated: Overview properly references source file (00-repomix-analysis.md)
+📊 Analysis metrics: [X] files processed, [Y] total tokens, [Z] security findings
+🔍 Content completeness: File summary, processing notes, directory structure, and file contents all captured
+📋 Metadata extracted: Exclusion patterns, compression settings, sorting method, and user headers documented
+🎯 Overview completeness: All key repository aspects covered in structured overview document
 ```
-(ASCII tree representation of the repository structure from repomix output)
-```
-
-**Initial Files Catalog:**
-| File/Directory | Type | Inferred Purpose & Configuration Details |
-| --- | --- | --- |
-| (e.g., .gitignore) | dotfile | Standard Git ignore file. Configured to ignore node_modules, .env, etc. |
-| (e.g., Justfile) | task-runner | Defines project automation tasks. Contains recipes for build, test, lint. |
-| (e.g., README.md) | documentation | Project's primary documentation file. Currently contains initial template text. |
-
-**Initial Codebase Synthesis:**
-(A concise, 1-2 paragraph summary interpreting the findings above.)
-
-Example Synthesis:
-"The repository {{repository_name}} appears to be newly initialized from a project template. The structure includes standard configuration files such as .gitignore and a README.md. A Justfile is present, indicating that project tasks like building and testing are intended to be managed via the just task runner. The initial state suggests the project is set up for [Language/Framework] development but contains no application source code yet."
 
 ---
 

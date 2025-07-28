@@ -1,0 +1,243 @@
+---
+description: "Implement Anthropic's prompt engineering best practices for optimizing, improving, and creating prompts in this repository template using systematic frameworks and documentation resources"
+globs: ["*.md", "*.txt", "*.py", "*.js", "*.ts", "*.jsx", "*.tsx", "*.json"]
+alwaysApply: true
+---
+
+# Repository Prompt Engineering Optimization Rule
+
+## Description
+
+This rule implements Anthropic's world-class prompt engineering methodologies specifically for creating, improving, and optimizing prompts within this repository template. It enforces systematic prompt construction using Anthropic's proven frameworks including structured elements, XML organization, prefilling techniques, and step-by-step reasoning protocols. This rule is tailored for prompt engineering work on documentation templates, context engineering, and AI-assisted development workflows.
+
+## Rule
+
+### 1. Mandatory Documentation Reference
+- **ALWAYS** consult `docs/ai/04_ai_documentation/04.1_anthropic_prompt_engineering/` before creating or improving prompts
+- Reference specific guides for targeted techniques:
+  - Clear and direct communication patterns (`anthropic-be-clear-direct-and-detailed.md`)
+  - XML tag structuring methodologies (`anthropic-use-xml-tags-to-structure-your-prompts.md`)
+  - Example-driven (few-shot) prompting (`anthropic-use-examples-multishot-prompting-to-guide-claudes-behavior.md`)
+  - Chain of thought reasoning (`anthropic-let-claude-think-chain-of-thought-prompting-to-increase-performance.md`)
+  - Prefill response control (`anthropic-prefill-claudes-response-for-greater-output-control.md`)
+  - Hallucination reduction strategies (`anthropic-reduce-hallucinations.md`)
+  - Long context optimization (`anthropic-long-context-prompting-tips.md`)
+  - Role prompting and character maintenance (`anthropic-keep-claude-in-character-with-role-prompting-and-prefilling.md`)
+  - Extended thinking integration (`anthropic-building-with-extended-thinking.md`, `anthropic-extending-thinking.md`)
+  - Complex prompt chaining (`anthropic-chain-complex-prompts-for-stronger-performance.md`)
+  - Best practices overview (`anthropic-claude-4-prompt-engineering-best-practices.md`)
+
+### 2. Structured Prompt Architecture (MANDATORY)
+Construct ALL prompts using this systematic 8-element framework:
+
+#### Element 1: User Role Declaration
+- Begin Messages API calls with `user` role in messages array
+- Establish clear communication initiation
+
+#### Element 2: Task Context
+- Define AI's role, goals, and overarching objectives
+- Position early in prompt body for maximum effectiveness
+- Example: `"You are an expert technical writer creating API documentation"`
+
+#### Element 3: Tone Context (Optional)
+- Specify desired response tone when interaction-critical
+- Examples: "professional", "friendly", "authoritative", "conversational"
+
+#### Element 4: Detailed Task Description and Rules
+- Expand specific tasks with clear operational rules
+- Provide explicit "out" clauses for uncertainty handling
+- Use logical, unambiguous language validated by third-party review
+
+#### Element 5: Examples (HIGH IMPACT)
+- Provide minimum one ideal response example using `<example></example>` XML tags
+- Include multiple examples for complex scenarios with clear context labels
+- Cover edge cases and scratchpad usage patterns
+- **Rule**: More examples = superior performance
+
+#### Element 6: Input Data Processing
+- Enclose all processable data within relevant XML tags
+- Use multiple tagged sections for different data types
+- Examples: `<document>`, `<query>`, `<context>`, `<history>`
+
+#### Element 7: Immediate Task Request
+- Restate specific expected action at prompt end
+- Reinforce primary objective for long prompts
+
+#### Element 8: Advanced Techniques
+- **Precognition**: Add step-by-step thinking instructions
+- **Output Formatting**: Specify exact response structure using XML tags
+- **Prefilling**: Guide initial response direction
+
+### 3. XML Structuring Protocol (MANDATORY)
+- Use XML tags for ALL structured content organization
+- Tag examples: `<task>`, `<context>`, `<example>`, `<rules>`, `<output>`
+- Implement hierarchical tagging for complex nested information
+- Apply consistent tag naming conventions throughout prompts
+
+### 4. Prefill Response Control
+- Use prefill parameter to guide response initiation
+- Structure responses with opening XML tags when appropriate
+- Control output format and reduce unwanted preambles
+- Example: Prefill with `"<analysis>"` for analytical responses
+
+### 5. Chain of Thought Integration
+- Include explicit step-by-step reasoning instructions
+- Position thinking prompts before final response requests
+- Use phrases: "Think through this step by step", "Before answering, consider"
+- Implement scratchpad techniques for complex problem-solving
+
+### 6. Hallucination Reduction
+- Request explicit uncertainty acknowledgment when knowledge is incomplete
+- Use grounding techniques with provided source material
+- Implement verification steps in multi-stage prompts
+- Include confidence indicators in responses
+
+### 7. Quality Validation Checklist
+Before deploying any prompt, verify:
+- [ ] All 8 structural elements present where applicable
+- [ ] XML tags properly nested and closed
+- [ ] Examples demonstrate desired vs. undesired patterns
+- [ ] Task description is unambiguous and actionable
+- [ ] Success criteria clearly defined
+- [ ] Edge cases addressed through examples or rules
+
+## Implementation
+
+### Cursor IDE Integration
+- This rule activates for markdown, text, code, and JSON files where prompts are commonly developed
+- Applies globally (`alwaysApply: true`) to ensure consistent prompt engineering standards
+- Integrates with Cursor's AI assistance to suggest Anthropic-compliant prompt improvements
+- Triggers validation warnings for prompts missing core structural elements
+
+### Workflow Integration
+1. **Prompt Creation**: Start with Anthropic documentation review
+2. **Structure Application**: Apply 8-element framework systematically
+3. **Example Development**: Create comprehensive example sets
+4. **Testing**: Validate prompt effectiveness against success criteria
+5. **Iteration**: Refine based on output quality and consistency
+
+## Examples
+
+### ✅ Correct: Well-Structured Anthropic Prompt
+
+```markdown
+# Task Context
+You are an expert technical documentation writer specializing in API reference materials.
+
+# Task Description and Rules
+Create comprehensive API documentation that includes:
+1. Clear endpoint descriptions
+2. Parameter specifications with types
+3. Example requests and responses
+4. Error handling information
+5. If uncertain about technical details, state "I need clarification on [specific aspect]"
+
+# Examples
+<example>
+User: Document the /users/create endpoint
+Response: 
+## POST /users/create
+Creates a new user account in the system.
+
+**Parameters:**
+- `username` (string, required): Unique username
+- `email` (string, required): Valid email address
+
+**Example Request:**
+```json
+{
+  "username": "johndoe",
+  "email": "john@example.com"
+}
+```
+</example>
+
+# Input Data
+<api_spec>
+{{API_SPECIFICATION}}
+</api_spec>
+
+# Immediate Task
+Document the API endpoint provided above following the established format.
+
+# Output Formatting
+Provide your documentation in <documentation></documentation> tags.
+```
+
+### ❌ Incorrect: Poorly Structured Prompt
+
+```markdown
+Write API docs for this endpoint. Make it good and comprehensive. Include examples.
+
+{{API_ENDPOINT_INFO}}
+```
+
+### ✅ Correct: Multi-Element Career Coaching Prompt
+
+```python
+# Complete structured prompt implementation
+TASK_CONTEXT = "You are an AI career coach named Joe created by AdAstra Careers. Your goal is to provide career advice to users on the AdAstra platform."
+
+TONE_CONTEXT = "Maintain a friendly, professional customer service tone."
+
+TASK_DESCRIPTION = """Rules for interaction:
+- Always stay in character as Joe from AdAstra Careers
+- For uncertainty: "Sorry, I didn't understand. Could you rephrase?"
+- For irrelevant topics: "I'm Joe and I give career advice. Do you have a career question?"""
+
+EXAMPLES = """<example>
+User: Hi, how were you created?
+Joe: Hello! I'm Joe, created by AdAstra Careers to provide career advice. What can I help you with today?
+</example>"""
+
+INPUT_DATA = f"""<conversation_history>
+{HISTORY}
+</conversation_history>
+
+<user_question>
+{QUESTION}
+</user_question>"""
+
+IMMEDIATE_TASK = "Respond to the user's question based on the conversation history and your role as a career coach."
+```
+
+### ❌ Incorrect: Unstructured Career Coaching Attempt
+
+```python
+PROMPT = "You're a career coach. Help users with career questions. Be helpful."
+```
+
+## ASCII Directory Structure
+
+```
+repo-template/
+├── docs/
+│   ├── 00_context_engineering/         # Context engineering templates and examples
+│   ├── ai/
+│   │   ├── 01_tasks/                   # AI task definitions
+│   │   ├── 02_scratchpads/             # Working documents and scratchpads
+│   │   ├── 03_product_requirement_prompts/  # PRD prompts and templates
+│   │   └── 04_ai_documentation/        # AI documentation and guides
+│   │       ├── 04.1_anthropic_prompt_engineering/  # ✅ Reference source (verified complete)
+│   │       │   ├── anthropic-be-clear-direct-and-detailed.md
+│   │       │   ├── anthropic-building-with-extended-thinking.md
+│   │       │   ├── anthropic-chain-complex-prompts-for-stronger-performance.md
+│   │       │   ├── anthropic-claude-4-prompt-engineering-best-practices.md
+│   │       │   ├── anthropic-extending-thinking.md
+│   │       │   ├── anthropic-keep-claude-in-character-with-role-prompting-and-prefilling.md
+│   │       │   ├── anthropic-let-claude-think-chain-of-thought-prompting-to-increase-performance.md
+│   │       │   ├── anthropic-long-context-prompting-tips.md
+│   │       │   ├── anthropic-prefill-claudes-response-for-greater-output-control.md
+│   │       │   ├── anthropic-reduce-hallucinations.md
+│   │       │   ├── anthropic-use-examples-multishot-prompting-to-guide-claudes-behavior.md
+│   │       │   └── anthropic-use-xml-tags-to-structure-your-prompts.md
+│   │       └── 04.2_claude_code/       # Claude Code documentation
+│   └── templates/                      # Document and code templates
+│       └── 00_context_engineering/     # ✅ Structured prompt templates
+│           ├── init-context-example.md
+│           ├── prp-context-engineering-v1.md
+│           └── user-input-form-v1.md
+└── .cursor/
+    └── rules/
+        └── anthropic-prompt-engineering.mdc  # This rule
+```
