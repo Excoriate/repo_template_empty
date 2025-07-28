@@ -81,100 +81,151 @@ This document is a **Product Requirement Prompt (PRP)**. It is based on the PRP 
 > Deliver [SPECIFIC_CONTEXTUAL_KNOWLEDGE] to enable [UNDERSTANDING_OUTCOME] with [CONTEXT_SUCCESS_CRITERIA].
 > ```
 >
-> **📚 Examples**:
->
-> **Backend API Architecture Context Example**:
+> **Template Structure Example with Concrete Values**:
 >
 > ```
 > **Context Purpose Statement**:
-> This PRP provides comprehensive architecture overview for development teams to understand the microservices ecosystem through detailed component mapping and interaction analysis.
+> This PRP provides comprehensive microservices interaction architecture for Senior Software Engineers specializing in distributed systems to understand real-time recommendation engine components through detailed sequence diagrams and service dependency mapping.
 > 
 > **Context Need**:
-> Understanding the backend API architecture currently requires navigating multiple documentation sources and tribal knowledge, which limits onboarding efficiency and development velocity.
+> Understanding cross-service communication patterns for the recommendation engine currently requires navigating scattered API documentation and tribal knowledge, which limits development velocity and increases integration debugging time.
 > 
 > **Context Objective**:
-> Deliver complete architectural context including service dependencies, data flows, and integration patterns to enable 50% faster developer onboarding and confident architectural decisions.
+> Deliver complete architectural blueprints including service boundaries, data flow patterns, and communication protocols to enable confident feature development with 40% reduced onboarding time for new team members.
+> ```
+>
+> **📚 Examples**:
+>
+> **Machine Learning Model Training Workflow Context Example**:
+>
+> ```
+> **Context Purpose Statement**:
+> This PRP provides comprehensive machine learning model training workflow for Senior Software Engineers specializing in distributed systems to understand serverless event-driven model retraining pipeline through step-by-step workflow breakdown with decision points and data transformations.
+> 
+> **Context Need**:
+> Understanding the ML model training orchestration currently requires reverse-engineering scattered Lambda functions, S3 triggers, and SageMaker configurations across multiple AWS accounts, which limits development velocity and increases debugging complexity for feature engineering teams.
+> 
+> **Context Objective**:
+> Deliver complete workflow blueprints including data ingestion patterns, model versioning strategies, and automated deployment triggers to enable confident ML pipeline development with 40% reduced onboarding time for new machine learning engineers.
+> ```
+>
+> **Real-Time Recommendation Engine Microservices Architecture Context Example**:
+>
+> ```
+> **Context Purpose Statement**:
+> This PRP provides real-time recommendation engine microservices architecture for Cloud Infrastructure Architects to understand distributed authentication service integration through comprehensive architectural diagrams with detailed component interactions.
+> 
+> **Context Need**:
+> Understanding cross-service communication between recommendation engine, user profile service, and real-time event streaming currently requires navigating undocumented service boundaries and legacy authentication flows, which limits system reliability and architectural decision-making accuracy.
+> 
+> **Context Objective**:
+> Deliver holistic system visualization including service dependencies, authentication patterns, and data consistency protocols to enable informed architectural decisions with measurable improvements in system performance monitoring and incident response time.
 > ```
 >
 > **🚫 Anti-Patterns to Avoid**:
 >
-> - Vague context descriptions without specific knowledge areas
-> - Generic understanding needs that don't require specialized context
-> - Missing context boundaries or target audience specification
-> - Context scope that exceeds realistic knowledge delivery capabilities
+> - Vague context descriptions without specific knowledge areas (e.g., "This PRP provides system understanding" instead of "This PRP provides microservices interaction architecture for authentication service boundaries")
+> - Generic understanding needs that don't require specialized context (e.g., "Help developers understand the code" instead of "Clarify complex cross-service communication patterns in the real-time recommendation engine")
+> - Missing context boundaries or target audience specification (e.g., "For development teams" instead of "For Senior Software Engineers specializing in distributed systems with 3+ years experience in microservices architectures")
+> - Context scope that exceeds realistic knowledge delivery capabilities (e.g., "Complete system understanding including all implementation details" instead of "High-level architectural patterns excluding specific code implementations")
 
 ### Scope of this PRP
 
 > **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
 >
-> **Action required**: Define what contextual aspects this PRP does and doesn't cover. This section establishes the boundaries of contextual knowledge provision and what context-related understanding is excluded.
+> **Action required**: Define the precise contextual boundaries required for AI to accomplish the specific task/goal outlined in the Purpose section without errors or hallucinations. This section establishes what contextual knowledge the AI absolutely needs versus what can be excluded.
 >
-> - Specify which system/product areas and components will receive contextual coverage
-> - Define the types of contextual analysis and knowledge delivery the PRP provides
-> - Clearly state what contextual aspects, systems, or knowledge areas are out-of-scope
+> **🧠 Key Concept Definitions**:
+>
+> - **Contextual Aspects**: Specific dimensions of knowledge about the system/domain that inform AI decision-making (e.g., architectural patterns, business rules, technical constraints, data relationships, workflow dependencies, security requirements)
+> - **Contextual Analysis**: The systematic examination and understanding of how system components, processes, and constraints interact to enable accurate AI reasoning and task execution (e.g., analyzing service dependencies to recommend integration patterns, understanding data flow to suggest optimization strategies)
+>
+> **📋 Scope Definition Requirements**:
+>
+> - Identify the minimum sufficient context needed for AI to achieve the Purpose without hallucinations (e.g., for a code generation task, include only the specific programming language, framework, and architectural constraints, excluding unrelated design patterns)
+> - Define contextual boundaries that directly support the specific AI task/capability outlined in Purpose (e.g., for a machine learning model recommendation, provide only the model type, training data characteristics, and performance metrics, not the entire dataset)
+> - Specify what contextual knowledge gaps would cause AI task failure or inaccurate outputs (e.g., missing authentication protocols in a cloud service integration task would lead to incorrect API call implementations)
+> - Clearly exclude contextual areas that don't impact the AI's ability to complete the intended task (e.g., in a documentation generation task, exclude UI design details or marketing copy that are irrelevant to technical content)
 >
 > **✅ Completion Criteria**:
 >
-> - **Context Domain Boundaries**: Specific system areas, components, and aspects that receive contextual coverage
-> - **Context Delivery Scope**: Clear definition of what contextual knowledge will and won't be provided
-> - **Knowledge Limitations**: Explicit constraints on depth and breadth of contextual understanding
-> - **Context Exclusions**: Specific system areas, components, or knowledge types that are out-of-scope
-> - **Context Integration**: How this contextual knowledge relates to existing documentation and workflows
+> - **Task-Critical Context Definition**: Specific contextual knowledge that AI absolutely requires to complete the Purpose task without errors (e.g., "API authentication patterns and rate limiting constraints for CLI integration", "Service dependency hierarchy for microservices orchestration")
+> - **AI Success Boundaries**: Clear definition of contextual knowledge sufficient for accurate AI task execution versus nice-to-have information (e.g., "Includes service endpoint specifications and error handling patterns; excludes internal service implementation details")
+> - **Hallucination Prevention Scope**: Explicit identification of contextual gaps that would cause AI to make incorrect assumptions or recommendations (e.g., "Without understanding data retention policies, AI cannot recommend compliant backup strategies")
+> - **Context Exclusion Rationale**: Specific contextual areas excluded because they don't impact AI task success, with clear reasoning (e.g., "UI styling details excluded because CLI commands don't require visual design context")
+> - **Contextual Dependency Mapping**: How required contextual knowledge connects to enable complete AI task execution (e.g., "Authentication context enables API access context which enables command validation context")
 >
 > **🎯 Universal Elements (Required)**:
 >
-> 1. **Context Coverage Areas**: Specific system components, processes, or domains included in contextual delivery
-> 2. **Context Delivery Methods**: How contextual knowledge will be provided (documentation, analysis, mapping, etc.)
-> 3. **Knowledge Depth Constraints**: Limitations on how detailed or comprehensive the context can be
-> 4. **Context Exclusions**: Explicit system areas, components, or knowledge types that are out-of-scope
-> 5. **Context Integration Points**: How this contextual knowledge connects with existing documentation and workflows
+> 1. **AI Task-Essential Context**: Contextual knowledge that directly enables AI to complete the Purpose task successfully (e.g., "AWS CLI authentication mechanisms and IAM policy patterns for secure command execution", "Microservices communication protocols and error handling for reliable orchestration recommendations")
+> 2. **Context Sufficiency Validation**: Methods to verify that provided context enables AI task completion without hallucinations (e.g., "AI can generate valid CLI commands that execute successfully", "AI recommendations pass integration testing")
+> 3. **Contextual Knowledge Depth Requirements**: Specific level of detail needed for AI accuracy in the target task (e.g., "Parameter specifications with data types and validation rules", "API endpoint documentation with request/response schemas")
+> 4. **Strategic Context Exclusions**: Contextual areas deliberately excluded to maintain AI focus and prevent information overload (e.g., "Database internal optimizations excluded to focus on CLI interface patterns", "Legacy system details excluded to emphasize current architecture")
+> 5. **Context Chain Dependencies**: Logical sequence of contextual knowledge that builds AI understanding for task completion (e.g., "AWS service fundamentals → CLI authentication → Command structure → Error handling → Integration patterns")
 >
 > **💡 Template Structure**:
 >
 > ```
-> **Context Coverage**:
-> - System Areas: [SPECIFIC_COMPONENTS_AND_DOMAINS]
-> - Context Types: [ARCHITECTURE_WORKFLOWS_DATAFLOWS_ETC]
-> - Delivery Formats: [DOCUMENTATION_DIAGRAMS_ANALYSIS_ETC]
+> **AI Task-Essential Context**:
+> - Critical Knowledge: [CONTEXTUAL_KNOWLEDGE_REQUIRED_FOR_AI_SUCCESS]
+> - Success Validation: [HOW_TO_VERIFY_AI_CAN_COMPLETE_TASK]
+> - Depth Requirements: [SPECIFIC_DETAIL_LEVEL_FOR_ACCURACY]
 > 
-> **Context Boundaries**:
-> - Includes: [SPECIFIC_CONTEXTUAL_KNOWLEDGE] with [DETAIL_LEVEL]
-> - Excludes: [OUT_OF_SCOPE_AREAS] requiring [REFERRAL_GUIDANCE]
+> **Context Boundaries for AI Performance**:
+> - Must Include: [CONTEXTUAL_KNOWLEDGE_WITHOUT_WHICH_AI_FAILS] with [SPECIFIC_IMPACT_ON_TASK]
+> - Strategic Exclusions: [CONTEXTUAL_AREAS_EXCLUDED_TO_MAINTAIN_FOCUS] with [RATIONALE]
 > 
-> **Knowledge Constraints**:
-> - Information Sources: [AVAILABLE_DOCUMENTATION_AND_ACCESS]
-> - Context Depth Limits: [KNOWLEDGE_BOUNDARY_CONSTRAINTS]
+> **Context Chain Dependencies**:
+> - Information Sequence: [LOGICAL_ORDER_OF_CONTEXT_BUILDING]
+> - Dependency Validation: [HOW_CONTEXT_ELEMENTS_CONNECT_FOR_TASK_SUCCESS]
 > ```
 >
 > **📚 Examples**:
 >
-> **Microservices Architecture Context Example**:
+> **AWS CLI Command Development Context Example**:
 >
 > ```
-> **Context Coverage**:
-> - System Areas: Service boundaries, API gateways, data persistence layers, messaging systems
-> - Context Types: Service architecture, inter-service communication, data flow patterns, deployment topology
-> - Delivery Formats: Architecture diagrams, service dependency maps, API documentation, operational runbooks
+> **AI Task-Essential Context**:
+> - Critical Knowledge: AWS service API specifications, CLI parameter syntax and validation rules, IAM permission patterns for target services, error response codes and handling strategies
+> - Success Validation: AI can generate syntactically correct CLI commands that execute successfully against AWS APIs without authentication or permission errors
+> - Depth Requirements: Complete parameter schemas with data types, required/optional flags, and valid value ranges for target AWS services
 > 
-> **Context Boundaries**:
-> - Includes: Service-to-service interactions with request/response patterns
-> - Excludes: Infrastructure provisioning details requiring DevOps expertise
+> **Context Boundaries for AI Performance**:
+> - Must Include: Service endpoint behaviors, authentication mechanisms, parameter dependencies, error scenarios and recovery patterns (without this, AI cannot generate reliable commands)
+> - Strategic Exclusions: AWS service internal implementation details, cost optimization strategies, multi-region deployment patterns (excluded to maintain focus on CLI command generation accuracy)
 > 
-> **Knowledge Constraints**:
-> - Information Sources: Service codebases, API schemas, configuration files, existing documentation
-> - Context Depth Limits: Cannot provide context for undocumented legacy integrations without source access
+> **Context Chain Dependencies**:
+> - Information Sequence: AWS service fundamentals → CLI authentication patterns → Command syntax structure → Parameter validation → Error handling → Integration workflows
+> - Dependency Validation: Each context layer builds on previous layer to enable complete command generation capability
+> ```
+>
+> **Microservices Orchestration Analysis Context Example**:
+>
+> ```
+> **AI Task-Essential Context**:
+> - Critical Knowledge: Service dependency hierarchy, communication protocol specifications, data flow patterns between services, failure modes and circuit breaker implementations
+> - Success Validation: AI can recommend integration patterns that maintain service reliability and pass load testing without cascading failures
+> - Depth Requirements: Complete service interface specifications, timeout configurations, retry policies, and monitoring requirements for inter-service communication
+> 
+> **Context Boundaries for AI Performance**:
+> - Must Include: Service contract definitions, asynchronous messaging patterns, distributed transaction handling, observability requirements (without this, AI cannot ensure reliable orchestration)
+> - Strategic Exclusions: Individual service internal business logic, database schema details, deployment infrastructure specifics (excluded to focus on inter-service integration patterns)
+> 
+> **Context Chain Dependencies**:
+> - Information Sequence: Service architecture overview → Interface specifications → Communication protocols → Error handling → Monitoring integration → Performance optimization
+> - Dependency Validation: Each context component enables the next level of integration analysis and recommendation accuracy
 > ```
 >
 > **🚫 Anti-Patterns to Avoid**:
 >
-> - Unlimited context coverage without clear knowledge boundaries
-> - Missing information source requirements or access constraints
-> - Vague context descriptions without specific delivery methods
-> - Context scope that overlaps with existing documentation or other context sources
+> - Unlimited context coverage without task-specific boundaries (e.g., "Provide complete system understanding" instead of "Provide AWS CLI parameter validation context for S3 operations")
+> - Missing AI task success validation criteria (e.g., "Cover microservices architecture" instead of "Provide context sufficient for AI to recommend integration patterns that pass load testing")
+> - Vague context requirements without hallucination prevention focus (e.g., "Understanding of authentication" instead of "Complete IAM policy patterns to prevent AI from generating invalid permission configurations")
+> - Context scope that doesn't directly support the AI's specific task capability (e.g., including database optimization details when AI only needs to generate CLI commands)
 
 ### Mandatory Context Sources
 
-**Primary Context Foundation**: All PRP implementations require systematic analysis of the existing codebase as the authoritative source of project context and implementation patterns.
+All PRP implementations require systematic analysis of the existing codebase as the authoritative source of project context and implementation patterns.
 
 ```mermaid
 graph TD
