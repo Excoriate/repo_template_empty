@@ -225,6 +225,127 @@ This document is a **Product Requirement Prompt (PRP)**. It is based on the PRP 
 
 ### Mandatory Context Sources
 
+> **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
+>
+> **⚠️ Important**: When creating an actual PRP from this template, remove all notes, guidance sections, placeholders, and instructional content. This includes:
+> - All 🤖Agent Notes sections
+> - All 📝Template Note sections (if any remain)
+> - Example guidance and instructional text
+> - Template placeholders ({{PLACEHOLDER}} text)
+> - Any explanatory notes about template usage
+> - This warning itself
+>
+> **Critical Requirement**: The context sources listed below are **MANDATORY** and **NON-NEGOTIABLE** for successful PRP implementation. Failure to systematically gather context from these sources will result in incomplete, inaccurate, or unreliable AI performance that defeats the purpose of context engineering.
+>
+> **Action required**: Ensure your PRP implementation mandates the systematic use of all specified context sources in the exact priority order defined. This is not optional guidance - it's the foundation that prevents AI hallucinations and ensures task success.
+>
+> **📋 Critical Output Requirement**: Your PRP must include a **"Discovered Context Sources"** section that lists specific, granular references with rationale for each source. This is not a general description - it's an actionable reference list.
+>
+> **Reference List Creation Instructions**:
+> - **Granular File Specificity**: List exact file paths, not directories (e.g., `src/auth/jwt-validator.ts: Contains JWT token validation logic for API authentication` instead of `src/auth/: Authentication code`)
+> - **Rationale Requirement**: Every reference must include a "why" explanation of its relevance to the AI task (e.g., `config/database.yml: Database connection patterns needed for CLI data operations`)
+> - **Context Portion Specification**: For large files, specify exactly which functions, classes, or sections to read (e.g., `pkg/handlers/user.go (lines 45-78): User validation patterns for CLI user management commands`)
+> - **Source Categorization**: Organize by context source type (Codebase Files, User Examples, AI Agent Context, Documentation, External References)
+> - **Priority Indication**: Mark highest priority sources clearly to guide AI attention
+> - **Cross-Section Integration**: Reference the Codebase Structure Analysis section for spatial context and focus areas
+>
+> **Mandatory Context Source Requirements**:
+> - **Repomix Analysis**: Absolutely required as the first step - no PRP execution without comprehensive codebase analysis
+> - **User Examples Priority**: These represent precise user intentions and must be treated as authoritative over generic documentation
+> - **AI Agent Context Analysis**: Mandatory to prevent conflicts with existing AI workflows and maintain ecosystem coherence
+> - **Current Technology Documentation**: Required through Context7/WebTool to prevent outdated or incorrect technical guidance
+> - **Evidence Hierarchy Enforcement**: The priority order (Codebase > User Examples > AI Agent Context > Repository Documentation > Current Tech Documentation) must be strictly followed
+>
+> **✅ Completion Criteria**:
+> - **Mandatory Source Coverage**: All context source categories are explicitly required in the PRP implementation (Codebase Files, User Examples, AI Agent Context, Documentation, External References)
+> - **Reference List Specificity**: Granular file references with rationale for each source, organized by category with priority indicators
+> - **Priority Order Specification**: Clear hierarchy established with codebase analysis and user examples as highest priority
+> - **Tool Requirements**: Specific MCP tools (repomix, Context7, WebTool) are mandated for reliable context gathering
+> - **Conflict Prevention**: AI agent context analysis is required to prevent workflow conflicts and maintain ecosystem alignment
+> - **Currency Validation**: Technology documentation verification is mandatory to prevent outdated guidance
+> - **Cross-Section Integration**: Clear integration with Codebase Structure Analysis section for comprehensive context
+>
+> **🎯 Universal Elements (Required)**:
+> 1. **Repomix Foundation Requirement**: Explicit mandate for comprehensive codebase analysis as the starting point for all PRP execution
+> 2. **User Example Authority**: Clear prioritization of user-provided examples as authoritative implementation guidance
+> 3. **Agent Ecosystem Integration**: Required analysis of existing AI agent configurations to prevent conflicts and maintain coherence
+> 4. **Technology Currency Mandate**: Specified use of Context7/WebTool for current, reliable technology documentation
+> 5. **Evidence Hierarchy Enforcement**: Strict priority order that prevents reliance on outdated or unreliable context sources
+>
+> **💡 Template Structure**:
+> ```
+> **Context Foundation (MANDATORY)**:
+> - Repomix Analysis: [REQUIRED_AS_FIRST_STEP] 
+> - User Examples: [HIGHEST_AUTHORITY_SOURCE] with [SPECIFIC_EXAMPLE_LOCATIONS]
+> - AI Agent Context: [REQUIRED_FOR_ECOSYSTEM_ALIGNMENT] 
+> - Technology Documentation: [CONTEXT7_WEBTOOL_VALIDATION_REQUIRED]
+> 
+> **Discovered Context Sources** (Required Output):
+> 
+> ### Codebase Files (Highest Priority)
+> - [SPECIFIC_FILE_PATH]: [WHY_EXPLANATION_FOR_AI_TASK]
+> - [SPECIFIC_FILE_PATH] (lines [X-Y]): [SPECIFIC_FUNCTION_OR_SECTION_RATIONALE]
+> - [CONFIG_FILE_PATH]: [CONFIGURATION_RELEVANCE_TO_TASK]
+> 
+> ### User Examples (Highest Priority)  
+> - [SPECIFIC_EXAMPLE_FILE]: [HOW_IT_GUIDES_AI_IMPLEMENTATION]
+> - [USER_PROVIDED_PATTERN]: [AUTHORITATIVE_GUIDANCE_EXPLANATION]
+> 
+> ### AI Agent Context
+> - [AGENT_CONFIG_FILE]: [WORKFLOW_CONFLICT_PREVENTION_REASON]
+> - [CURSOR_RULE_FILE]: [INTEGRATION_REQUIREMENT_EXPLANATION]
+> 
+> ### Documentation References
+> - [CONTEXT7_DOC_REFERENCE]: [CURRENT_TECH_VALIDATION_REASON]
+> - [SPECIFIC_API_DOC_SECTION]: [EXACT_IMPLEMENTATION_GUIDANCE_NEEDED]
+> 
+> ### External References (Context7/WebTool Validated)
+> - [OFFICIAL_DOC_URL]: [SPECIFIC_KNOWLEDGE_GAP_ADDRESSED]
+> ```
+>
+> **Examples**:
+> **AWS CLI Development Context Requirements Example**:
+> ```
+> **Context Foundation (MANDATORY)**:
+> - Repomix Analysis: Required comprehensive analysis of CLI codebase including command structure, AWS SDK integration, and authentication patterns
+> - User Examples: Prioritize user-provided CLI examples in docs/00_context_engineering/examples/cli-commands/ as authoritative over generic AWS documentation  
+> - AI Agent Context: Required analysis of existing development agents to prevent conflict with established AWS deployment workflows
+> - Technology Documentation: Context7 validation required for current AWS CLI SDK documentation matching project's boto3/AWS SDK versions
+> 
+> **Discovered Context Sources** (Required Output):
+> 
+> ### Codebase Files (Highest Priority)
+> - src/cli/auth/aws-credentials.go: AWS credential management patterns for secure CLI authentication
+> - pkg/commands/s3/upload.go (lines 23-67): S3 upload implementation with error handling for file operations
+> - config/aws-regions.yml: Supported AWS regions configuration needed for CLI region validation
+> - internal/sdk/client.go (NewClient function): AWS SDK client initialization patterns for API rate limiting
+> 
+> ### User Examples (Highest Priority)
+> - docs/00_context_engineering/examples/cli-commands/s3-operations.md: User-provided S3 command patterns showing preferred syntax and options
+> - examples/auth/iam-role-assumption.go: Authoritative example of IAM role assumption for cross-account operations
+> 
+> ### AI Agent Context
+> - .cursor/rules/aws-deployment.mdc: Existing deployment automation rules to prevent CLI command conflicts
+> - CLAUDE.md (AWS Integration section): Established AWS interaction patterns for agent ecosystem alignment
+> 
+> ### Documentation References  
+> - Context7: AWS CLI v2 Reference (s3 commands): Current command syntax and parameter validation requirements
+> - Context7: boto3 SDK Documentation (S3 Client): Python SDK patterns for error handling and retry logic
+> 
+> ### External References (Context7/WebTool Validated)
+> - https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html: Official credential configuration patterns for secure authentication
+> ```
+>
+> **🚫 Anti-Patterns to Avoid**:
+> - Making context sources optional or suggesting alternatives (e.g., "Consider using repomix analysis" instead of "Repomix analysis is mandatory")
+> - Creating vague reference lists without specificity (e.g., "Review authentication code" instead of "src/auth/jwt-validator.ts: JWT token validation patterns for API authentication")
+> - Missing rationale for context sources (e.g., "config/database.yml" instead of "config/database.yml: Database connection patterns needed for CLI data operations")
+> - Using directory references instead of specific files (e.g., "pkg/: Go packages" instead of "pkg/commands/s3/upload.go (lines 23-67): S3 upload implementation with error handling")
+> - Treating user examples as secondary to generic documentation (e.g., "Reference standard patterns first, then user examples" instead of "User examples take priority over all other documentation")
+> - Skipping AI agent context analysis (e.g., "Review existing agents if available" instead of "AI agent context analysis is mandatory to prevent conflicts")
+> - Allowing outdated technology documentation (e.g., "Use available documentation" instead of "Context7/WebTool validation required for current documentation")
+> - Missing cross-section integration (e.g., ignoring spatial context from Codebase Structure Analysis section)
+
 All PRP implementations require systematic analysis of the existing codebase as the authoritative source of project context and implementation patterns.
 
 ```mermaid
@@ -324,6 +445,231 @@ graph TD
 - AI agent context analysis is mandatory to prevent workflow conflicts  
 - Technology documentation verification through Context7/WebTool is required for all external dependencies
 - Current documentation ensures recommendations align with latest best practices and established project patterns
+
+### Codebase Structure Analysis
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
+>
+> **⚠️ Important**: When creating an actual PRP from this template, remove all notes, guidance sections, placeholders, and instructional content. This includes:
+> - All 🤖Agent Notes sections
+> - All 📝Template Note sections (if any remain)
+> - Example guidance and instructional text
+> - Template placeholders ({{PLACEHOLDER}} text)
+> - Any explanatory notes about template usage
+> - This warning itself
+>
+> **Critical Requirement**: Your PRP must include comprehensive codebase structure analysis showing both current state and expected changes (if applicable). This visual documentation is essential for AI spatial understanding and prevents implementation errors.
+>
+> **Action required**: Include detailed codebase structure analysis as a mandatory output section of your PRP implementation. This provides AI with essential spatial context about the codebase organization and planned changes.
+>
+> **📋 Structure Documentation Requirements**:
+> - **Current Structure**: 
+>   - Use `tree` command with specific depth and exclusion flags
+>   - Recommended depth levels:
+>     - Level 1-2: High-level project overview
+>     - Level 3-4: Detailed component breakdown
+>   - **Mandatory Exclusions**: Always ignore:
+>     - `node_modules/`
+>     - `.git/`
+>     - `dist/`
+>     - `build/`
+>     - `*.log`
+>     - `.cache/`
+>     - `__pycache__/`
+>   - **Tree Command Example**: 
+>     ```bash
+>     tree -L 3 -I 'node_modules|.git|dist|build'
+>     ```
+> - **Expected Structure**: If changes are planned, show the expected structure with clear annotations for new/modified components
+> - **Key Area Annotations**: Mark important files and directories with explanatory arrows (e.g., `← Key: Authentication patterns`)
+> - **Change Indicators**: Use clear markers for new (← New), modified (← Modified), or removed components
+> - **Rationale Inclusion**: Provide explanation for structural changes and their relevance to the AI task
+// End of Selection
+>
+> **✅ Completion Criteria**:
+> - **Current Structure Documentation**: Tree output included showing existing codebase organization with key areas highlighted
+> - **Change Visualization**: Expected structure (if applicable) clearly shows planned modifications with annotations
+> - **Spatial Context**: Structure provides clear spatial understanding of component relationships
+> - **Change Rationale**: Structural modifications include explanation of why changes are needed for the AI task
+> - **Implementation Guidance**: Structure analysis guides AI on where to focus attention and make changes
+>
+> **🎯 Universal Elements (Required)**:
+> 1. **Tree Output Format**: Use standard tree command format or repomix ASCII directory structure
+> 2. **Key Area Highlighting**: Mark important files/directories with explanatory annotations
+> 3. **Change Annotations**: Clear indicators for new, modified, or removed components
+> 4. **Rationale Documentation**: Explanation of why structural changes support the AI task
+> 5. **Implementation Focus**: Structure guides AI attention to relevant areas
+>
+> **💡 Template Structure**:
+> ```
+> ### Current Codebase Structure
+> [TREE_OUTPUT_WITH_KEY_ANNOTATIONS]
+> [HIGHLIGHT_AREAS_RELEVANT_TO_AI_TASK]
+> 
+> ### Expected Codebase Structure (If Applicable)
+> [TREE_OUTPUT_SHOWING_PLANNED_CHANGES]
+> [NEW_COMPONENTS] ← New: [RATIONALE]
+> [MODIFIED_COMPONENTS] ← Modified: [RATIONALE]
+> 
+> **Structural Change Rationale**: [EXPLANATION_OF_WHY_CHANGES_SUPPORT_AI_TASK]
+> ```
+>
+> **Examples**:
+> **CLI Tool Structure Analysis Example**:
+> ```
+> ### Current Codebase Structure
+> aws-cli-tool/
+> ├── cmd/
+> │   ├── root.go
+> │   └── s3/
+> │       ├── upload.go             ← Key: S3 upload command implementation
+> │       └── download.go
+> ├── pkg/
+> │   ├── auth/
+> │   │   ├── aws-credentials.go    ← Key: AWS authentication patterns
+> │   │   └── iam-roles.go
+> │   └── commands/
+> │       └── s3/
+> │           └── upload.go         ← Key: S3 upload logic
+> ├── config/
+> │   ├── aws-regions.yml          ← Key: Region validation
+> │   └── defaults.yml
+> └── internal/
+>     └── sdk/
+>         └── client.go            ← Key: SDK client patterns
+> 
+> ### Expected Codebase Structure (If Applicable)
+> aws-cli-tool/
+> ├── cmd/
+> │   ├── root.go
+> │   ├── s3/
+> │   │   ├── upload.go
+> │   │   └── download.go
+> │   └── ec2/                     ← New: EC2 command support
+> │       ├── list.go              ← New: EC2 instance listing
+> │       └── start.go             ← New: EC2 instance management
+> ├── pkg/
+> │   ├── auth/
+> │   │   ├── aws-credentials.go
+> │   │   ├── iam-roles.go
+> │   │   └── mfa-support.go       ← New: MFA authentication
+> │   ├── commands/
+> │   │   ├── s3/
+> │   │   │   └── upload.go
+> │   │   └── ec2/                 ← New: EC2 command handlers
+> │   │       ├── list.go          ← New: Instance listing logic
+> │   │       └── management.go    ← New: Instance lifecycle
+> │   └── validation/              ← New: Input validation package
+> │       ├── regions.go           ← New: Region validation logic
+> │       └── credentials.go       ← New: Credential validation
+> ├── config/
+> │   ├── aws-regions.yml
+> │   ├── defaults.yml
+> │   └── ec2-instance-types.yml   ← New: EC2 type configurations
+> └── internal/
+>     └── sdk/
+>         ├── client.go
+>         └── ec2-client.go        ← New: EC2-specific client
+> 
+> **Structural Change Rationale**: Adding EC2 support requires new command structure following existing S3 patterns, validation package for reusable validation logic, and EC2-specific configurations. This structure maintains consistency with existing patterns while enabling EC2 functionality.
+> ```
+>
+> **🚫 Anti-Patterns to Avoid**:
+> - Omitting structure analysis entirely (e.g., skipping tree output documentation)
+> - Providing structure without key area annotations (e.g., plain tree output without explanatory arrows)
+> - Missing expected structure when changes are planned (e.g., describing changes without showing visual structure)
+> - Using vague change indicators (e.g., "some files will be added" instead of specific file paths with rationale)
+> - Including irrelevant structural details (e.g., showing entire codebase when only specific areas are relevant to AI task)
+
+### Success Criteria
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
+>
+> **⚠️ Important**: When creating an actual PRP from this template, remove all notes, guidance sections, placeholders, and instructional content. This includes:
+> - All 🤖Agent Notes sections
+> - All 📝Template Note sections (if any remain)
+> - Example guidance and instructional text
+> - Template placeholders ({{PLACEHOLDER}} text)
+> - Any explanatory notes about template usage
+> - This warning itself
+>
+> **Critical Requirement**: The success criteria must be written from the perspective of someone who has successfully implemented and is using the PRP. Use present tense "I'm able to..." statements that project the expected capabilities and outcomes based on the specific PRP purpose.
+>
+> **Action required**: Define success criteria that are specifically tailored to the PRP's intended purpose. Since PRPs can address various needs (technical documentation, coding tasks, engineering workflows, architecture analysis, etc.), the success criteria must be adapted accordingly.
+>
+> - **Purpose-Driven Adaptation**: Align success criteria directly with the specific PRP purpose defined in the Purpose section (e.g., if PRP is for "API documentation generation," success criteria should focus on documentation quality and usability)
+> - **Task-Specific Outcomes**: For coding task PRPs, focus on implementation success; for documentation PRPs, focus on comprehension and usability; for architecture PRPs, focus on design clarity and decision support
+> - **Effectiveness During Use**: Criteria should validate that the PRP is effective when actually being used to accomplish its intended purpose
+> - **Measurable Task Completion**: Each criterion should demonstrate successful completion of the specific task the PRP was designed to address
+>
+> **✅ Completion Criteria**:
+>
+> - **Purpose Alignment**: All criteria directly align with the specific PRP purpose and intended use case (not generic context engineering goals)
+> - **Task-Specific Outcomes**: Each criterion validates successful completion of the particular task the PRP was designed to address
+> - **Use-Case Tailoring**: Success criteria adapt to whether the PRP is for coding tasks, documentation generation, architecture analysis, workflow optimization, etc.
+> - **Effectiveness Validation**: Criteria demonstrate the PRP is effective during actual use for its intended purpose
+> - **Evidence-Based Verification**: Success can be objectively verified through concrete proof relevant to the specific PRP domain and objectives
+>
+> **🎯 Universal Elements (Required)**:
+>
+> 1. **Present Tense Format**: "I'm able to..." statements projecting successful implementation of the specific PRP purpose
+> 2. **Purpose-Specific Capabilities**: Concrete actions and outcomes directly related to the PRP's intended task (coding, documentation, analysis, etc.)
+> 3. **Task-Relevant Metrics**: Quantifiable improvements specific to the PRP's domain (e.g., code quality for coding PRPs, comprehension time for documentation PRPs)
+> 4. **Domain-Appropriate Evidence**: Success demonstrated through proof relevant to the PRP's specific purpose and context
+> 5. **Effectiveness Focus**: Each criterion validates the PRP's effectiveness during actual use for its intended purpose
+>
+> **💡 Template Structure**:
+>
+> ```
+> **[PRP_PURPOSE] Success Criteria**:
+> - I'm able to [PURPOSE_SPECIFIC_CAPABILITY] with [TASK_RELEVANT_OUTCOME] using [DOMAIN_APPROPRIATE_EVIDENCE]
+> - I'm able to [INTENDED_TASK_ACTION] that results in [MEASURABLE_TASK_SUCCESS] verified through [PURPOSE_SPECIFIC_VALIDATION]
+> - I'm able to [EFFECTIVENESS_DEMONSTRATION] during actual use with [SUCCESS_METRIC_FOR_INTENDED_PURPOSE]
+> ```
+>
+> **🔄 Purpose-Driven Examples**:
+> - **API Documentation PRP**: "**API Documentation Generation Success Criteria**"
+> - **React Component Analysis PRP**: "**React Component Optimization Success Criteria**"
+> - **Database Schema Migration PRP**: "**Database Migration Implementation Success Criteria**"
+> - **Infrastructure Deployment PRP**: "**Infrastructure Automation Success Criteria**"
+>
+> **📚 Examples**:
+>
+> **Technical Documentation PRP Example**:
+>
+> ```
+> **API Documentation Generation Success Criteria**:
+> - I'm able to generate comprehensive API documentation that reduces developer onboarding time by 50% verified through developer feedback surveys and task completion metrics
+> - I'm able to create code examples that execute successfully without modification demonstrated through automated testing of all documentation examples
+> - I'm able to produce documentation that answers 90% of common developer questions validated through support ticket reduction and developer self-service metrics
+> ```
+>
+> **Coding Task PRP Example**:
+>
+> ```
+> **React Component Implementation Success Criteria**:
+> - I'm able to implement React components that pass all unit tests and integration tests verified through CI/CD pipeline success rates
+> - I'm able to deliver code that meets performance requirements with Core Web Vitals scores above baseline thresholds measured through automated performance testing
+> - I'm able to write maintainable code that receives approval during code review process validated through peer review feedback and merge success rates
+> ```
+>
+> **Architecture Analysis PRP Example**:
+>
+> ```
+> **Microservices Architecture Assessment Success Criteria**:
+> - I'm able to identify service boundary issues that lead to actionable refactoring plans verified through successful architecture migration implementations
+> - I'm able to recommend scaling strategies that improve system throughput by measurable percentages demonstrated through load testing results
+> - I'm able to provide architectural insights that enable informed technical decisions validated through successful project outcomes and stakeholder satisfaction
+> ```
+>
+> **🚫 Anti-Patterns to Avoid**:
+>
+> - **Generic Success Statements**: Using the same criteria for all PRP types instead of tailoring to specific purpose (e.g., using "codebase analysis" criteria for a documentation-focused PRP)
+> - **Purpose Misalignment**: Criteria that don't match the PRP's intended use case (e.g., focusing on implementation metrics for a design analysis PRP)
+> - **Task-Irrelevant Measures**: Success metrics that don't validate the specific task completion (e.g., measuring code coverage for a documentation generation PRP)
+> - **Vague Effectiveness Claims**: Criteria that don't demonstrate actual effectiveness during use (e.g., "I'm able to understand better" instead of "I'm able to complete [specific task] successfully")
+> - **One-Size-Fits-All Approach**: Using identical success criteria regardless of whether the PRP is for coding, documentation, analysis, or implementation tasks
+
 
 ---
 <role>
@@ -1178,3 +1524,6 @@ All context engineering operations must begin with systematic repository analysi
 - Recommendations must be compatible with existing technology stack and architectural constraints
 - Implementation guidance must include clear success criteria and verification methods
 - Analysis must demonstrate systematic tool usage (repomix, static analysis) with documented completeness
+
+---
+
