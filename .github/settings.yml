@@ -1,127 +1,157 @@
-# Repository settings are managed by the settings app (https://github.com/apps/settings)
-# Documentation: https://github.com/repository-settings/app#configuration
 ---
+# GitHub Repository Settings Configuration
+# Generated from repository analysis and security best practices
+# Managed by GitHub Settings App: https://github.com/apps/settings
+# Documentation: https://github.com/repository-settings/app#configuration
+
 repository:
-  # Updated repository name
-  name: mcp-terraform-aws-provider-docs
-  # Updated repository description
-  description: Deno/TypeScript MCP Server providing context related to the AWS provider for Terragrunt documentation.
+  # Repository Identity - Corrected from Analysis
+  name: repo_template_empty
+  description: "🎨 AI-Assisted Development Template - Repository template for context engineering and AI-driven workflows with Claude Code and Cursor IDE integration"
 
-  # This is not a template repository
-  is_template: false
+  # Repository Type Configuration
+  is_template: true
 
-  # Updated topics relevant to this project
+  # Technology Topics - Enhanced for Template Repository
   topics:
-    - mcp
-    - typescript
-    - deno
-    - terragrunt
-    - documentation
-    - language-server # Assuming it might act like one
+    - repository-template
+    - ai-assisted-development
+    - context-engineering
+    - documentation-driven
+    - claude-code
+    - cursor-ide
+    - github-template
+    - development-workflow
+    - markdown
+    - automation
+    - prp-system
+    - template-optimization
 
-  # Merge Strategy (Kept defaults from original)
+  # Repository Settings
   default_branch: main
+  private: false
+
+  # Merge Strategy Configuration
   allow_squash_merge: true
   allow_merge_commit: false
   allow_rebase_merge: true
   delete_branch_on_merge: true
 
-  # Repository Features (Kept defaults from original)
+  # Repository Features
+  has_issues: true
   has_projects: true
   has_wiki: false
   has_discussions: true
 
-  # Security Enhancements (Kept defaults from original)
+  # Security Configuration
   enable_vulnerability_alerts: true
   enable_automated_security_fixes: true
 
-  # Team Access (Kept defaults - ADJUST IF NEEDED)
-  teams:
-    - name: maintainers
-      permission: admin
-    - name: contributors
-      permission: push
-    # - name: template-users # Removed template-specific team
-    #   permission: pull
+# Team Access Configuration
+teams:
+  - name: maintainers
+    permission: admin
+  - name: contributors
+    permission: push
 
-# Updated Label Strategy (Removed template labels, added project-specific)
+# Enhanced Label Strategy for Template Repository
 labels:
+  # Core Issue Types
   - name: bug
-    color: "#CC0000"
-    description: Something is not working fine 🐛
-  - name: feature
-    color: "#336699"
-    description: New functionality or enhancement 🚀
+    color: "d73a4a"
+    description: "Something isn't working"
+  - name: enhancement
+    color: "a2eeef"
+    description: "New feature or request"
   - name: documentation
-    color: "#0075ca"
-    description: Improvements or additions to documentation 📚
-  - name: help-wanted
-    color: "#008672"
-    description: Community contributions welcome 🤝
-  - name: mcp
-    color: "#5DADE2" # Example color
-    description: Related to the Model Context Protocol
-  - name: typescript
-    color: "#3178C6" # Official TS color
-    description: Related to TypeScript code
-  - name: deno
-    color: "#000000" # Deno logo color
-    description: Related to the Deno runtime or configuration
-  # Add other relevant labels as needed, e.g., 'terragrunt', 'refactor', 'testing'
+    color: "0075ca"
+    description: "Improvements or additions to documentation"
 
-# Branch Protection (Updated status checks - PLACEHOLDERS, ADJUST TO ACTUAL CI JOB NAMES)
+  # Template-Specific Labels
+  - name: template-enhancement
+    color: "7B68EE"
+    description: "Improvement to template structure or functionality"
+  - name: context-engineering
+    color: "FF6B9D"
+    description: "Related to context engineering and AI integration"
+  - name: ai-integration
+    color: "4ECDC4"
+    description: "Related to AI assistant integration features"
+
+  # Development Labels
+  - name: automation
+    color: "FFA500"
+    description: "Workflow and process automation improvements"
+  - name: configuration
+    color: "8B4513"
+    description: "Configuration files and settings"
+  - name: github-workflows
+    color: "2E8B57"
+    description: "GitHub Actions and workflow improvements"
+
+  # Community Management
+  - name: help-wanted
+    color: "008672"
+    description: "Extra attention is needed"
+  - name: good-first-issue
+    color: "7057ff"
+    description: "Good for newcomers"
+  - name: RFC-proposal
+    color: "8b5cf6"
+    description: "Request for Comments - Design proposals"
+  - name: needs-triage
+    color: "fbbf24"
+    description: "Requires initial assessment and labeling"
+
+  # Priority Labels
+  - name: priority-high
+    color: "FF0000"
+    description: "High priority issue"
+  - name: priority-medium
+    color: "FFA500"
+    description: "Medium priority issue"
+  - name: priority-low
+    color: "90EE90"
+    description: "Low priority issue"
+
+# Enhanced Branch Protection Rules
 branches:
   - name: main
     protection:
       required_pull_request_reviews:
         required_approving_review_count: 1
-        dismiss_stale_reviews: true
-        require_code_owner_reviews: true # Requires CODEOWNERS file
-        dismissal_restrictions: {}
-        # code_owner_approval: true # Note: require_code_owner_reviews implies this
-        required_conversation_resolution: true
-
-      required_status_checks:
-        strict: true # Require branches to be up to date before merging
-        contexts: # ADJUST THESE TO MATCH YOUR ACTUAL GITHUB ACTIONS JOB NAMES
-          - "Lint"
-          - "Test"
-          # - "Format Check" # Often done locally or via pre-commit, but can be added
-          # Add other required checks like build steps if applicable
-
-      require_signatures: true
-
-      enforce_admins: false # Admins are not exempt from protection rules
-      required_linear_history: true # Enforce linear history
-      restrictions: # Restrict who can push to main (ADJUST AS NEEDED)
-        users: [Excoriate]
-        teams: [maintainers]
-
-  - name: master
-    protection:
-      required_pull_request_reviews:
-        required_approving_review_count: 1
-        dismiss_stale_reviews: true
         require_code_owner_reviews: true
-        dismissal_restrictions: {}
+        dismiss_stale_reviews: true
         required_conversation_resolution: true
+        dismissal_restrictions: {}
 
       required_status_checks:
         strict: true
         contexts:
-          - "Lint"
-          - "Test"
-
-      require_signatures: true
+          - "🔍 CI"
+          # Note: Individual job names from ci-typescript.yaml workflow
+          # Main workflow combines multiple technology stacks
 
       enforce_admins: false
       required_linear_history: true
+      allow_force_pushes: false
+      allow_deletions: false
+      require_signatures: false
+
       restrictions:
         users: [Excoriate]
         teams: [maintainers]
 
-# Removed Template-Specific Repository Metadata
-# repository_config:
-#   template_generation_date: 2024-01-15
-#   template_version: "1.0.0"
-#   recommended_terraform_version: ">= 1.5.0"
+# Comprehensive Security and Analysis Settings
+# Note: These settings may require GitHub Advanced Security features
+security_and_analysis:
+  secret_scanning:
+    status: enabled
+  secret_scanning_push_protection:
+    status: enabled
+  dependabot_security_updates:
+    status: enabled
+  dependabot_alerts:
+    status: enabled
+  private_vulnerability_reporting:
+    status: enabled

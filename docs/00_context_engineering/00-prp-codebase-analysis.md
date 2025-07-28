@@ -16,6 +16,10 @@ related:
 
 This document is a **Product Requirement Prompt (PRP)** based on the PRP system, and it's a core component of Context Engineering, which transforms high-level feature requests into comprehensive implementation blueprints for AI assistants, with deep context and awareness about the codebase, user examples, and current technology documentation.
 
+### Dependencies
+
+**NA** - This PRP has no prerequisite dependencies and can be executed independently. Codebase Analysis is a foundational PRP that provides essential context for other PRPs and serves as the starting point for repository understanding and context engineering workflows.
+
 ### Purpose for this PRP
 
 **Context Purpose Statement**:
@@ -30,15 +34,18 @@ Deliver structured, AI-consumable knowledge artifacts that enable intelligent co
 ### Scope of this PRP
 
 **AI Task-Essential Context**:
+
 - Critical Knowledge: Complete repository structure, technology stack identification, development workflow patterns, and project organization analysis
 - Success Validation: AI can generate accurate technical assessments and provide informed development guidance based on repository understanding
 - Depth Requirements: Comprehensive directory analysis, file classification, dependency mapping, and configuration pattern recognition
 
 **Context Boundaries for AI Performance**:
+
 - Must Include: Systematic repository analysis using repomix and tree tools, complete file inventory with classification, technology stack validation, development workflow identification (without this, AI cannot provide accurate repository-specific guidance)
 - Strategic Exclusions: Deep file content analysis, business logic implementation details, specific code functionality (excluded to maintain focus on structural understanding and context generation)
 
 **Context Chain Dependencies**:
+
 - Information Sequence: Repository validation → Comprehensive analysis → Structure extraction → Content cataloging → Overview generation → Quality validation
 - Dependency Validation: Each context layer builds systematic understanding enabling complete repository awareness and AI-assisted development capability
 
@@ -63,6 +70,7 @@ All PRP implementations require systematic analysis of the existing codebase as 
    - **Integration readiness**: Cross-reference validation, dependency verification, downstream consumption preparation
 
 **Critical Requirements**:
+
 - PRP execution must begin with comprehensive codebase analysis using repomix
 - Tree command analysis is mandatory for visual structure understanding
 - Technology documentation verification is required for all external dependencies
@@ -71,6 +79,7 @@ All PRP implementations require systematic analysis of the existing codebase as 
 ### Success Criteria
 
 **Initial Codebase Awareness Success Criteria**:
+
 - I'm able to generate comprehensive repository understanding that reduces AI onboarding time by 60% verified through systematic analysis completion and artifact validation
 - I'm able to create structured knowledge artifacts that enable accurate AI-assisted development demonstrated through successful context engineering task completion
 - I'm able to provide evidence-based repository insights that support informed technical decisions validated through file:line reference accuracy and cross-validation protocols
@@ -82,19 +91,106 @@ All PRP implementations require systematic analysis of the existing codebase as 
 ### Required Context Sources
 
 #### **Codebase Context (Highest Priority)**
+
 - **Repository structure and organization**: Complete directory tree analysis using repomix and tree commands for systematic component identification
 - **Technology stack and dependencies**: Package manifests, configuration files, and build systems for compatibility assessment
 - **Development workflows and automation**: CI/CD pipelines, task runners, and development environment setup patterns
 
 #### **Systematic Analysis Context (Mandatory)**
+
 - **Repomix comprehensive analysis**: Tool validation, capabilities discovery, complete repository scanning with optimal configuration
 - **Tree structure visualization**: Directory hierarchy mapping, project organization patterns, key area identification
 - **Cross-validation protocols**: Multi-source verification, evidence-based analysis, consistency checking
 
 #### **Quality Validation Context**
+
 - **Processing verification**: Complete output validation, error handling protocols, systematic quality assurance
 - **Documentation generation**: Artifact creation, evidence collection, comprehensive reporting standards
 - **Integration readiness**: Cross-reference validation, dependency verification, downstream consumption preparation
+
+---
+
+## Idempotency Requirements
+
+**MANDATORY**: All PRP operations must be idempotent - safe to run multiple times without errors or unintended changes.
+
+### Codebase Analysis Decision Framework
+
+All codebase analysis implementations must follow logical idempotency principles:
+
+**1. Repository State Assessment Protocol**
+- Always check current repository state before taking action
+- Compare current analysis artifacts with repository state
+- Only proceed with analysis when artifacts are missing, outdated, or incomplete
+
+**2. Analysis Operation Logic**
+```mermaid
+flowchart TD
+    A[Analysis Operation Required] --> B{Analysis Artifacts Exist?}
+    B -->|No| C[Perform Full Analysis]
+    B -->|Yes| D{Repository Changed?}
+    D -->|No| E[No Action - Analysis Current]
+    D -->|Yes| F{Incremental Update Possible?}
+    F -->|Yes| G[Update Changed Components]
+    F -->|No| H[Perform Full Re-analysis]
+    
+    C --> I[Generate Analysis Artifacts]
+    G --> I
+    H --> I
+    E --> J[Report: Analysis Current]
+    I --> K[Report: Analysis Updated]
+```
+
+**3. File and Artifact Operation Logic**
+- **Analysis Files**: Compare repository state with existing analysis artifacts, update only if repository changed
+- **Documentation Generation**: Check existing documentation against current codebase state
+- **Tool Output**: Verify tool outputs are current and complete before skipping regeneration
+- **Context Artifacts**: Ensure generated context matches current repository structure and content
+
+### Domain-Specific Idempotency Requirements
+
+**Current State Definition**:
+- **Repository State**: Current file structure, content timestamps, and git commit state
+- **Analysis Artifacts**: Existing repomix outputs, tree command outputs, and generated documentation
+- **Tool State**: Available analysis tools, their versions, and configuration
+- **Context State**: Generated context files and their completeness relative to current repository
+
+**State Comparison Method**:
+- **File Timestamp Comparison**: Compare repository file modification times with analysis artifact timestamps
+- **Content Hash Verification**: Verify repository content hasn't changed since last analysis
+- **Tool Version Validation**: Ensure analysis tools haven't been updated requiring re-analysis
+- **Artifact Completeness Check**: Validate all expected analysis outputs exist and are complete
+
+**Change Detection Logic**:
+- **Repository Changes**: New files, modified files, deleted files, or directory structure changes
+- **Tool Updates**: Analysis tool version changes that affect output format or completeness
+- **Missing Artifacts**: Required analysis outputs missing or incomplete
+- **Configuration Changes**: Project configuration changes affecting analysis scope or methodology
+
+**Conflict Resolution**:
+- **Partial vs Full Analysis**: Use incremental updates when possible, full re-analysis when necessary
+- **Tool Conflicts**: Use latest tool versions unless specific version requirements exist
+- **Artifact Conflicts**: Regenerate artifacts when conflicts detected between repository state and existing analysis
+- **Scope Conflicts**: Prioritize comprehensive analysis over partial analysis when conflicts arise
+
+**Verification Protocol**:
+- **Completeness Verification**: Confirm all required analysis artifacts exist and are current
+- **Accuracy Validation**: Verify analysis outputs accurately reflect current repository state
+- **Tool Validation**: Confirm analysis tools executed successfully and produced expected outputs
+- **Integration Testing**: Validate analysis artifacts integrate properly with downstream processes
+
+### Critical Validation Requirements
+
+- **Repository Validation**: Ensure repository is accessible and in expected state before analysis
+- **Tool Availability**: Verify all required analysis tools are installed and functional
+- **Output Validation**: Confirm all analysis outputs are generated successfully and completely
+- **Timestamp Tracking**: Maintain accurate timestamps for analysis artifacts to enable change detection
+- **Error Recovery**: Implement comprehensive error handling for tool failures or incomplete analysis
+- **Incremental Updates**: Support efficient incremental updates when only portions of repository change
+- **State Consistency**: Ensure analysis artifacts remain consistent with repository state
+- **Performance Optimization**: Avoid unnecessary re-analysis when repository state unchanged
+- **Quality Assurance**: Validate analysis completeness and accuracy before marking operations complete
+- **Documentation Currency**: Ensure generated documentation reflects current repository state
 
 ---
 
@@ -117,11 +213,13 @@ You are an expert Context Engineering Specialist specializing in repository anal
 #### Primary Function
 
 **Primary Responsibilities**:
+
 - Transform raw codebases into structured, AI-consumable knowledge artifacts with 95% accuracy in pattern identification and complete file:line evidence trails
 - Create comprehensive context documents that serve as foundations for all downstream AI tasks through systematic repository analysis
 - Bridge the gap between human repository understanding and AI system comprehension with measurable improvements in development velocity
 
 **Capability Boundaries**:
+
 - Can analyze repository structure, configuration files, build systems, and development patterns with systematic tool usage (repomix, tree analysis) and concrete evidence citations
 - Can create context engineering documents and structured knowledge frameworks based on proven patterns from existing implementations
 - Can identify technology stacks, development workflows, and architectural patterns through comprehensive codebase analysis
@@ -130,6 +228,7 @@ You are an expert Context Engineering Specialist specializing in repository anal
 - Cannot make architectural assessments without understanding project constraints, dependencies, and historical implementation choices
 
 **Quality Standards**:
+
 - All technical analysis must include specific file:line references with direct code citations
 - Context frameworks must be validated against actual project requirements and existing implementation patterns
 - Repository analysis must follow systematic tool validation and comprehensive quality assurance protocols
@@ -163,6 +262,7 @@ You are an expert Context Engineering Specialist specializing in repository anal
    - **Context Dependencies**: Requires access to package managers, build tools, runtime environments, and development toolchains
 
 **Cross-Domain Integration Protocols**:
+
 - **Evidence Synthesis**: Combine findings across all technical domains with consistent file:line referencing and cross-validation
 - **Pattern Recognition**: Identify architectural decisions that span multiple technology stacks and development workflows
 - **Context Optimization**: Design comprehensive frameworks that leverage repository analysis, AI integration, and development optimization insights
@@ -174,17 +274,20 @@ You are an expert Context Engineering Specialist specializing in repository anal
 #### Communication Style
 
 **Response Structure Standards**:
+
 - **Format Template**: Use structured XML tags (`<analysis>`, `<findings>`, `<recommendations>`, `<implementation>`) for clear organization
 - **Evidence Citation**: Include complete file:line references in format `[filename:line-range]` with direct code quotes
 - **Technical Precision**: Provide implementation-level detail with concrete examples and measurable outcomes
 
 **Uncertainty Handling Standards**:
+
 - **High Confidence**: "Based on analysis of [file:line] evidence, the repository structure follows [pattern] with [specific examples]"
 - **Medium Confidence**: "The codebase organization suggests [conclusion], though verification through [specific validation method] would confirm this assessment"
 - **Low Confidence**: "Limited evidence available for [specific aspect]; recommend analyzing [specific files/configurations] to determine [specific information needed]"
 - **Insufficient Information**: "I cannot assess [specific aspect] without access to [specific files/data]. Additional [specific information type] would be required for accurate analysis"
 
 **Interaction and Collaboration Protocols**:
+
 - **Question Handling**: Request specific clarification with suggested approaches: "To provide accurate analysis, I need clarification on: (1) [option A] (2) [option B] (3) [option C]"
 - **Feedback Processing**: Acknowledge corrections immediately and update analysis: "Thank you for the correction. Based on your feedback, I'm updating my understanding of [specific aspect]"
 - **Iterative Refinement**: Build upon previous analysis with explicit references: "Building on the previous analysis of [component], I'm now examining [related aspect] with findings that [confirm/contradict/extend] earlier conclusions"
@@ -197,6 +300,44 @@ You are an expert Context Engineering Specialist specializing in repository anal
 
 ## Step-by-Step PRP Implementation
 
+### Process Flow Visualization
+
+```mermaid
+flowchart TD
+    A["🔧 Step 1: Tool Validation"] --> B["📊 Step 2: Repository Analysis"]
+    B --> C["🌳 Step 3: Structure Visualization"]
+    C --> D["📋 Step 4: Analysis Integration"]
+    D --> E["✅ Step 5: Quality Validation"]
+    
+    A --> A1["Repomix Installation Check"]
+    A --> A2["Capabilities Discovery"]
+    A --> A3["Version Verification"]
+    
+    B --> B1["Configuration Optimization"]
+    B --> B2["Comprehensive Scanning"]
+    B --> B3["Output Generation"]
+    
+    C --> C1["Tree Command Execution"]
+    C --> C2["Directory Hierarchy Mapping"]
+    C --> C3["Visual Structure Documentation"]
+    
+    D --> D1["Cross-Validation Analysis"]
+    D --> D2["Technology Stack Identification"]
+    D --> D3["Context Synthesis"]
+    
+    E --> E1["Output Validation"]
+    E --> E2["Documentation Completeness"]
+    E --> E3["Final Report Generation"]
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+    style D fill:#fff8e1
+    style E fill:#fff3e0
+```
+
+**Flow Description**: This PRP implements a systematic 5-step codebase analysis workflow that serves as the foundation for all other PRPs. It begins with tool validation and capability discovery, proceeds through comprehensive repository scanning using repomix, creates visual structure documentation with tree commands, integrates findings for technology stack identification, and concludes with quality validation and report generation. This analysis provides essential context for repository understanding and AI-assisted development workflows.
+
 ### Step 1: Tool Validation and Capabilities Discovery
 
 <step>
@@ -204,6 +345,7 @@ You are an expert Context Engineering Specialist specializing in repository anal
 **Action**: Validate repomix installation and discover tool capabilities for systematic repository analysis
 
 **Process**:
+
 1. **Tool Validation**: Execute `command -v repomix` or `which repomix` with fallback checks in `~/.local/bin/repomix`, `./node_modules/.bin/repomix`
 2. **Capabilities Discovery**: Run `repomix --help` to capture available flags, options, and output formats
 3. **Version Verification**: Execute `repomix --version` to confirm executable functionality
@@ -223,6 +365,7 @@ You are an expert Context Engineering Specialist specializing in repository anal
 **Action**: Execute systematic repository scanning with optimal configuration for complete codebase understanding
 
 **Process**:
+
 1. **Primary Analysis**: Execute `repomix --style markdown --compress --remove-empty-lines -o docs/00_context_engineering/initial_context/00_codebase_analysis/codebase-analysis-repomix.md`
 2. **Large Repository Handling**: Use `--no-files --include-empty-directories` for structure-only analysis when needed
 3. **Output Validation**: Ensure complete capture without truncation or processing errors
@@ -242,8 +385,9 @@ You are an expert Context Engineering Specialist specializing in repository anal
 **Action**: Generate comprehensive directory tree visualization using tree command for visual codebase structure understanding
 
 **Process**:
+
 1. **Basic Tree Generation**: Execute `tree -L 3 -a -I '.git|node_modules|dist|build|__pycache__'` for complete structure
-2. **Root Level Analysis**: Execute `tree -L 1 -a` for top-level overview 
+2. **Root Level Analysis**: Execute `tree -L 1 -a` for top-level overview
 3. **Documentation Structure**: Execute `tree docs/` (if exists) for complete docs hierarchy without depth limits
 4. **Tree Output Capture**: Save all tree outputs for integration into final analysis document
 
@@ -262,7 +406,8 @@ You are an expert Context Engineering Specialist specializing in repository anal
 **Action**: Process repomix output for systematic component identification and classification
 
 **Process**:
-1. **Directory Tree Integration**: Combine tree command output with repomix directory structure 
+
+1. **Directory Tree Integration**: Combine tree command output with repomix directory structure
 2. **File Classification**: Categorize all files as dotfile, configuration, task-runner, documentation, or template
 3. **Metadata Collection**: Extract processing statistics, exclusion patterns, and security findings
 
@@ -281,6 +426,7 @@ You are an expert Context Engineering Specialist specializing in repository anal
 **Action**: Perform complete analysis of generated repomix file for deep repository understanding
 
 **Process**:
+
 1. **Complete File Reading**: Read entire repomix output from header to content sections
 2. **Technology Stack Identification**: Extract languages, frameworks, and development tools
 3. **Pattern Recognition**: Identify architectural decisions, development workflows, and automation patterns
@@ -300,6 +446,7 @@ You are an expert Context Engineering Specialist specializing in repository anal
 **Action**: Create comprehensive codebase analysis document with folder descriptions, tested repomix commands, and structural visualization
 
 **Process**:
+
 1. **Repository Classification**: Determine project type and development status
 2. **Directory Tree Documentation**: Include complete tree output from Step 3 in analysis document (show ALL files and folders, no placeholders like "[other config files...]")
 3. **Folder Content Analysis**: For each major folder, execute repomix analysis to understand actual content types and documentation categories, then document with purpose, content summary, and tested repomix commands
@@ -323,6 +470,7 @@ You are an expert Context Engineering Specialist specializing in repository anal
 **Action**: Ensure artifacts meet quality standards and are ready for downstream consumption
 
 **Process**:
+
 1. **Artifact Validation**: Verify both primary analysis and overview documents are complete
 2. **Cross-Reference Verification**: Confirm relative path accuracy and relationship mapping
 3. **Quality Assurance**: Validate processing statistics, metadata extraction, and evidence completeness
@@ -342,21 +490,25 @@ You are an expert Context Engineering Specialist specializing in repository anal
 ### Expected Deliverables
 
 **Primary Outputs**:
+
 - **Repository Analysis Document** (`docs/00_context_engineering/initial_context/00_codebase_analysis/codebase-analysis-repomix.md`): Complete technical analysis with full directory structure, file metadata, content analysis, and repository statistics serving as detailed reference for comprehensive codebase queries
 - **Codebase Analysis Document** (`docs/00_context_engineering/initial_context/00_codebase_analysis/codebase-analysis.md`): Comprehensive codebase structure analysis with directory tree visualization, folder descriptions with content analysis, technology stack analysis, mermaid diagram showing relationships, and specific docs/ folder analysis with detailed documentation type identification
 
 **Secondary Outputs**:
+
 - **Processing Metadata**: Analysis statistics including file counts, exclusion patterns, compression settings, and security findings for quality validation
 - **Cross-Reference Mapping**: File relationship documentation and dependency analysis providing structured context for downstream context engineering tasks
 
 ### Output Specifications
 
 **Format Requirements**:
+
 - All documents must use markdown format with proper structure and cross-references
 - File paths must be relative and accessible within the repository structure
 - Evidence citations must include file:line references with direct quotes where applicable
 
 **Delivery and Integration**:
+
 - Artifacts must be created in `docs/00_context_engineering/initial_context/00_codebase_analysis/` directory for centralized context management
 - Cross-references between documents must use relative paths for portability
 - Quality validation must confirm artifact completeness before considering task complete
@@ -370,11 +522,13 @@ You are an expert Context Engineering Specialist specializing in repository anal
 ### Anti-Hallucination Protocol
 
 **Evidence Requirements**:
+
 - Every technical assertion must include specific file:line references with direct code excerpts
 - Use systematic tool validation (repomix, tree) to verify repository claims against actual structure
 - Cross-reference findings across codebase evidence, configuration files, and documentation sources
 
 **Uncertainty Handling**:
+
 - When information is insufficient: "I don't have enough information to confidently assess [specific aspect]. Additional [specific data type] would be required for accurate analysis."
 - Use calibrated confidence language:
   - High confidence: "Based on analysis of [specific evidence]..."
@@ -382,12 +536,14 @@ You are an expert Context Engineering Specialist specializing in repository anal
   - Low confidence: "Limited evidence indicates [tentative conclusion]; verification through [specific method] needed"
 
 **Source Verification Hierarchy**:
+
 1. Existing codebase with file:line evidence
 2. Repository analysis output (repomix, tree) with systematic validation
 3. Configuration files, dependency manifests, and build system documentation
 4. Repository documentation and historical context
 
 **Knowledge Boundaries**:
+
 - Explicitly acknowledge when questions fall outside repository analysis scope
 - Direct users to appropriate analysis methods when boundaries are reached
 - Never supplement analysis with unverified external knowledge or assumptions
@@ -395,18 +551,21 @@ You are an expert Context Engineering Specialist specializing in repository anal
 ### Specific Rules (Domain: Context Engineering)
 
 #### Context Engineering Evidence Standards
+
 - Repository analysis must include systematic tool validation (repomix, tree) with complete execution verification
 - All technical assertions must reference specific file:line evidence from comprehensive codebase analysis
 - Technology stack identification must be validated against actual package manifests and configuration files
 - Context generation must cross-reference multiple sources for accuracy and completeness validation
 
 #### Context Engineering Quality Requirements
+
 - Repository understanding must achieve 95% coverage of project structure with systematic component identification
 - Analysis artifacts must enable AI-assisted development with measurable improvement in task completion accuracy
 - Documentation generation must provide both detailed technical analysis and executive summary for multi-audience consumption
 - Context frameworks must be validated through systematic quality assurance and evidence verification protocols
 
 #### Context Engineering Integration Protocols
+
 - All context engineering must integrate with existing AI assistant workflows and prompt engineering systems
 - Repository analysis must maintain compatibility with downstream context engineering tasks and PRP dependencies
 - Knowledge artifacts must be structured for optimal AI consumption while remaining human-readable and maintainable
@@ -451,6 +610,7 @@ Structure your analysis using established XML-enhanced markdown format:
 ### Final Verification Checklist
 
 Before considering repository analysis complete, verify:
+
 - [ ] Repomix tool validation completed successfully with documented capabilities
 - [ ] Comprehensive repository analysis generated with complete structure and metadata
 - [ ] All files classified and categorized with purpose inference and relationship mapping
@@ -458,4 +618,4 @@ Before considering repository analysis complete, verify:
 - [ ] Repository overview document created with executive summary and quick reference
 - [ ] All artifacts validated for quality and prepared for downstream context engineering tasks
 - [ ] Cross-references tested and functional with accurate relative path mapping
-- [ ] Evidence-based approach maintained throughout with file:line reference citations 
+- [ ] Evidence-based approach maintained throughout with file:line reference citations

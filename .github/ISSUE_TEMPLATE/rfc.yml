@@ -1,72 +1,199 @@
-name: 🚧 Request for Comments (RFC)
-description: Feature design and detailed proposals for the MCP AWS Provider Docs server
-title: "RFC: TITLE"
-labels: ["RFC-proposal", "needs-triage"]
+---
+name: "🚧 Request for Comments (RFC) for Repository Template"
+description: "Feature design and detailed proposals for repository template enhancements"
+title: "RFC: Repository Template - [PROPOSAL TITLE]"
+labels: [RFC-proposal, needs-triage]
 body:
   - type: markdown
     attributes:
       value: |
-        Thank you for submitting a RFC. Please add as many details as possible to help further enrich this design.
+        Thank you for submitting an RFC for our repository template! Please provide as many details as possible to help enrich this design proposal.
+
+        **Note**: This template is designed for AI-assisted development workflows. Consider how your proposal might enhance AI integration, developer productivity, or template functionality.
+
   - type: input
     id: relation
     attributes:
-      label: Is this related to an existing feature request or issue?
-      description: Please share a link, if applicable
+      label: 🔗 Related Issues or Features
+      description: Is this related to an existing feature request or issue? Please share links if applicable.
+      placeholder: "Related to issue #123 or feature request #456"
+
   - type: textarea
     id: summary
     attributes:
-      label: Summary
-      description: Please provide an overview in one or two paragraphs
+      label: 📋 Summary
+      description: Provide a concise overview of the proposal in one or two paragraphs.
+      placeholder: "This RFC proposes..."
     validations:
       required: true
+
   - type: textarea
     id: problem
     attributes:
-      label: Use case
-      description: Please share the use case and motivation behind this proposal, especially as it relates to the MCP server, AWS provider, or Terragrunt documentation.
+      label: 🎯 Problem Statement and Use Case
+      description: Describe the problem this proposal solves and the use case it addresses, especially as it relates to AI-assisted development workflows.
+      placeholder: "The current repository template lacks... This affects developers by..."
     validations:
       required: true
+
   - type: textarea
     id: proposal
     attributes:
-      label: Proposal
-      description: Please explain the design in detail, so anyone familiar with the project could implement it
-      placeholder: What the user experience looks like before and after this design?
+      label: 💡 Detailed Proposal
+      description: Explain the design in detail so anyone familiar with the project could implement it. Include user experience before and after.
+      placeholder: |
+        ## Current Experience
+        Currently, users experience...
+
+        ## Proposed Experience
+        With this change, users would...
+
+        ## Implementation Details
+        The implementation would involve...
     validations:
       required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: 📦 Template Component Impact
+      description: Which parts of the repository template would this proposal affect?
+      multiple: true
+      options:
+        - "Documentation System"
+        - "GitHub Workflows"
+        - "AI Integration (.claude, .cursor)"
+        - "Context Engineering"
+        - "Issue Templates"
+        - "Repository Configuration"
+        - "Automation Scripts"
+        - "Development Workflow"
+        - "New Component"
+        - "Template Structure"
+
   - type: textarea
     id: scope
     attributes:
-      label: Out of scope
-      description: Please explain what should be considered out of scope in your proposal
+      label: 🎯 In Scope
+      description: What should be considered within the scope of this proposal?
+      placeholder: "This proposal includes..."
     validations:
       required: true
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: 🚫 Out of Scope
+      description: What should be considered out of scope for this proposal?
+      placeholder: "This proposal does not include..."
+    validations:
+      required: true
+
   - type: textarea
     id: challenges
     attributes:
-      label: Potential challenges
-      description: Please share what common challenges, edge cases, unresolved areas, and suggestions on how to mitigate them
+      label: ⚠️ Potential Challenges and Risks
+      description: Identify common challenges, edge cases, unresolved areas, and suggestions for mitigation.
+      placeholder: |
+        ## Technical Challenges
+        - Challenge 1: Description and mitigation strategy
+        - Challenge 2: Description and mitigation strategy
+
+        ## Implementation Risks
+        - Risk 1: Description and impact assessment
+
+        ## Edge Cases
+        - Edge case 1: Description and handling approach
     validations:
       required: true
+
   - type: textarea
-    id: integrations
+    id: ai_integration
     attributes:
-      label: Dependencies and Integrations
-      description: If applicable, please share whether this feature has additional dependencies, and how it might integrate with other utilities available
-    validations:
-      required: false
+      label: 🤖 AI Integration Impact
+      description: How would this proposal affect AI-assisted development workflows and tool integration?
+      placeholder: "This proposal would enhance AI integration by..."
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 🔧 Dependencies and Integrations
+      description: Describe any dependencies this feature would have and how it might integrate with existing components.
+      placeholder: |
+        ## Dependencies
+        - Dependency 1: Description and version requirements
+        - Dependency 2: Description and integration points
+
+        ## Integration Points
+        - Integration with existing workflow X
+        - Compatibility with tool Y
+
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternative solutions
-      description: Please describe what alternative solutions to this use case, if any
-      render: markdown
-    validations:
-      required: false
-  - type: checkboxes
+      label: 🔄 Alternative Solutions
+      description: Describe alternative approaches to solving this use case.
+      placeholder: |
+        ## Alternative 1
+        Description, pros, and cons
+
+        ## Alternative 2
+        Description, pros, and cons
+
+        ## Why This Approach
+        Explanation of why the proposed solution is preferred
+
+  - type: textarea
+    id: timeline
     attributes:
-      label: Code of Conduct
-      description: By submitting this RFC, you agree to follow our [Code of Conduct](https://aws.github.io/code-of-conduct).
+      label: ⏱️ Implementation Timeline
+      description: Propose a rough timeline for implementing this feature.
+      placeholder: |
+        ## Phase 1 (Weeks 1-2)
+        - Initial implementation
+
+        ## Phase 2 (Weeks 3-4)
+        - Testing and refinement
+
+        ## Phase 3 (Week 5)
+        - Documentation and deployment
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: ✅ Success Criteria
+      description: How will we know this proposal has been successfully implemented?
+      placeholder: |
+        - Measurable outcome 1
+        - User experience improvement 2
+        - Performance metric 3
+
+  - type: checkboxes
+    id: implementation
+    attributes:
+      label: 🛠️ Implementation Willingness
+      description: How can you contribute to this proposal?
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: I would be willing to help implement this proposal
+          required: false
+        - label: I can provide design feedback and iteration support
+          required: false
+        - label: I can help with testing and validation
+          required: false
+        - label: I can contribute documentation for this feature
+          required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✅ Pre-submission Checklist
+      description: Please confirm you have completed these steps
+      options:
+        - label: I have searched existing issues and PRs to ensure this is not a duplicate
+          required: true
+        - label: I have provided a comprehensive problem statement and use case
+          required: true
+        - label: I have considered the impact on AI-assisted development workflows
+          required: true
+        - label: I have identified potential challenges and mitigation strategies
           required: true

@@ -42,6 +42,43 @@ related:
 
 This document is a **Product Requirement Prompt (PRP)**. It is based on the PRP system, and it's a core component of Context Engineering, which is the core architecture that transforms high-level feature requests into comprehensive implementation blueprints for AI assistants, with a deep context and awareness about the codebase, user examples, and current technology documentation.
 
+### Dependencies
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
+>
+> **Action required**: Define any prerequisite PRPs, analyses, or outputs that must exist before this PRP can be executed. This ensures proper execution order and prevents incomplete context gathering.
+>
+> **✅ Completion Criteria**:
+>
+> - **Prerequisite PRPs**: List any other PRPs that must be completed first with clear rationale
+> - **Required Analysis Outputs**: Specify exact file paths and content that must exist
+> - **Dependency Validation**: Define how to verify dependencies are met before execution
+> - **Failure Handling**: Specify what to do if dependencies are missing or incomplete
+>
+> **💡 Template Structure**:
+>
+> ```
+> **Prerequisite Requirements**:
+> - **Required PRP**: [PRP_NAME] must be completed with output at [FILE_PATH]
+> - **Analysis Dependency**: [SPECIFIC_ANALYSIS] must exist with results in [DIRECTORY_PATH]
+> - **Validation Method**: [HOW_TO_VERIFY_DEPENDENCY_IS_MET]
+> - **Missing Dependency Action**: [WHAT_TO_DO_IF_DEPENDENCY_MISSING]
+> ```
+>
+> **📚 Examples**:
+>
+> ```
+> **Prerequisite Requirements**:
+> - **Required PRP**: Codebase Analysis PRP must be completed with output at docs/00_context_engineering/initial_context/00_codebase_analysis/
+> - **Analysis Dependency**: Repository structure analysis must exist with technology stack identification and dependency mapping
+> - **Validation Method**: Verify existence of codebase-analysis-repomix.md and codebase-analysis.md files
+> - **Missing Dependency Action**: Execute Codebase Analysis PRP first to gather required context for labels, topics, and configuration decisions
+> ```
+
+**Prerequisite Requirements**: [DEFINE_REQUIRED_DEPENDENCIES_FOR_YOUR_PRP]
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: If this PRP has no dependencies (e.g., foundational PRPs like codebase analysis), replace the content above with "**NA** - This PRP has no prerequisite dependencies and can be executed independently." Make this clear in the final document.
+
 ### Purpose for this PRP
 
 > **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
@@ -142,6 +179,7 @@ This document is a **Product Requirement Prompt (PRP)**. It is based on the PRP 
 >
 > **📋 Scope Definition Requirements**:
 >
+> - **Context Engineering Criticality**: Define precise contextual boundaries since we're applying context engineering practices where filling the LLM's context window with irrelevant information isn't an option. Every piece of context must be justified and directly contribute to task success.
 > - Identify the minimum sufficient context needed for AI to achieve the Purpose without hallucinations (e.g., for a code generation task, include only the specific programming language, framework, and architectural constraints, excluding unrelated design patterns)
 > - Define contextual boundaries that directly support the specific AI task/capability outlined in Purpose (e.g., for a machine learning model recommendation, provide only the model type, training data characteristics, and performance metrics, not the entire dataset)
 > - Specify what contextual knowledge gaps would cause AI task failure or inaccurate outputs (e.g., missing authentication protocols in a cloud service integration task would lead to incorrect API call implementations)
@@ -612,6 +650,63 @@ graph TD
 
 ---
 
+## Idempotency Requirements
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: Every PRP must include idempotency requirements. Remove this note when creating actual PRPs.
+
+**MANDATORY**: All PRP operations must be idempotent - safe to run multiple times without errors or unintended changes.
+
+### Idempotency Decision Framework
+
+All PRP implementations must follow logical idempotency principles:
+
+**1. State Assessment Protocol**
+- Always check current state before taking action
+- Compare current state with desired state
+- Only proceed with changes when states differ
+
+**2. File Operation Logic**
+```mermaid
+flowchart TD
+    A[File Operation Required] --> B{File Exists?}
+    B -->|No| C[Create File]
+    B -->|Yes| D{Content Differs?}
+    D -->|No| E[No Action - Already Correct]
+    D -->|Yes| F{Preserve Existing?}
+    F -->|Yes| G[Backup + Update Differences]
+    F -->|No| H[Replace File]
+    
+    C --> I[Verify Success]
+    G --> I
+    H --> I
+    E --> J[Report: No Changes Needed]
+    I --> K[Report: Changes Applied]
+```
+
+**3. Configuration Operation Logic**
+- **GitHub Configurations**: Check if setting exists and matches desired state
+- **API Configurations**: Verify current configuration via API calls before modification
+- **Environment Settings**: Compare environment variables/config values before updating
+
+### Domain-Specific Idempotency Requirements
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: Customize these requirements based on your PRP's specific domain and operations.
+
+**For each PRP implementation, define**:
+- **Current State Definition**: What constitutes the "current state" in your domain
+- **State Comparison Method**: How to determine if current state matches desired state  
+- **Change Detection Logic**: Specific criteria for when modifications are needed
+- **Conflict Resolution**: How to handle conflicts between current and desired states
+- **Verification Protocol**: How to confirm operations achieved desired state
+
+**Examples by Domain**:
+- **File Operations**: Content comparison, timestamp checking, permission verification
+- **API Configurations**: Setting comparison, feature flag states, access permissions
+- **Environment Setup**: Package versions, service states, configuration values
+- **Documentation**: Content updates, structure changes, cross-reference validation
+
+---
+
 <role>
 
 ## Role
@@ -973,36 +1068,39 @@ You are an expert Software Development Engineer specializing in reverse engineer
 
 > **🤖Agent Notes [Agent creating a PRP using this template]**: This entire NOTE(s) section should be read, and followed by the AI assistant who's creating the PRP using this template as a base. When the final document is created, these notes should be removed from the document. This instructions are **MANDATORY** for the AI assistant to follow when creating a PRP using this template.
 >
-> **Action required**: Define specific technical competencies using Anthropic's evidence-based approach. You must ensure each expertise area includes verification methods and knowledge boundaries to prevent hallucinations.
+> **Action required**: Define specific technical competencies that are precisely aligned with your PRP's purpose and the type of context that needs to be gathered. Avoid generic jargon - instead create a specialized mix of skills and relevant experience based on the specific task at hand. The expertise areas for a frontend-focused PRP should be vastly different from a DevOps-oriented PRP, as the context requirements are fundamentally different.
 >
+> - **Purpose-Driven Specialization**: Align expertise areas directly with the specific context your PRP needs to gather (e.g., React performance analysis for frontend PRPs, infrastructure orchestration for DevOps PRPs)
+> - **Context-Gathering Focus**: Define competencies based on what contextual knowledge is critical for your specific PRP task, not general technical capabilities
+> - **Task-Specific Boundaries**: Each expertise area should directly support the unique context gathering and analysis requirements of your PRP's purpose
 > - Define verification methods for each competency area
 > - Establish clear knowledge boundaries
 > - Include evidence standards that prevent hallucinations
 >
 > **✅ Completion Criteria**:
 >
-> - **Competency Mapping**: 4-6 distinct expertise domains with specific tool/technology focus
-> - **Evidence Requirements**: How expertise will be demonstrated and validated in responses
-> - **Knowledge Boundaries**: Clear limits of each expertise area and referral protocols
-> - **Context Dependencies**: What information sources are required for each expertise
-> - **Verification Methods**: How claims in each domain will be substantiated
+> - **Purpose-Aligned Competency Mapping**: 4-6 distinct expertise domains precisely tailored to your PRP's specific context gathering needs (e.g., component analysis for React PRPs, infrastructure orchestration for DevOps PRPs)
+> - **Context-Focused Evidence Requirements**: How expertise will be demonstrated specifically for gathering the contextual knowledge your PRP requires
+> - **Task-Specific Knowledge Boundaries**: Clear limits of each expertise area aligned with your PRP's context gathering scope and referral protocols
+> - **Context Dependencies**: What information sources are required for each expertise area to support your specific PRP's objectives
+> - **Domain-Targeted Verification Methods**: How claims in each domain will be substantiated within the context of your PRP's purpose
 >
 > **🎯 Universal Elements (Required)**:
 >
-> 1. **Specific Domain Definition**: Precise technical scope, not generic categories
-> 2. **Tool/Technology Specification**: Exact frameworks, libraries, platforms
-> 3. **Competency Boundaries**: What the assistant knows vs. needs to research
-> 4. **Evidence Standards**: Required proof/citations for domain-specific claims
-> 5. **Integration Protocols**: How expertise areas work together
+> 1. **Purpose-Driven Domain Definition**: Precise technical scope directly aligned with your PRP's context gathering needs, not generic categories
+> 2. **Context-Relevant Tool/Technology Specification**: Exact frameworks, libraries, platforms that are critical for your specific PRP's context analysis
+> 3. **Task-Aligned Competency Boundaries**: What the assistant knows vs. needs to research specifically for your PRP's objectives
+> 4. **Context-Specific Evidence Standards**: Required proof/citations tailored to your PRP's domain and context gathering requirements
+> 5. **Purpose-Focused Integration Protocols**: How expertise areas work together to support your specific PRP's context engineering goals
 >
 > **💡 Template Structure**:
 >
 > ```
-> **[DOMAIN_NAME]**: [SPECIFIC_TECHNOLOGIES/TOOLS]
->   - Competency Level: [SPECIFIC_CAPABILITIES]
->   - Evidence Required: [CITATION/PROOF_STANDARDS]
->   - Knowledge Limits: [BOUNDARY_CONDITIONS]
->   - Context Dependencies: [REQUIRED_INFORMATION_SOURCES]
+> **[CONTEXT_DOMAIN_NAME]**: [CONTEXT_CRITICAL_TECHNOLOGIES/TOOLS]
+>   - Context Gathering Scope: [SPECIFIC_CONTEXT_ANALYSIS_CAPABILITIES_FOR_PRP_PURPOSE]
+>   - Evidence Required: [CONTEXT_SPECIFIC_PROOF_STANDARDS_FOR_YOUR_DOMAIN]
+>   - Knowledge Limits: [BOUNDARY_CONDITIONS_ALIGNED_WITH_PRP_OBJECTIVES]
+>   - Context Dependencies: [INFORMATION_SOURCES_CRITICAL_FOR_YOUR_PRP_TASK]
 > ```
 >
 > **🎯 Categories Framework**:
@@ -1285,6 +1383,36 @@ You are an expert Software Development Engineer specializing in reverse engineer
 > - **Evidence Collection**: Each step produces verifiable outputs and documentation
 > - **Quality Validation**: Each step includes verification and troubleshooting guidance
 > - **Domain Integration**: Steps align with the specific PRP purpose and technical requirements
+
+### Process Flow Visualization
+
+> **🤖Agent Notes [Agent creating a PRP using this template]**: Create a mermaid diagram that visualizes the complete workflow of your PRP. This should be the first thing users see to quickly understand the process flow. Replace the example below with your PRP-specific flow.
+
+```mermaid
+flowchart TD
+    A["🔍 Step 1: [STEP_NAME]"] --> B["📋 Step 2: [STEP_NAME]"]
+    B --> C["⚙️ Step 3: [STEP_NAME]"]
+    C --> D["✅ Step 4: [STEP_NAME]"]
+    
+    A --> A1["[Sub-process 1]"]
+    A --> A2["[Sub-process 2]"]
+    
+    B --> B1["[Analysis Activity]"]
+    B --> B2["[Validation Activity]"]
+    
+    C --> C1["[Implementation Activity]"]
+    C --> C2["[Configuration Activity]"]
+    
+    D --> D1["[Verification Activity]"]
+    D --> D2["[Documentation Activity]"]
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+    style D fill:#fff3e0
+```
+
+**Flow Description**: [Provide a brief description of the overall process flow and how the steps connect to achieve the PRP objectives]
 
 ### Step 1: [Step Title]
 
